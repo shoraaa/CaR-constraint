@@ -1,0 +1,855 @@
+{'POMO_checkpoint': '../PIP-constraint/POMO+PIP/pretrained/TSPTW/tsptw50_hard/POMO_star/epoch-10000.pt',
+ 'accumulation_steps': 8,
+ 'active_constraints': ['backhaul', 'route_limit', 'time_window'],
+ 'amp_training': True,
+ 'aspect_num': 2,
+ 'aux_mask': True,
+ 'backhaul_mask': 'soft',
+ 'baseline': 'group',
+ 'best_solution_path': None,
+ 'bonus_for_construction': False,
+ 'boundary': 0.5,
+ 'checkpoint': None,
+ 'clean_cache': False,
+ 'coefficient': 100,
+ 'consequence_bound': 'clamp',
+ 'consequence_compact': False,
+ 'consequence_context_dim': 0,
+ 'consequence_hidden_dim': 16,
+ 'consequence_norm': 'layer',
+ 'constraint_number': 4,
+ 'constraint_repr': 'interface',
+ 'couple_rows': True,
+ 'decoder_layer_num': 1,
+ 'diversity': 'kendall_tau_distance',
+ 'diversity_loss': True,
+ 'diversity_reward': False,
+ 'diversity_weight': 0.01,
+ 'dual_decoder': False,
+ 'dummy_improve_selected': 'random',
+ 'dummy_improve_steps': 0,
+ 'dynamic_coefficient': False,
+ 'embedding_dim': 128,
+ 'empty_cache_per_batch': True,
+ 'enable_eas': False,
+ 'encoder_layer_num': 6,
+ 'epochs': 2,
+ 'epsilon': 3.67,
+ 'epsilon_base': 5.0,
+ 'epsilon_decay_beta': 0.001,
+ 'eval_only': False,
+ 'eval_type': 'argmax',
+ 'extra_bonus': False,
+ 'extra_weight': 0.1,
+ 'ff_hidden_dim': 512,
+ 'fsb_dist_only': True,
+ 'fsb_reward_only': True,
+ 'fsb_reward_plus': False,
+ 'fsb_start_delay': 10000,
+ 'gamma': 0.1,
+ 'generate_PI_mask': False,
+ 'gpu_id': '0',
+ 'gumbel': False,
+ 'hardness': 'hard',
+ 'head_num': 8,
+ 'imitation_learning': True,
+ 'imitation_loss_weight': 1.0,
+ 'impr_encoder_start_idx': 0,
+ 'improve_start_when_dummy_ok': False,
+ 'improve_steps': 5,
+ 'improvement_method': 'kopt',
+ 'improvement_only': False,
+ 'infsb_dist_penalty': False,
+ 'init_sol_strategy': 'POMO',
+ 'insert_before': True,
+ 'is_lib': False,
+ 'iterations': 200,
+ 'iterations_impr': 20,
+ 'k_max': 4,
+ 'k_unconfident': 10,
+ 'lazy_pip_model': False,
+ 'load_optimizer': True,
+ 'load_which_pip': 'train_fsb_bsf',
+ 'log_dir': 'results/speed/interface',
+ 'logit_clipping': 10,
+ 'lr': 0.0001,
+ 'max_dummy_size': 18,
+ 'milestones': [4501],
+ 'model_save_interval': 99,
+ 'model_type': 'SINGLE',
+ 'multi_processing': False,
+ 'multiple_gpu': False,
+ 'n2s_decoder': False,
+ 'neighborhood_search': False,
+ 'no_cuda': False,
+ 'node_repr': 'named',
+ 'node_repr_dim': 4,
+ 'non_linear': None,
+ 'non_linear_cons': False,
+ 'norm': 'instance',
+ 'norm_loc': 'norm_last',
+ 'occ_gpu': 0.0,
+ 'out_node_reward': True,
+ 'out_reward': True,
+ 'pairwise_merge': 'feature,attention',
+ 'penalty_factor': 1.0,
+ 'penalty_normalize': False,
+ 'pip_checkpoint': None,
+ 'pip_decoder': False,
+ 'pip_last_growup': 50,
+ 'pip_step': 1,
+ 'pip_update_epoch': 20,
+ 'pip_update_interval': 1000,
+ 'pomo_feasible_start': False,
+ 'pomo_size': 50,
+ 'pomo_start': False,
+ 'problem': 'VRPBLTW',
+ 'problem_size': 50,
+ 'probs_return': False,
+ 'qkv_dim': 16,
+ 'random_delta_t': 0,
+ 'reconstruct': False,
+ 'reconstruct_bonus_weight': 1.0,
+ 'reconstruct_improve_bonus': False,
+ 'refinement_history_path': None,
+ 'repeats': 1,
+ 'reward_gating': False,
+ 'rm_num': 1,
+ 'sample_size': 1,
+ 'seed': 1234,
+ 'select_strategy': 'quality',
+ 'select_top_k': 10,
+ 'select_top_k_val': 1,
+ 'seperate_obj_penalty': False,
+ 'simulation_stop_epoch': 100,
+ 'slack_normalize': True,
+ 'slack_stride': 5,
+ 'slack_weight': 0.0,
+ 'soft_constrained': True,
+ 'sop_variant': 1,
+ 'sqrt_embedding_dim': 11.313708498984761,
+ 'stochastic_probability': 0.5,
+ 'subgradient': False,
+ 'subgradient_lr': 0.1,
+ 'succ_attention_bias': 1.0,
+ 'supplement_feature_dim': 17,
+ 'tb_logger': False,
+ 'test_batch_size': 10000,
+ 'test_dataset': None,
+ 'test_episodes': 10000,
+ 'test_opt_path': None,
+ 'test_pomo_size': 1,
+ 'total_history': 3,
+ 'train_batch_size': 16,
+ 'train_episodes': 2560,
+ 'tw_normalize': True,
+ 'uncertainty_weight': False,
+ 'unified_decoder': False,
+ 'unified_encoder': True,
+ 'use_fast_attention': True,
+ 'use_real_PI_mask': False,
+ 'v_range': 6.0,
+ 'val_dataset': ['vrpbltw50_uniform.pkl'],
+ 'val_episodes': 64,
+ 'val_init_sol_strategy': 'POMO',
+ 'val_opt_path': None,
+ 'val_pomo_size': 1,
+ 'val_reconstruct_times': 1,
+ 'validation_batch_size': 32,
+ 'validation_improve_steps': 20,
+ 'validation_interval': 99,
+ 'wandb_logger': False,
+ 'weight_decay': 1e-06,
+ 'which_feature': 'both',
+ 'with_RNN': True,
+ 'with_bonus': False,
+ 'with_explore_stat_feature': True,
+ 'with_infsb_feature': True,
+ 'with_regular': False,
+ 'wo_node_penalty': False,
+ 'wo_tour_penalty': False,
+ 'world_size': 1}
+>> Log Path: results/speed/interface/20260904_175510train_interface
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Start VRPBLTW Training using SINGLE Model ...
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+lambda_:  1.0
+Number of Parameters: 1644277
+[copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_ops.py not found. Skipping.
+[copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_classes.py not found. Skipping.
+================================================================================
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.0845,  Loss: 610.4858,  Infeasible_rate: [100.0000%, 100.0000%], out: 82.2364, out_nodes: 25, Feasible_dist: 0.0000
+[Improvement] Score: 148.7407 [BSF: 146.8287],  Loss: 8.9734,  Infeasible_rate: [100.0000%, 100.0000%], out: 166.5295, out_nodes: 57, Feasible_dist: 0.0000, Entropy: 2.4568
+Diversity Loss: 9.4429, Constructive RL loss: 610.5804
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.4014,  Loss: 634.4401,  Infeasible_rate: [100.0000%, 100.0000%], out: 71.7253, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 137.1084 [BSF: 135.4270],  Loss: 8.9775,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.1547, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4248
+Diversity Loss: 9.4910, Constructive RL loss: 634.5351
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.4415,  Loss: 642.7472,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.2975, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 140.5747 [BSF: 139.3280],  Loss: 9.3521,  Infeasible_rate: [100.0000%, 100.0000%], out: 156.6903, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4078
+Diversity Loss: 9.4802, Constructive RL loss: 642.8420
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.6917,  Loss: 611.9643,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.2711, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 140.2696 [BSF: 139.3345],  Loss: 8.8814,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.1038, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4082
+Diversity Loss: 9.4803, Constructive RL loss: 612.0591
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.6634,  Loss: 613.7342,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.6717, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 141.4134 [BSF: 139.8823],  Loss: 9.1352,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.8805, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.3987
+Diversity Loss: 9.4861, Constructive RL loss: 613.8291
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.6178,  Loss: 599.3182,  Infeasible_rate: [100.0000%, 100.0000%], out: 74.0691, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 140.2630 [BSF: 138.9866],  Loss: 9.0613,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.0077, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4031
+Diversity Loss: 9.5020, Constructive RL loss: 599.4132
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.6087,  Loss: 601.5555,  Infeasible_rate: [100.0000%, 100.0000%], out: 72.8735, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 138.5536 [BSF: 137.2765],  Loss: 8.5420,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.3412, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4013
+Diversity Loss: 9.5213, Constructive RL loss: 601.6507
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 26.5904,  Loss: 643.9041,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.4449, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 140.3150 [BSF: 138.8725],  Loss: 8.4913,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.6673, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4070
+Diversity Loss: 9.5316, Constructive RL loss: 643.9994
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.6221,  Loss: 637.2420,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.9551, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 139.8161 [BSF: 138.5242],  Loss: 8.9162,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.2456, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4136
+Diversity Loss: 9.5326, Constructive RL loss: 637.3373
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.6560,  Loss: 628.6827,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.4365, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 141.8207 [BSF: 140.6566],  Loss: 9.0710,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.6731, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4114
+Diversity Loss: 9.5158, Constructive RL loss: 628.7778
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.5673,  Loss: 634.4261,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.0839, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 141.6526 [BSF: 140.3391],  Loss: 9.2659,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.1555, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4106
+Diversity Loss: 9.5112, Constructive RL loss: 634.5212
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.5840,  Loss: 628.4517,  Infeasible_rate: [100.0000%, 100.0000%], out: 74.8580, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 141.6487 [BSF: 140.4241],  Loss: 9.3310,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.6937, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4112
+Diversity Loss: 9.5105, Constructive RL loss: 628.5468
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.5676,  Loss: 624.5483,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.0945, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.4321 [BSF: 141.1503],  Loss: 9.1523,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.1398, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4136
+Diversity Loss: 9.5132, Constructive RL loss: 624.6434
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.5492,  Loss: 630.7842,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.2965, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.3671 [BSF: 141.0860],  Loss: 9.2913,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.2800, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4126
+Diversity Loss: 9.5140, Constructive RL loss: 630.8794
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.6298,  Loss: 626.8768,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.3629, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.8232 [BSF: 141.5197],  Loss: 9.3917,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.4746, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4104
+Diversity Loss: 9.5141, Constructive RL loss: 626.9719
+Rank 0 >> Epoch 1: Train (5%) 
+[Construction] Score: 26.5957,  Loss: 622.9947,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.9090, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.4432 [BSF: 141.2212],  Loss: 9.6202,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.4787, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4100
+Diversity Loss: 9.5143, Constructive RL loss: 623.0899
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5474,  Loss: 630.0831,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.5292, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.7812 [BSF: 142.6253],  Loss: 9.5775,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.1998, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4093
+Diversity Loss: 9.5161, Constructive RL loss: 630.1783
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5463,  Loss: 624.5260,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.3667, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.8332 [BSF: 143.5153],  Loss: 9.5731,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.1698, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4081
+Diversity Loss: 9.5073, Constructive RL loss: 624.6211
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5615,  Loss: 619.6394,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.0726, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.5512 [BSF: 143.2358],  Loss: 9.4527,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.7413, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4064
+Diversity Loss: 9.5095, Constructive RL loss: 619.7345
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5829,  Loss: 617.2667,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.6188, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.1076 [BSF: 142.8044],  Loss: 9.3146,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.7260, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4080
+Diversity Loss: 9.5122, Constructive RL loss: 617.3618
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5432,  Loss: 618.9021,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4755, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.0489 [BSF: 142.7748],  Loss: 9.2923,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.1643, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4107
+Diversity Loss: 9.5128, Constructive RL loss: 618.9973
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5511,  Loss: 618.0004,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.3423, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.5892 [BSF: 142.3655],  Loss: 9.3303,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.2923, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4110
+Diversity Loss: 9.5217, Constructive RL loss: 618.0957
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5570,  Loss: 622.2491,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4107, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.1853 [BSF: 142.0149],  Loss: 9.2102,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.0275, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4109
+Diversity Loss: 9.5273, Constructive RL loss: 622.3444
+Rank 0 >> Epoch 1: Train (10%) 
+[Construction] Score: 26.5639,  Loss: 625.7324,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.6120, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.5151 [BSF: 142.3638],  Loss: 9.2746,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.4767, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4063
+Diversity Loss: 9.5283, Constructive RL loss: 625.8278
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.5440,  Loss: 628.0368,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4161, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.5295 [BSF: 142.3369],  Loss: 9.3627,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.5748, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4078
+Diversity Loss: 9.5304, Constructive RL loss: 628.1322
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.5417,  Loss: 626.1980,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.6994, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4751 [BSF: 142.2917],  Loss: 9.4731,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.7136, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4082
+Diversity Loss: 9.5271, Constructive RL loss: 626.2933
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.5400,  Loss: 623.1509,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.1286, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6967 [BSF: 142.5332],  Loss: 9.6718,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.8912, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4104
+Diversity Loss: 9.5251, Constructive RL loss: 623.2462
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.5557,  Loss: 621.3817,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.3092, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.2894 [BSF: 143.0167],  Loss: 9.7279,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.3769, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4072
+Diversity Loss: 9.5265, Constructive RL loss: 621.4770
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.5713,  Loss: 623.3577,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.4165, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.5179 [BSF: 143.2881],  Loss: 9.7488,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.2262, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4089
+Diversity Loss: 9.5295, Constructive RL loss: 623.4531
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.5612,  Loss: 624.0489,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.6530, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 145.0595 [BSF: 143.8152],  Loss: 9.7600,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.7701, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4084
+Diversity Loss: 9.5277, Constructive RL loss: 624.1442
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.6035,  Loss: 622.7291,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.1284, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.5057 [BSF: 143.2525],  Loss: 9.6541,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.7824, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4097
+Diversity Loss: 9.5321, Constructive RL loss: 622.8244
+Rank 0 >> Epoch 1: Train (15%) 
+[Construction] Score: 26.5932,  Loss: 621.4469,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.1878, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.5380 [BSF: 143.3010],  Loss: 9.6000,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.4440, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4111
+Diversity Loss: 9.5313, Constructive RL loss: 621.5423
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.5684,  Loss: 617.2402,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.7254, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 144.0815 [BSF: 142.8774],  Loss: 9.5496,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.6137, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4132
+Diversity Loss: 9.5354, Constructive RL loss: 617.3356
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.5854,  Loss: 619.1580,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.5672, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.7640 [BSF: 142.5953],  Loss: 9.5726,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.5718, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4125
+Diversity Loss: 9.5366, Constructive RL loss: 619.2534
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.6150,  Loss: 623.1184,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.2891, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.8178 [BSF: 142.5774],  Loss: 9.5746,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.5538, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4127
+Diversity Loss: 9.5344, Constructive RL loss: 623.2138
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.6093,  Loss: 622.5978,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8339, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4121 [BSF: 142.1516],  Loss: 9.4914,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.7419, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4134
+Diversity Loss: 9.5379, Constructive RL loss: 622.6932
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.6117,  Loss: 624.0670,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8817, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.5637 [BSF: 142.2665],  Loss: 9.5348,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.6305, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4138
+Diversity Loss: 9.5393, Constructive RL loss: 624.1624
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.6319,  Loss: 620.9006,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.9824, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6271 [BSF: 142.2945],  Loss: 9.5594,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.7534, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4143
+Diversity Loss: 9.5384, Constructive RL loss: 620.9960
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.6476,  Loss: 619.4114,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.1742, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.5970 [BSF: 142.2962],  Loss: 9.5663,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.6001, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4144
+Diversity Loss: 9.5397, Constructive RL loss: 619.5069
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 26.6404,  Loss: 619.1770,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.9978, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.2359 [BSF: 141.9676],  Loss: 9.5559,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.2402, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4149
+Diversity Loss: 9.5417, Constructive RL loss: 619.2725
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6228,  Loss: 616.1586,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.2854, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.5036 [BSF: 142.2569],  Loss: 9.5340,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.8339, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4157
+Diversity Loss: 9.5403, Constructive RL loss: 616.2541
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6264,  Loss: 614.2816,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.6465, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6552 [BSF: 142.4382],  Loss: 9.5249,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.4440, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4159
+Diversity Loss: 9.5381, Constructive RL loss: 614.3770
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6413,  Loss: 613.9664,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.7257, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6532 [BSF: 142.4531],  Loss: 9.5252,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.2828, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4150
+Diversity Loss: 9.5365, Constructive RL loss: 614.0618
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6344,  Loss: 614.7895,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.7558, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6311 [BSF: 142.4523],  Loss: 9.5074,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.4086, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4145
+Diversity Loss: 9.5352, Constructive RL loss: 614.8849
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6485,  Loss: 613.5858,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.6252, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4653 [BSF: 142.3110],  Loss: 9.5146,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.1266, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4146
+Diversity Loss: 9.5345, Constructive RL loss: 613.6812
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6630,  Loss: 612.4319,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.7280, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6017 [BSF: 142.4305],  Loss: 9.5095,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.0395, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4153
+Diversity Loss: 9.5368, Constructive RL loss: 612.5273
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6414,  Loss: 612.3966,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.7016, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.7163 [BSF: 142.5541],  Loss: 9.4980,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.1547, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4150
+Diversity Loss: 9.5360, Constructive RL loss: 612.4920
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 26.6323,  Loss: 613.9470,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.5748, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.5729 [BSF: 142.3835],  Loss: 9.4953,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.6852, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4142
+Diversity Loss: 9.5369, Constructive RL loss: 614.0424
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6131,  Loss: 614.4706,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.5072, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4502 [BSF: 142.2401],  Loss: 9.4331,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.6975, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4140
+Diversity Loss: 9.5372, Constructive RL loss: 614.5660
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6124,  Loss: 613.1955,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4950, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4041 [BSF: 142.1965],  Loss: 9.3663,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.4505, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4141
+Diversity Loss: 9.5376, Constructive RL loss: 613.2909
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6146,  Loss: 612.5560,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4948, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.3085 [BSF: 142.1179],  Loss: 9.4841,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.4944, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4165
+Diversity Loss: 9.5377, Constructive RL loss: 612.6515
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6341,  Loss: 614.3607,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.2739, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.2530 [BSF: 142.0262],  Loss: 9.5223,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.3369, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4178
+Diversity Loss: 9.5378, Constructive RL loss: 614.4561
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6346,  Loss: 614.6344,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.1767, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.1521 [BSF: 141.9482],  Loss: 9.4918,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.2076, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4171
+Diversity Loss: 9.5390, Constructive RL loss: 614.7299
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6133,  Loss: 614.2158,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8339, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.7408 [BSF: 141.5591],  Loss: 9.4715,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.8179, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4183
+Diversity Loss: 9.5393, Constructive RL loss: 614.3113
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6106,  Loss: 613.1468,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.0730, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.8296 [BSF: 141.6694],  Loss: 9.5168,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.0857, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4174
+Diversity Loss: 9.5382, Constructive RL loss: 613.2422
+Rank 0 >> Epoch 1: Train (30%) 
+[Construction] Score: 26.6167,  Loss: 611.2708,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.2368, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.9775 [BSF: 141.7702],  Loss: 9.5138,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.0038, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4176
+Diversity Loss: 9.5370, Constructive RL loss: 611.3662
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.6062,  Loss: 610.7473,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.1441, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.8543 [BSF: 141.6380],  Loss: 9.5673,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.7863, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4183
+Diversity Loss: 9.5373, Constructive RL loss: 610.8427
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.5953,  Loss: 611.8280,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.0781, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.7917 [BSF: 141.5715],  Loss: 9.6141,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.7795, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4181
+Diversity Loss: 9.5378, Constructive RL loss: 611.9234
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.6019,  Loss: 610.9574,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.0444, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.8597 [BSF: 141.6242],  Loss: 9.6161,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.9237, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4178
+Diversity Loss: 9.5390, Constructive RL loss: 611.0528
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.5880,  Loss: 611.8285,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8394, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.6937 [BSF: 141.4272],  Loss: 9.5500,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.6349, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4177
+Diversity Loss: 9.5398, Constructive RL loss: 611.9239
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.5817,  Loss: 611.2328,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8231, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.6352 [BSF: 141.3863],  Loss: 9.5303,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.7298, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4182
+Diversity Loss: 9.5387, Constructive RL loss: 611.3282
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.5648,  Loss: 614.7071,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8403, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.7596 [BSF: 141.5224],  Loss: 9.5305,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.8038, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4182
+Diversity Loss: 9.5380, Constructive RL loss: 614.8025
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.5702,  Loss: 612.2650,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.6466, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.6593 [BSF: 141.4148],  Loss: 9.5532,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.6551, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4178
+Diversity Loss: 9.5380, Constructive RL loss: 612.3605
+Rank 0 >> Epoch 1: Train (35%) 
+[Construction] Score: 26.5643,  Loss: 612.2675,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.5294, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.7657 [BSF: 141.4314],  Loss: 9.4942,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.9140, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4183
+Diversity Loss: 9.5379, Constructive RL loss: 612.3629
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5565,  Loss: 614.1403,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.5385, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.8192 [BSF: 141.5054],  Loss: 9.4820,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.0811, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4197
+Diversity Loss: 9.5369, Constructive RL loss: 614.2357
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5529,  Loss: 613.1043,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8763, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.1573 [BSF: 141.8620],  Loss: 9.6491,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.4830, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4199
+Diversity Loss: 9.5362, Constructive RL loss: 613.1997
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5550,  Loss: 612.4319,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.8427, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.0801 [BSF: 141.7994],  Loss: 9.6312,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.5412, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4193
+Diversity Loss: 9.5368, Constructive RL loss: 612.5273
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5426,  Loss: 612.7633,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.1471, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4906 [BSF: 142.1690],  Loss: 9.7346,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.2298, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4189
+Diversity Loss: 9.5353, Constructive RL loss: 612.8587
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5543,  Loss: 611.5310,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.2089, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4174 [BSF: 142.0834],  Loss: 9.7825,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.2346, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4191
+Diversity Loss: 9.5350, Constructive RL loss: 611.6264
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5552,  Loss: 611.0821,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4310, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6454 [BSF: 142.2810],  Loss: 9.8160,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.6461, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4193
+Diversity Loss: 9.5338, Constructive RL loss: 611.1775
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5610,  Loss: 609.0803,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.3092, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.3789 [BSF: 142.0338],  Loss: 9.7674,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.5604, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4197
+Diversity Loss: 9.5354, Constructive RL loss: 609.1757
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 26.5489,  Loss: 610.1167,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.3453, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.2948 [BSF: 141.9683],  Loss: 9.7580,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.4296, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4191
+Diversity Loss: 9.5354, Constructive RL loss: 610.2121
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5442,  Loss: 608.9562,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4757, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6010 [BSF: 142.2662],  Loss: 9.7657,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.5978, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4185
+Diversity Loss: 9.5351, Constructive RL loss: 609.0516
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5386,  Loss: 609.0950,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.2724, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4431 [BSF: 142.1154],  Loss: 9.7523,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.3420, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4183
+Diversity Loss: 9.5363, Constructive RL loss: 609.1904
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5396,  Loss: 607.3186,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.3273, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.4788 [BSF: 142.1595],  Loss: 9.7500,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.3728, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4184
+Diversity Loss: 9.5359, Constructive RL loss: 607.4140
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5328,  Loss: 607.6628,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4511, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.6331 [BSF: 142.3292],  Loss: 9.8005,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.7389, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4191
+Diversity Loss: 9.5347, Constructive RL loss: 607.7582
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5345,  Loss: 608.6442,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.5083, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.7921 [BSF: 142.4826],  Loss: 9.8461,  Infeasible_rate: [100.0000%, 100.0000%], out: 151.9102, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4182
+Diversity Loss: 9.5338, Constructive RL loss: 608.7396
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5228,  Loss: 609.5234,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.6859, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.8707 [BSF: 142.5504],  Loss: 9.8594,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.1822, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4186
+Diversity Loss: 9.5334, Constructive RL loss: 609.6188
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5194,  Loss: 609.1861,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.6324, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.8817 [BSF: 142.5563],  Loss: 9.8549,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.0157, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4190
+Diversity Loss: 9.5341, Constructive RL loss: 609.2815
+Rank 0 >> Epoch 1: Train (45%) 
+[Construction] Score: 26.5185,  Loss: 607.9573,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.7011, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.8574 [BSF: 142.5298],  Loss: 9.8535,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.1780, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4185
+Diversity Loss: 9.5341, Constructive RL loss: 608.0527
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.5564,  Loss: 602.0694,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.0953, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 143.1153 [BSF: 141.8022],  Loss: 9.7618,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.8019, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4219
+Diversity Loss: 9.5447, Constructive RL loss: 602.1649
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.5790,  Loss: 596.2014,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.4553, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 142.3298 [BSF: 141.0320],  Loss: 9.6587,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.4349, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4251
+Diversity Loss: 9.5554, Constructive RL loss: 596.2969
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.6091,  Loss: 590.3326,  Infeasible_rate: [100.0000%, 100.0000%], out: 74.8528, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 141.5529 [BSF: 140.2702],  Loss: 9.5553,  Infeasible_rate: [100.0000%, 100.0000%], out: 148.0627, out_nodes: 54, Feasible_dist: 0.0000, Entropy: 2.4280
+Diversity Loss: 9.5653, Constructive RL loss: 590.4283
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.6439,  Loss: 585.2474,  Infeasible_rate: [100.0000%, 100.0000%], out: 74.2361, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 140.7638 [BSF: 139.4963],  Loss: 9.4557,  Infeasible_rate: [100.0000%, 100.0000%], out: 146.6805, out_nodes: 54, Feasible_dist: 0.0000, Entropy: 2.4306
+Diversity Loss: 9.5759, Constructive RL loss: 585.3432
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.6697,  Loss: 579.6864,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.6736, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 140.0553 [BSF: 138.8011],  Loss: 9.3603,  Infeasible_rate: [100.0000%, 100.0000%], out: 145.3799, out_nodes: 54, Feasible_dist: 0.0000, Entropy: 2.4343
+Diversity Loss: 9.5860, Constructive RL loss: 579.7823
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.6989,  Loss: 575.0086,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.0706, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 139.3213 [BSF: 138.0736],  Loss: 9.2832,  Infeasible_rate: [100.0000%, 100.0000%], out: 144.1134, out_nodes: 53, Feasible_dist: 0.0000, Entropy: 2.4378
+Diversity Loss: 9.5963, Constructive RL loss: 575.1046
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.7197,  Loss: 570.2979,  Infeasible_rate: [100.0000%, 100.0000%], out: 72.5532, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 138.6350 [BSF: 137.3962],  Loss: 9.1724,  Infeasible_rate: [100.0000%, 100.0000%], out: 142.8843, out_nodes: 53, Feasible_dist: 0.0000, Entropy: 2.4409
+Diversity Loss: 9.6060, Constructive RL loss: 570.3940
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 26.7497,  Loss: 565.6199,  Infeasible_rate: [100.0000%, 100.0000%], out: 72.0598, out_nodes: 24, Feasible_dist: 0.0000
+[Improvement] Score: 137.9719 [BSF: 136.7444],  Loss: 9.0838,  Infeasible_rate: [100.0000%, 100.0000%], out: 141.6927, out_nodes: 53, Feasible_dist: 0.0000, Entropy: 2.4436
+Diversity Loss: 9.6149, Constructive RL loss: 565.7161
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 26.8125,  Loss: 559.0378,  Infeasible_rate: [100.0000%, 100.0000%], out: 71.3573, out_nodes: 23, Feasible_dist: 0.0000
+[Improvement] Score: 137.1079 [BSF: 135.8943],  Loss: 8.9805,  Infeasible_rate: [100.0000%, 100.0000%], out: 140.2543, out_nodes: 53, Feasible_dist: 0.0000, Entropy: 2.4476
+Diversity Loss: 9.6311, Constructive RL loss: 559.1341
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 26.8686,  Loss: 552.1745,  Infeasible_rate: [100.0000%, 100.0000%], out: 70.6664, out_nodes: 23, Feasible_dist: 0.0000
+[Improvement] Score: 136.2949 [BSF: 135.0896],  Loss: 8.8755,  Infeasible_rate: [100.0000%, 100.0000%], out: 138.8681, out_nodes: 52, Feasible_dist: 0.0000, Entropy: 2.4513
+Diversity Loss: 9.6480, Constructive RL loss: 552.2711
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 26.9238,  Loss: 545.7322,  Infeasible_rate: [100.0000%, 100.0000%], out: 69.9887, out_nodes: 23, Feasible_dist: 0.0000
+[Improvement] Score: 135.4901 [BSF: 134.2910],  Loss: 8.7775,  Infeasible_rate: [100.0000%, 100.0000%], out: 137.5057, out_nodes: 52, Feasible_dist: 0.0000, Entropy: 2.4548
+Diversity Loss: 9.6642, Constructive RL loss: 545.8289
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 26.9787,  Loss: 539.7112,  Infeasible_rate: [100.0000%, 100.0000%], out: 69.3200, out_nodes: 23, Feasible_dist: 0.0000
+[Improvement] Score: 134.7071 [BSF: 133.5166],  Loss: 8.6804,  Infeasible_rate: [100.0000%, 100.0000%], out: 136.1686, out_nodes: 51, Feasible_dist: 0.0000, Entropy: 2.4580
+Diversity Loss: 9.6798, Constructive RL loss: 539.8081
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 27.0445,  Loss: 533.4416,  Infeasible_rate: [100.0000%, 100.0000%], out: 68.6887, out_nodes: 23, Feasible_dist: 0.0000
+[Improvement] Score: 133.9522 [BSF: 132.7735],  Loss: 8.5857,  Infeasible_rate: [100.0000%, 100.0000%], out: 134.8683, out_nodes: 51, Feasible_dist: 0.0000, Entropy: 2.4609
+Diversity Loss: 9.6944, Constructive RL loss: 533.5386
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 27.1071,  Loss: 527.5649,  Infeasible_rate: [100.0000%, 100.0000%], out: 68.0404, out_nodes: 23, Feasible_dist: 0.0000
+[Improvement] Score: 133.2027 [BSF: 132.0305],  Loss: 8.4945,  Infeasible_rate: [100.0000%, 100.0000%], out: 133.5675, out_nodes: 51, Feasible_dist: 0.0000, Entropy: 2.4643
+Diversity Loss: 9.7098, Constructive RL loss: 527.6620
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 27.1693,  Loss: 521.7091,  Infeasible_rate: [100.0000%, 100.0000%], out: 67.4053, out_nodes: 22, Feasible_dist: 0.0000
+[Improvement] Score: 132.4666 [BSF: 131.3029],  Loss: 8.4042,  Infeasible_rate: [100.0000%, 100.0000%], out: 132.3038, out_nodes: 50, Feasible_dist: 0.0000, Entropy: 2.4670
+Diversity Loss: 9.7250, Constructive RL loss: 521.8064
+Rank 0 >> Epoch 1: Train (55%) 
+[Construction] Score: 27.2083,  Loss: 516.1018,  Infeasible_rate: [100.0000%, 100.0000%], out: 66.7954, out_nodes: 22, Feasible_dist: 0.0000
+[Improvement] Score: 131.7206 [BSF: 130.5682],  Loss: 8.3128,  Infeasible_rate: [100.0000%, 100.0000%], out: 131.0724, out_nodes: 50, Feasible_dist: 0.0000, Entropy: 2.4710
+Diversity Loss: 9.7399, Constructive RL loss: 516.1993
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.2876,  Loss: 510.4863,  Infeasible_rate: [100.0000%, 100.0000%], out: 66.1503, out_nodes: 22, Feasible_dist: 0.0000
+[Improvement] Score: 130.9511 [BSF: 129.8039],  Loss: 8.2254,  Infeasible_rate: [100.0000%, 100.0000%], out: 129.7993, out_nodes: 50, Feasible_dist: 0.0000, Entropy: 2.4741
+Diversity Loss: 9.7568, Constructive RL loss: 510.5839
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.3790,  Loss: 504.9877,  Infeasible_rate: [100.0000%, 100.0000%], out: 65.5232, out_nodes: 22, Feasible_dist: 0.0000
+[Improvement] Score: 130.2318 [BSF: 129.0923],  Loss: 8.1404,  Infeasible_rate: [100.0000%, 100.0000%], out: 128.5533, out_nodes: 49, Feasible_dist: 0.0000, Entropy: 2.4776
+Diversity Loss: 9.7729, Constructive RL loss: 505.0854
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.4773,  Loss: 499.5688,  Infeasible_rate: [100.0000%, 100.0000%], out: 64.9125, out_nodes: 22, Feasible_dist: 0.0000
+[Improvement] Score: 129.5249 [BSF: 128.3948],  Loss: 8.0557,  Infeasible_rate: [100.0000%, 100.0000%], out: 127.3366, out_nodes: 49, Feasible_dist: 0.0000, Entropy: 2.4804
+Diversity Loss: 9.7901, Constructive RL loss: 499.6668
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.5636,  Loss: 494.2733,  Infeasible_rate: [100.0000%, 100.0000%], out: 64.3025, out_nodes: 22, Feasible_dist: 0.0000
+[Improvement] Score: 128.8306 [BSF: 127.7088],  Loss: 7.9738,  Infeasible_rate: [100.0000%, 100.0000%], out: 126.1343, out_nodes: 49, Feasible_dist: 0.0000, Entropy: 2.4827
+Diversity Loss: 9.8058, Constructive RL loss: 494.3714
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.6497,  Loss: 489.0416,  Infeasible_rate: [100.0000%, 100.0000%], out: 63.7085, out_nodes: 21, Feasible_dist: 0.0000
+[Improvement] Score: 128.1670 [BSF: 127.0521],  Loss: 7.8956,  Infeasible_rate: [100.0000%, 100.0000%], out: 124.9635, out_nodes: 48, Feasible_dist: 0.0000, Entropy: 2.4854
+Diversity Loss: 9.8214, Constructive RL loss: 489.1398
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.7223,  Loss: 483.9860,  Infeasible_rate: [100.0000%, 100.0000%], out: 63.1297, out_nodes: 21, Feasible_dist: 0.0000
+[Improvement] Score: 127.4780 [BSF: 126.3714],  Loss: 7.8148,  Infeasible_rate: [100.0000%, 100.0000%], out: 123.8113, out_nodes: 48, Feasible_dist: 0.0000, Entropy: 2.4885
+Diversity Loss: 9.8383, Constructive RL loss: 484.0844
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.8057,  Loss: 479.1234,  Infeasible_rate: [100.0000%, 100.0000%], out: 62.5539, out_nodes: 21, Feasible_dist: 0.0000
+[Improvement] Score: 126.8161 [BSF: 125.7138],  Loss: 7.7394,  Infeasible_rate: [100.0000%, 100.0000%], out: 122.6809, out_nodes: 48, Feasible_dist: 0.0000, Entropy: 2.4910
+Diversity Loss: 9.8530, Constructive RL loss: 479.2220
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 27.8782,  Loss: 474.2645,  Infeasible_rate: [100.0000%, 100.0000%], out: 61.9829, out_nodes: 21, Feasible_dist: 0.0000
+[Improvement] Score: 126.1389 [BSF: 125.0415],  Loss: 7.6659,  Infeasible_rate: [100.0000%, 100.0000%], out: 121.5631, out_nodes: 48, Feasible_dist: 0.0000, Entropy: 2.4941
+Diversity Loss: 9.8676, Constructive RL loss: 474.3632
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 27.9853,  Loss: 469.6075,  Infeasible_rate: [100.0000%, 100.0000%], out: 61.4081, out_nodes: 21, Feasible_dist: 0.0000
+[Improvement] Score: 125.4833 [BSF: 124.3929],  Loss: 7.5927,  Infeasible_rate: [100.0000%, 100.0000%], out: 120.4456, out_nodes: 47, Feasible_dist: 0.0000, Entropy: 2.4965
+Diversity Loss: 9.8833, Constructive RL loss: 469.7063
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 28.0853,  Loss: 464.9985,  Infeasible_rate: [100.0000%, 100.0000%], out: 60.8452, out_nodes: 21, Feasible_dist: 0.0000
+[Improvement] Score: 124.8513 [BSF: 123.7669],  Loss: 7.5198,  Infeasible_rate: [100.0000%, 100.0000%], out: 119.3539, out_nodes: 47, Feasible_dist: 0.0000, Entropy: 2.4989
+Diversity Loss: 9.8969, Constructive RL loss: 465.0975
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 28.1665,  Loss: 460.5293,  Infeasible_rate: [100.0000%, 100.0000%], out: 60.2896, out_nodes: 20, Feasible_dist: 0.0000
+[Improvement] Score: 124.1936 [BSF: 123.1160],  Loss: 7.4477,  Infeasible_rate: [100.0000%, 100.0000%], out: 118.2810, out_nodes: 47, Feasible_dist: 0.0000, Entropy: 2.5022
+Diversity Loss: 9.9115, Constructive RL loss: 460.6284
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 28.2592,  Loss: 456.1188,  Infeasible_rate: [100.0000%, 100.0000%], out: 59.7517, out_nodes: 20, Feasible_dist: 0.0000
+[Improvement] Score: 123.5867 [BSF: 122.5160],  Loss: 7.3781,  Infeasible_rate: [100.0000%, 100.0000%], out: 117.2337, out_nodes: 46, Feasible_dist: 0.0000, Entropy: 2.5048
+Diversity Loss: 9.9253, Constructive RL loss: 456.2181
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 28.3674,  Loss: 451.7422,  Infeasible_rate: [100.0000%, 100.0000%], out: 59.2214, out_nodes: 20, Feasible_dist: 0.0000
+[Improvement] Score: 122.9890 [BSF: 121.9268],  Loss: 7.3102,  Infeasible_rate: [100.0000%, 100.0000%], out: 116.1984, out_nodes: 46, Feasible_dist: 0.0000, Entropy: 2.5071
+Diversity Loss: 9.9403, Constructive RL loss: 451.8416
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 28.4668,  Loss: 447.5060,  Infeasible_rate: [100.0000%, 100.0000%], out: 58.7008, out_nodes: 20, Feasible_dist: 0.0000
+[Improvement] Score: 122.3888 [BSF: 121.3342],  Loss: 7.2441,  Infeasible_rate: [100.0000%, 100.0000%], out: 115.1842, out_nodes: 46, Feasible_dist: 0.0000, Entropy: 2.5099
+Diversity Loss: 9.9550, Constructive RL loss: 447.6056
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 28.5493,  Loss: 443.3441,  Infeasible_rate: [100.0000%, 100.0000%], out: 58.1870, out_nodes: 20, Feasible_dist: 0.0000
+[Improvement] Score: 121.7966 [BSF: 120.7488],  Loss: 7.1786,  Infeasible_rate: [100.0000%, 100.0000%], out: 114.1902, out_nodes: 45, Feasible_dist: 0.0000, Entropy: 2.5121
+Diversity Loss: 9.9693, Constructive RL loss: 443.4439
+Rank 0 >> Epoch 1: Train (65%) 
+[Construction] Score: 28.6488,  Loss: 439.2838,  Infeasible_rate: [100.0000%, 100.0000%], out: 57.6850, out_nodes: 20, Feasible_dist: 0.0000
+[Improvement] Score: 121.2308 [BSF: 120.1906],  Loss: 7.1144,  Infeasible_rate: [100.0000%, 100.0000%], out: 113.2080, out_nodes: 45, Feasible_dist: 0.0000, Entropy: 2.5147
+Diversity Loss: 9.9820, Constructive RL loss: 439.3837
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 28.7414,  Loss: 435.2848,  Infeasible_rate: [100.0000%, 100.0000%], out: 57.1833, out_nodes: 20, Feasible_dist: 0.0000
+[Improvement] Score: 120.6394 [BSF: 119.6076],  Loss: 7.0511,  Infeasible_rate: [100.0000%, 100.0000%], out: 112.2353, out_nodes: 45, Feasible_dist: 0.0000, Entropy: 2.5176
+Diversity Loss: 9.9956, Constructive RL loss: 435.3848
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 28.8451,  Loss: 431.3278,  Infeasible_rate: [100.0000%, 100.0000%], out: 56.6922, out_nodes: 19, Feasible_dist: 0.0000
+[Improvement] Score: 120.0763 [BSF: 119.0520],  Loss: 6.9893,  Infeasible_rate: [100.0000%, 100.0000%], out: 111.2790, out_nodes: 45, Feasible_dist: 0.0000, Entropy: 2.5208
+Diversity Loss: 10.0101, Constructive RL loss: 431.4279
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 28.9138,  Loss: 427.4490,  Infeasible_rate: [100.0000%, 100.0000%], out: 56.2072, out_nodes: 19, Feasible_dist: 0.0000
+[Improvement] Score: 119.4848 [BSF: 118.4668],  Loss: 6.9287,  Infeasible_rate: [100.0000%, 100.0000%], out: 110.3399, out_nodes: 44, Feasible_dist: 0.0000, Entropy: 2.5237
+Diversity Loss: 10.0225, Constructive RL loss: 427.5492
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 29.0162,  Loss: 423.6664,  Infeasible_rate: [100.0000%, 100.0000%], out: 55.7328, out_nodes: 19, Feasible_dist: 0.0000
+[Improvement] Score: 118.9593 [BSF: 117.9477],  Loss: 6.8689,  Infeasible_rate: [100.0000%, 100.0000%], out: 109.4204, out_nodes: 44, Feasible_dist: 0.0000, Entropy: 2.5261
+Diversity Loss: 10.0356, Constructive RL loss: 423.7668
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 29.1010,  Loss: 419.9480,  Infeasible_rate: [100.0000%, 100.0000%], out: 55.2668, out_nodes: 19, Feasible_dist: 0.0000
+[Improvement] Score: 118.4175 [BSF: 117.4140],  Loss: 6.8108,  Infeasible_rate: [100.0000%, 100.0000%], out: 108.5148, out_nodes: 44, Feasible_dist: 0.0000, Entropy: 2.5290
+Diversity Loss: 10.0487, Constructive RL loss: 420.0485
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 29.1993,  Loss: 416.3016,  Infeasible_rate: [100.0000%, 100.0000%], out: 54.8065, out_nodes: 19, Feasible_dist: 0.0000
+[Improvement] Score: 117.9053 [BSF: 116.9077],  Loss: 6.7529,  Infeasible_rate: [100.0000%, 100.0000%], out: 107.6258, out_nodes: 43, Feasible_dist: 0.0000, Entropy: 2.5315
+Diversity Loss: 10.0616, Constructive RL loss: 416.4023
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 29.2995,  Loss: 412.7122,  Infeasible_rate: [100.0000%, 100.0000%], out: 54.3527, out_nodes: 19, Feasible_dist: 0.0000
+[Improvement] Score: 117.3940 [BSF: 116.4046],  Loss: 6.6971,  Infeasible_rate: [100.0000%, 100.0000%], out: 106.7464, out_nodes: 43, Feasible_dist: 0.0000, Entropy: 2.5332
+Diversity Loss: 10.0716, Constructive RL loss: 412.8129
+Rank 0 >> Epoch 1: Train (70%) 
+[Construction] Score: 29.3913,  Loss: 409.1660,  Infeasible_rate: [100.0000%, 100.0000%], out: 53.9085, out_nodes: 19, Feasible_dist: 0.0000
+[Improvement] Score: 116.8907 [BSF: 115.9057],  Loss: 6.6401,  Infeasible_rate: [100.0000%, 100.0000%], out: 105.8869, out_nodes: 43, Feasible_dist: 0.0000, Entropy: 2.5354
+Diversity Loss: 10.0845, Constructive RL loss: 409.2669
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 29.4867,  Loss: 405.7220,  Infeasible_rate: [100.0000%, 100.0000%], out: 53.4678, out_nodes: 18, Feasible_dist: 0.0000
+[Improvement] Score: 116.3849 [BSF: 115.4072],  Loss: 6.5851,  Infeasible_rate: [100.0000%, 100.0000%], out: 105.0339, out_nodes: 43, Feasible_dist: 0.0000, Entropy: 2.5381
+Diversity Loss: 10.0963, Constructive RL loss: 405.8230
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 29.5901,  Loss: 402.3302,  Infeasible_rate: [100.0000%, 100.0000%], out: 53.0343, out_nodes: 18, Feasible_dist: 0.0000
+[Improvement] Score: 115.8985 [BSF: 114.9270],  Loss: 6.5310,  Infeasible_rate: [100.0000%, 100.0000%], out: 104.1959, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5403
+Diversity Loss: 10.1093, Constructive RL loss: 402.4314
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 29.6774,  Loss: 398.9908,  Infeasible_rate: [100.0000%, 100.0000%], out: 52.6074, out_nodes: 18, Feasible_dist: 0.0000
+[Improvement] Score: 115.3969 [BSF: 114.4298],  Loss: 6.4787,  Infeasible_rate: [100.0000%, 100.0000%], out: 103.3691, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5432
+Diversity Loss: 10.1203, Constructive RL loss: 399.0920
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 29.7591,  Loss: 395.7084,  Infeasible_rate: [100.0000%, 100.0000%], out: 52.1874, out_nodes: 18, Feasible_dist: 0.0000
+[Improvement] Score: 114.9093 [BSF: 113.9485],  Loss: 6.4265,  Infeasible_rate: [100.0000%, 100.0000%], out: 102.5548, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5455
+Diversity Loss: 10.1316, Constructive RL loss: 395.8097
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 29.8532,  Loss: 392.4636,  Infeasible_rate: [100.0000%, 100.0000%], out: 51.7751, out_nodes: 18, Feasible_dist: 0.0000
+[Improvement] Score: 114.4390 [BSF: 113.4841],  Loss: 6.3745,  Infeasible_rate: [100.0000%, 100.0000%], out: 101.7562, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5474
+Diversity Loss: 10.1425, Constructive RL loss: 392.5651
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 29.9413,  Loss: 389.2693,  Infeasible_rate: [100.0000%, 100.0000%], out: 51.3675, out_nodes: 18, Feasible_dist: 0.0000
+[Improvement] Score: 113.9686 [BSF: 113.0207],  Loss: 6.3239,  Infeasible_rate: [100.0000%, 100.0000%], out: 100.9703, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5492
+Diversity Loss: 10.1548, Constructive RL loss: 389.3708
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 30.0246,  Loss: 386.1028,  Infeasible_rate: [100.0000%, 100.0000%], out: 50.9669, out_nodes: 18, Feasible_dist: 0.0000
+[Improvement] Score: 113.5091 [BSF: 112.5664],  Loss: 6.2739,  Infeasible_rate: [100.0000%, 100.0000%], out: 100.2003, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5515
+Diversity Loss: 10.1661, Constructive RL loss: 386.2045
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 30.1045,  Loss: 383.0023,  Infeasible_rate: [100.0000%, 100.0000%], out: 50.5728, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 113.0493 [BSF: 112.1115],  Loss: 6.2248,  Infeasible_rate: [100.0000%, 100.0000%], out: 99.4389, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5534
+Diversity Loss: 10.1757, Constructive RL loss: 383.1041
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.1929,  Loss: 380.0058,  Infeasible_rate: [100.0000%, 100.0000%], out: 50.1823, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 112.6012 [BSF: 111.6688],  Loss: 6.1761,  Infeasible_rate: [100.0000%, 100.0000%], out: 98.6882, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5557
+Diversity Loss: 10.1866, Constructive RL loss: 380.1077
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.2770,  Loss: 377.0256,  Infeasible_rate: [100.0000%, 100.0000%], out: 49.7982, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 112.1575 [BSF: 111.2299],  Loss: 6.1281,  Infeasible_rate: [100.0000%, 100.0000%], out: 97.9466, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5577
+Diversity Loss: 10.1960, Constructive RL loss: 377.1276
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.3832,  Loss: 374.0811,  Infeasible_rate: [100.0000%, 100.0000%], out: 49.4200, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 111.7399 [BSF: 110.8170],  Loss: 6.0814,  Infeasible_rate: [100.0000%, 100.0000%], out: 97.2168, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5593
+Diversity Loss: 10.2056, Constructive RL loss: 374.1832
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.4697,  Loss: 371.2109,  Infeasible_rate: [100.0000%, 100.0000%], out: 49.0462, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 111.3180 [BSF: 110.3992],  Loss: 6.0357,  Infeasible_rate: [100.0000%, 100.0000%], out: 96.4993, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5608
+Diversity Loss: 10.2154, Constructive RL loss: 371.3130
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.5543,  Loss: 368.3664,  Infeasible_rate: [100.0000%, 100.0000%], out: 48.6795, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 110.8979 [BSF: 109.9836],  Loss: 5.9903,  Infeasible_rate: [100.0000%, 100.0000%], out: 95.7905, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5631
+Diversity Loss: 10.2243, Constructive RL loss: 368.4687
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.6395,  Loss: 365.5539,  Infeasible_rate: [100.0000%, 100.0000%], out: 48.3185, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 110.4913 [BSF: 109.5809],  Loss: 5.9448,  Infeasible_rate: [100.0000%, 100.0000%], out: 95.0938, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5648
+Diversity Loss: 10.2349, Constructive RL loss: 365.6562
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.7218,  Loss: 362.7850,  Infeasible_rate: [100.0000%, 100.0000%], out: 47.9636, out_nodes: 17, Feasible_dist: 0.0000
+[Improvement] Score: 110.0894 [BSF: 109.1854],  Loss: 5.9000,  Infeasible_rate: [100.0000%, 100.0000%], out: 94.4078, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5673
+Diversity Loss: 10.2444, Constructive RL loss: 362.8875
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 30.8033,  Loss: 360.0567,  Infeasible_rate: [100.0000%, 100.0000%], out: 47.6133, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 109.6932 [BSF: 108.7927],  Loss: 5.8571,  Infeasible_rate: [100.0000%, 100.0000%], out: 93.7316, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5693
+Diversity Loss: 10.2534, Constructive RL loss: 360.1593
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 30.8893,  Loss: 357.4010,  Infeasible_rate: [100.0000%, 100.0000%], out: 47.2666, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 109.2934 [BSF: 108.3959],  Loss: 5.8149,  Infeasible_rate: [100.0000%, 100.0000%], out: 93.0613, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5710
+Diversity Loss: 10.2644, Constructive RL loss: 357.5036
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 30.9664,  Loss: 354.7757,  Infeasible_rate: [100.0000%, 100.0000%], out: 46.9252, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 108.8954 [BSF: 108.0007],  Loss: 5.7733,  Infeasible_rate: [100.0000%, 100.0000%], out: 92.4045, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5730
+Diversity Loss: 10.2750, Constructive RL loss: 354.8785
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 31.0484,  Loss: 352.1787,  Infeasible_rate: [100.0000%, 100.0000%], out: 46.5882, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 108.5114 [BSF: 107.6210],  Loss: 5.7319,  Infeasible_rate: [100.0000%, 100.0000%], out: 91.7546, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5744
+Diversity Loss: 10.2852, Constructive RL loss: 352.2816
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 31.1211,  Loss: 349.6187,  Infeasible_rate: [100.0000%, 100.0000%], out: 46.2562, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 108.1254 [BSF: 107.2380],  Loss: 5.6916,  Infeasible_rate: [100.0000%, 100.0000%], out: 91.1147, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5763
+Diversity Loss: 10.2956, Constructive RL loss: 349.7217
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 31.2135,  Loss: 347.1061,  Infeasible_rate: [100.0000%, 100.0000%], out: 45.9290, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 107.7711 [BSF: 106.8861],  Loss: 5.6509,  Infeasible_rate: [100.0000%, 100.0000%], out: 90.4841, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5782
+Diversity Loss: 10.3044, Constructive RL loss: 347.2092
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 31.2895,  Loss: 344.6233,  Infeasible_rate: [100.0000%, 100.0000%], out: 45.6064, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 107.4006 [BSF: 106.5209],  Loss: 5.6113,  Infeasible_rate: [100.0000%, 100.0000%], out: 89.8626, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5799
+Diversity Loss: 10.3131, Constructive RL loss: 344.7264
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 31.3780,  Loss: 342.1668,  Infeasible_rate: [100.0000%, 100.0000%], out: 45.2891, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 107.0547 [BSF: 106.1780],  Loss: 5.5720,  Infeasible_rate: [100.0000%, 100.0000%], out: 89.2511, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5814
+Diversity Loss: 10.3220, Constructive RL loss: 342.2700
+Rank 0 >> Epoch 1: Train (85%) 
+[Construction] Score: 31.4560,  Loss: 339.7424,  Infeasible_rate: [100.0000%, 100.0000%], out: 44.9764, out_nodes: 16, Feasible_dist: 0.0000
+[Improvement] Score: 106.7005 [BSF: 105.8289],  Loss: 5.5337,  Infeasible_rate: [100.0000%, 100.0000%], out: 88.6476, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5832
+Diversity Loss: 10.3314, Constructive RL loss: 339.8457
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 31.5391,  Loss: 337.3858,  Infeasible_rate: [100.0000%, 100.0000%], out: 44.6665, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 106.3495 [BSF: 105.4813],  Loss: 5.4953,  Infeasible_rate: [100.0000%, 100.0000%], out: 88.0511, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.5846
+Diversity Loss: 10.3404, Constructive RL loss: 337.4892
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 31.6091,  Loss: 335.0273,  Infeasible_rate: [100.0000%, 100.0000%], out: 44.3615, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 105.9923 [BSF: 105.1279],  Loss: 5.4574,  Infeasible_rate: [100.0000%, 100.0000%], out: 87.4619, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.5859
+Diversity Loss: 10.3494, Constructive RL loss: 335.1308
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 31.6837,  Loss: 332.7235,  Infeasible_rate: [100.0000%, 100.0000%], out: 44.0601, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 105.6442 [BSF: 104.7826],  Loss: 5.4203,  Infeasible_rate: [100.0000%, 100.0000%], out: 86.8790, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.5872
+Diversity Loss: 10.3580, Constructive RL loss: 332.8271
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 31.7610,  Loss: 330.4523,  Infeasible_rate: [100.0000%, 100.0000%], out: 43.7629, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 105.2991 [BSF: 104.4425],  Loss: 5.3839,  Infeasible_rate: [100.0000%, 100.0000%], out: 86.3052, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.5888
+Diversity Loss: 10.3664, Constructive RL loss: 330.5560
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 31.8388,  Loss: 328.2116,  Infeasible_rate: [100.0000%, 100.0000%], out: 43.4694, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 104.9676 [BSF: 104.1139],  Loss: 5.3479,  Infeasible_rate: [100.0000%, 100.0000%], out: 85.7398, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.5895
+Diversity Loss: 10.3730, Constructive RL loss: 328.3153
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 31.9102,  Loss: 326.0010,  Infeasible_rate: [100.0000%, 100.0000%], out: 43.1801, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 104.6410 [BSF: 103.7901],  Loss: 5.3123,  Infeasible_rate: [100.0000%, 100.0000%], out: 85.1820, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.5909
+Diversity Loss: 10.3801, Constructive RL loss: 326.1048
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 32.0076,  Loss: 323.8190,  Infeasible_rate: [100.0000%, 100.0000%], out: 42.8947, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 104.3393 [BSF: 103.4897],  Loss: 5.2776,  Infeasible_rate: [100.0000%, 100.0000%], out: 84.6303, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.5923
+Diversity Loss: 10.3869, Constructive RL loss: 323.9229
+Rank 0 >> Epoch 1: Train (90%) 
+[Construction] Score: 32.0879,  Loss: 321.6553,  Infeasible_rate: [100.0000%, 100.0000%], out: 42.6129, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 104.0307 [BSF: 103.1849],  Loss: 5.2428,  Infeasible_rate: [100.0000%, 100.0000%], out: 84.0879, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.5935
+Diversity Loss: 10.3940, Constructive RL loss: 321.7592
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.1575,  Loss: 319.5228,  Infeasible_rate: [100.0000%, 100.0000%], out: 42.3347, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 103.7143 [BSF: 102.8713],  Loss: 5.2089,  Infeasible_rate: [100.0000%, 100.0000%], out: 83.5507, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.5951
+Diversity Loss: 10.4031, Constructive RL loss: 319.6268
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.2241,  Loss: 317.4149,  Infeasible_rate: [100.0000%, 100.0000%], out: 42.0600, out_nodes: 15, Feasible_dist: 0.0000
+[Improvement] Score: 103.4003 [BSF: 102.5591],  Loss: 5.1750,  Infeasible_rate: [100.0000%, 100.0000%], out: 83.0205, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.5969
+Diversity Loss: 10.4108, Constructive RL loss: 317.5190
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.2865,  Loss: 315.3478,  Infeasible_rate: [100.0000%, 100.0000%], out: 41.7890, out_nodes: 14, Feasible_dist: 0.0000
+[Improvement] Score: 103.0788 [BSF: 102.2419],  Loss: 5.1418,  Infeasible_rate: [100.0000%, 100.0000%], out: 82.4974, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.5977
+Diversity Loss: 10.4208, Constructive RL loss: 315.4520
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.3809,  Loss: 313.3119,  Infeasible_rate: [100.0000%, 100.0000%], out: 41.5212, out_nodes: 14, Feasible_dist: 0.0000
+[Improvement] Score: 102.8032 [BSF: 101.9685],  Loss: 5.1089,  Infeasible_rate: [100.0000%, 100.0000%], out: 81.9807, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.5992
+Diversity Loss: 10.4302, Constructive RL loss: 313.4162
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.4434,  Loss: 311.2858,  Infeasible_rate: [100.0000%, 100.0000%], out: 41.2569, out_nodes: 14, Feasible_dist: 0.0000
+[Improvement] Score: 102.4944 [BSF: 101.6622],  Loss: 5.0763,  Infeasible_rate: [100.0000%, 100.0000%], out: 81.4698, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6004
+Diversity Loss: 10.4380, Constructive RL loss: 311.3902
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.4984,  Loss: 309.2980,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.9957, out_nodes: 14, Feasible_dist: 0.0000
+[Improvement] Score: 102.1833 [BSF: 101.3550],  Loss: 5.0443,  Infeasible_rate: [100.0000%, 100.0000%], out: 80.9660, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6016
+Diversity Loss: 10.4454, Constructive RL loss: 309.4025
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.5728,  Loss: 307.3274,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.7382, out_nodes: 14, Feasible_dist: 0.0000
+[Improvement] Score: 101.8952 [BSF: 101.0708],  Loss: 5.0125,  Infeasible_rate: [100.0000%, 100.0000%], out: 80.4686, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6028
+Diversity Loss: 10.4520, Constructive RL loss: 307.4320
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.6419,  Loss: 305.3714,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.4837, out_nodes: 14, Feasible_dist: 0.0000
+[Improvement] Score: 101.6088 [BSF: 100.7858],  Loss: 4.9812,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.9777, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6039
+Diversity Loss: 10.4595, Constructive RL loss: 305.4760
+Rank 0 >> Epoch 1: Train (95%) 
+[Construction] Score: 32.6419,  Loss: 305.3714,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.4837, out_nodes: 14, Feasible_dist: 0.0000
+[Improvement] Score: 101.6088 [BSF: 100.7858],  Loss: 4.9812,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.9777, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6039
+Diversity Loss: 10.4595, Constructive RL loss: 305.4760
+dummy_size: 33.6
+Rank 0 >> Epoch 1/2: Time Est.: Elapsed[6.19m], Remain[6.19m]
+>> Val 64 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.3687002658843994
+! solution size:  torch.Size([256, 1, 100])
+Rank 0 >> val improvement time:  2.6253750324249268
+Rank 0 >> val reconstruction time [w. mask]:  0.33529233932495117
+Rank 0 >> val construction time:  0.32421255111694336
+! solution size:  torch.Size([256, 1, 100])
+Rank 0 >> val improvement time:  2.6131691932678223
+Rank 0 >> val reconstruction time [w. mask]:  0.32242679595947266
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 46.7943, NO_AUG_Gap: 234.3637% --> AUG_Score: 45.1437, AUG_Gap: 222.8267%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+================================================================================
+Rank 0 >> Epoch 2: Train (95%) 
+[Construction] Score: 45.4426,  Loss: -1.2724,  Infeasible_rate: [100.0000%, 100.0000%], out: 0.0033, out_nodes: 0, Feasible_dist: 0.0000
+[Improvement] Score: 56.7173 [BSF: 56.3215],  Loss: 0.0176,  Infeasible_rate: [100.0000%, 100.0000%], out: 1.6252, out_nodes: 10, Feasible_dist: 0.0000, Entropy: 2.7836
+Diversity Loss: 11.9690, Constructive RL loss: -1.1527
+dummy_size: 48.3375
+Rank 0 >> Epoch 2/2: Time Est.: Elapsed[13.79m], Remain[0.00m]
+Rank 0 >> Best model of improvement saved!
+Rank 0 >> Saving trained_model
+>> Finish VRPBLTW Training using SINGLE Model ...
+[W904 17:09:03.524833966 AllocatorConfig.cpp:29] Warning: PYTORCH_HIP_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

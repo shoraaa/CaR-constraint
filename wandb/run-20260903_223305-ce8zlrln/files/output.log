@@ -1,0 +1,32 @@
+[2026-09-03 22:33:06] utils.py(229) : >> Use unified encoder for Improvement and Construction!
+[2026-09-03 22:33:06] utils.py(229) : lambda_:
+[2026-09-03 22:33:06] utils.py(229) : 1.0
+[2026-09-03 22:33:07] utils.py(229) : Number of Parameters: 1254528
+[2026-09-03 22:33:07] utils.py(229) : [copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_ops.py not found. Skipping.
+[2026-09-03 22:33:07] utils.py(229) : [copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_classes.py not found. Skipping.
+[2026-09-03 22:33:07] utils.py(229) : ================================================================================
+[2026-09-03 22:33:08] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-03 22:33:08] utils.py(229) : [Construction] Score: 23.3839,  Loss: 1358.0236,  Infeasible_rate: [100.0000%, 100.0000%], out: 121.1527, out_nodes: 31, Feasible_dist: 0.0000
+[2026-09-03 22:33:08] utils.py(229) : Diversity Loss: 10.6171, Constructive RL loss: 1358.1293
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-03 22:33:09] utils.py(229) : [Construction] Score: 23.7367,  Loss: 1455.4529,  Infeasible_rate: [100.0000%, 100.0000%], out: 95.3187, out_nodes: 28, Feasible_dist: 0.0000
+[2026-09-03 22:33:09] utils.py(229) : Diversity Loss: 10.5140, Constructive RL loss: 1455.5577
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-03 22:33:09] utils.py(229) : [Construction] Score: 23.7367,  Loss: 1455.4529,  Infeasible_rate: [100.0000%, 100.0000%], out: 95.3187, out_nodes: 28, Feasible_dist: 0.0000
+[2026-09-03 22:33:09] utils.py(229) : Diversity Loss: 10.5140, Constructive RL loss: 1455.5577
+[2026-09-03 22:33:09] utils.py(229) : dummy_size: 18.5
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> Epoch 1/1: Time Est.: Elapsed[0.03m], Remain[0.00m]
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> Saving trained_model
+[2026-09-03 22:33:09] utils.py(229) : >> Val 4 instances.
+[2026-09-03 22:33:09] utils.py(229) : >> validation eval type:
+[2026-09-03 22:33:09] utils.py(229) : argmax
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-03 22:33:09] utils.py(229) : 0.14673519134521484
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-03 22:33:09] utils.py(229) : 0.1445753574371338
+[2026-09-03 22:33:09] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-03 22:33:09] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-03 22:33:09] utils.py(229) : >> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+[2026-09-03 22:33:09] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 38.1378, NO_AUG_Gap: 172.5242% --> AUG_Score: 32.9698, AUG_Gap: 140.02%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+[2026-09-03 22:33:09] utils.py(229) : >> Finish VRPBLTW Training using SINGLE Model ...

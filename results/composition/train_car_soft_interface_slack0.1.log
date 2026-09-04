@@ -1,0 +1,1065 @@
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/shora/.netrc.
+wandb: Currently logged in as: shoraaa (shoraaa-vnu) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run 8kxpfzea
+wandb: Tracking run with wandb version 0.28.1
+wandb: Run data is saved locally in /home/shora/Research/PRISM/baselines/CaR-constraint/wandb/run-20260904_025301-8kxpfzea
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run 20260904_035255train_interface
+wandb:  View project at https://wandb.ai/shoraaa-vnu/unified_solver
+wandb:  View run at https://wandb.ai/shoraaa-vnu/unified_solver/runs/8kxpfzea
+{'POMO_checkpoint': '../PIP-constraint/POMO+PIP/pretrained/TSPTW/tsptw50_hard/POMO_star/epoch-10000.pt',
+ 'accumulation_steps': 8,
+ 'active_constraints': ['backhaul', 'route_limit', 'time_window'],
+ 'amp_training': True,
+ 'aspect_num': 2,
+ 'aux_mask': True,
+ 'backhaul_mask': 'soft',
+ 'baseline': 'group',
+ 'best_solution_path': None,
+ 'bonus_for_construction': False,
+ 'boundary': 0.5,
+ 'checkpoint': None,
+ 'clean_cache': False,
+ 'coefficient': 100,
+ 'consequence_hidden_dim': 16,
+ 'constraint_number': 4,
+ 'constraint_repr': 'interface',
+ 'couple_rows': True,
+ 'decoder_layer_num': 1,
+ 'diversity': 'kendall_tau_distance',
+ 'diversity_loss': True,
+ 'diversity_reward': False,
+ 'diversity_weight': 0.01,
+ 'dual_decoder': False,
+ 'dummy_improve_selected': 'random',
+ 'dummy_improve_steps': 0,
+ 'dynamic_coefficient': False,
+ 'embedding_dim': 128,
+ 'empty_cache_per_batch': True,
+ 'enable_eas': False,
+ 'encoder_layer_num': 6,
+ 'epochs': 10,
+ 'epsilon': 3.67,
+ 'epsilon_base': 5.0,
+ 'epsilon_decay_beta': 0.001,
+ 'eval_only': False,
+ 'eval_type': 'argmax',
+ 'extra_bonus': False,
+ 'extra_weight': 0.1,
+ 'ff_hidden_dim': 512,
+ 'fsb_dist_only': True,
+ 'fsb_reward_only': True,
+ 'fsb_reward_plus': False,
+ 'fsb_start_delay': 10000,
+ 'gamma': 0.1,
+ 'generate_PI_mask': False,
+ 'gpu_id': '0',
+ 'gumbel': False,
+ 'hardness': 'hard',
+ 'head_num': 8,
+ 'imitation_learning': True,
+ 'imitation_loss_weight': 1.0,
+ 'impr_encoder_start_idx': 0,
+ 'improve_start_when_dummy_ok': False,
+ 'improve_steps': 5,
+ 'improvement_method': 'kopt',
+ 'improvement_only': False,
+ 'infsb_dist_penalty': False,
+ 'init_sol_strategy': 'POMO',
+ 'insert_before': True,
+ 'is_lib': False,
+ 'iterations': 200,
+ 'iterations_impr': 20,
+ 'k_max': 4,
+ 'k_unconfident': 10,
+ 'lazy_pip_model': False,
+ 'load_optimizer': True,
+ 'load_which_pip': 'train_fsb_bsf',
+ 'log_dir': 'results/composition/train_car_soft_interface_slack0.1',
+ 'logit_clipping': 10,
+ 'lr': 0.0001,
+ 'max_dummy_size': 18,
+ 'milestones': [4501],
+ 'model_save_interval': 5,
+ 'model_type': 'SINGLE',
+ 'multi_processing': False,
+ 'multiple_gpu': False,
+ 'n2s_decoder': False,
+ 'neighborhood_search': False,
+ 'no_cuda': False,
+ 'node_repr': 'named',
+ 'node_repr_dim': 4,
+ 'non_linear': None,
+ 'non_linear_cons': False,
+ 'norm': 'instance',
+ 'norm_loc': 'norm_last',
+ 'occ_gpu': 0.0,
+ 'out_node_reward': True,
+ 'out_reward': True,
+ 'pairwise_merge': 'feature,attention',
+ 'penalty_factor': 1.0,
+ 'penalty_normalize': False,
+ 'pip_checkpoint': None,
+ 'pip_decoder': False,
+ 'pip_last_growup': 50,
+ 'pip_step': 1,
+ 'pip_update_epoch': 20,
+ 'pip_update_interval': 1000,
+ 'pomo_feasible_start': False,
+ 'pomo_size': 50,
+ 'pomo_start': False,
+ 'problem': 'VRPBLTW',
+ 'problem_size': 50,
+ 'probs_return': False,
+ 'qkv_dim': 16,
+ 'random_delta_t': 0,
+ 'reconstruct': False,
+ 'reconstruct_bonus_weight': 1.0,
+ 'reconstruct_improve_bonus': False,
+ 'refinement_history_path': None,
+ 'repeats': 1,
+ 'reward_gating': False,
+ 'rm_num': 1,
+ 'sample_size': 1,
+ 'seed': 1234,
+ 'select_strategy': 'quality',
+ 'select_top_k': 10,
+ 'select_top_k_val': 1,
+ 'seperate_obj_penalty': False,
+ 'simulation_stop_epoch': 100,
+ 'slack_normalize': True,
+ 'slack_stride': 5,
+ 'slack_weight': 0.1,
+ 'soft_constrained': True,
+ 'sop_variant': 1,
+ 'sqrt_embedding_dim': 11.313708498984761,
+ 'stochastic_probability': 0.5,
+ 'subgradient': False,
+ 'subgradient_lr': 0.1,
+ 'succ_attention_bias': 1.0,
+ 'supplement_feature_dim': 17,
+ 'tb_logger': False,
+ 'test_batch_size': 10000,
+ 'test_dataset': None,
+ 'test_episodes': 10000,
+ 'test_opt_path': None,
+ 'test_pomo_size': 1,
+ 'total_history': 3,
+ 'train_batch_size': 16,
+ 'train_episodes': 2560,
+ 'tw_normalize': True,
+ 'uncertainty_weight': False,
+ 'unified_decoder': False,
+ 'unified_encoder': True,
+ 'use_fast_attention': True,
+ 'use_real_PI_mask': False,
+ 'v_range': 6.0,
+ 'val_dataset': ['vrpbltw50_uniform.pkl'],
+ 'val_episodes': 64,
+ 'val_init_sol_strategy': 'POMO',
+ 'val_opt_path': None,
+ 'val_pomo_size': 1,
+ 'val_reconstruct_times': 1,
+ 'validation_batch_size': 32,
+ 'validation_improve_steps': 20,
+ 'validation_interval': 2,
+ 'wandb_logger': True,
+ 'weight_decay': 1e-06,
+ 'which_feature': 'both',
+ 'with_RNN': True,
+ 'with_bonus': False,
+ 'with_explore_stat_feature': True,
+ 'with_infsb_feature': True,
+ 'with_regular': False,
+ 'wo_node_penalty': False,
+ 'wo_tour_penalty': False,
+ 'world_size': 1}
+>> Log Path: results/composition/train_car_soft_interface_slack0.1/20260904_035255train_interface
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Start VRPBLTW Training using SINGLE Model ...
+[2026-09-04 02:53:02] utils.py(229) : >> Use unified encoder for Improvement and Construction!
+[2026-09-04 02:53:03] utils.py(229) : >> Use kopt decoder for Improvement!
+[2026-09-04 02:53:03] utils.py(229) : lambda_:
+[2026-09-04 02:53:03] utils.py(229) : 1.0
+[2026-09-04 02:53:03] utils.py(229) : Number of Parameters: 1648488
+[2026-09-04 02:53:03] utils.py(229) : [copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_ops.py not found. Skipping.
+[2026-09-04 02:53:03] utils.py(229) : [copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_classes.py not found. Skipping.
+[2026-09-04 02:53:03] utils.py(229) : ================================================================================
+[2026-09-04 02:53:06] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:06] utils.py(229) : [Construction] Score: 26.2572,  Loss: 532.0593,  Infeasible_rate: [100.0000%, 100.0000%], out: 86.3856, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:06] utils.py(229) : [Improvement] Score: 168.9443 [BSF: 167.3221],  Loss: 9.6048,  Infeasible_rate: [100.0000%, 100.0000%], out: 172.4672, out_nodes: 57, Feasible_dist: 0.0000, Entropy: 2.3673
+[2026-09-04 02:53:06] utils.py(229) : Diversity Loss: 9.4232, Constructive RL loss: 532.1534, Slack loss: 0.5735 (adds 53.21)
+[2026-09-04 02:53:08] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:08] utils.py(229) : [Construction] Score: 26.4195,  Loss: 499.4988,  Infeasible_rate: [100.0000%, 100.0000%], out: 83.7907, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:08] utils.py(229) : [Improvement] Score: 157.2722 [BSF: 156.0686],  Loss: 8.7593,  Infeasible_rate: [100.0000%, 100.0000%], out: 163.0758, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.3817
+[2026-09-04 02:53:08] utils.py(229) : Diversity Loss: 9.4683, Constructive RL loss: 499.5934, Slack loss: 0.5666 (adds 49.95)
+[2026-09-04 02:53:10] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:10] utils.py(229) : [Construction] Score: 26.7186,  Loss: 566.4550,  Infeasible_rate: [100.0000%, 100.0000%], out: 83.5855, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:10] utils.py(229) : [Improvement] Score: 157.4644 [BSF: 156.4465],  Loss: 8.8888,  Infeasible_rate: [100.0000%, 100.0000%], out: 160.4962, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4120
+[2026-09-04 02:53:10] utils.py(229) : Diversity Loss: 9.4984, Constructive RL loss: 566.5499, Slack loss: 0.5768 (adds 56.65)
+[2026-09-04 02:53:12] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:12] utils.py(229) : [Construction] Score: 26.7342,  Loss: 527.7731,  Infeasible_rate: [100.0000%, 100.0000%], out: 81.6031, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:12] utils.py(229) : [Improvement] Score: 151.7378 [BSF: 150.8154],  Loss: 9.5994,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.4390, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4266
+[2026-09-04 02:53:12] utils.py(229) : Diversity Loss: 9.5170, Constructive RL loss: 527.8682, Slack loss: 0.5735 (adds 52.78)
+[2026-09-04 02:53:14] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:14] utils.py(229) : [Construction] Score: 26.5310,  Loss: 539.6599,  Infeasible_rate: [100.0000%, 100.0000%], out: 81.4837, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:14] utils.py(229) : [Improvement] Score: 152.7992 [BSF: 151.3320],  Loss: 10.0148,  Infeasible_rate: [100.0000%, 100.0000%], out: 156.0411, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4218
+[2026-09-04 02:53:14] utils.py(229) : Diversity Loss: 9.5201, Constructive RL loss: 539.7550, Slack loss: 0.5768 (adds 53.97)
+[2026-09-04 02:53:17] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:17] utils.py(229) : [Construction] Score: 26.5096,  Loss: 588.1451,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.5133, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:17] utils.py(229) : [Improvement] Score: 149.7964 [BSF: 148.4549],  Loss: 9.9916,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.8477, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4265
+[2026-09-04 02:53:17] utils.py(229) : Diversity Loss: 9.5321, Constructive RL loss: 588.2403, Slack loss: 0.5774 (adds 58.81)
+[2026-09-04 02:53:19] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:19] utils.py(229) : [Construction] Score: 26.5140,  Loss: 589.8677,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.7230, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:19] utils.py(229) : [Improvement] Score: 148.7422 [BSF: 147.4116],  Loss: 9.8200,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.6425, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4220
+[2026-09-04 02:53:19] utils.py(229) : Diversity Loss: 9.5417, Constructive RL loss: 589.9632, Slack loss: 0.5768 (adds 58.99)
+[2026-09-04 02:53:21] utils.py(229) : Rank 0 >> Epoch 1: Train (0%)
+[2026-09-04 02:53:21] utils.py(229) : [Construction] Score: 26.5574,  Loss: 590.3481,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.7013, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:21] utils.py(229) : [Improvement] Score: 149.1925 [BSF: 147.7595],  Loss: 9.9190,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.7256, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4145
+[2026-09-04 02:53:21] utils.py(229) : Diversity Loss: 9.5341, Constructive RL loss: 590.4434, Slack loss: 0.5787 (adds 59.03)
+[2026-09-04 02:53:23] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:23] utils.py(229) : [Construction] Score: 26.5205,  Loss: 595.9533,  Infeasible_rate: [100.0000%, 100.0000%], out: 81.1275, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:23] utils.py(229) : [Improvement] Score: 150.5344 [BSF: 149.0981],  Loss: 10.2828,  Infeasible_rate: [100.0000%, 100.0000%], out: 156.8756, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4160
+[2026-09-04 02:53:23] utils.py(229) : Diversity Loss: 9.5261, Constructive RL loss: 596.0485, Slack loss: 0.5818 (adds 59.60)
+[2026-09-04 02:53:25] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:25] utils.py(229) : [Construction] Score: 26.4497,  Loss: 597.8827,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.7791, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:25] utils.py(229) : [Improvement] Score: 149.3046 [BSF: 147.8772],  Loss: 10.1149,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.9366, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4092
+[2026-09-04 02:53:25] utils.py(229) : Diversity Loss: 9.5276, Constructive RL loss: 597.9779, Slack loss: 0.5826 (adds 59.79)
+[2026-09-04 02:53:27] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:27] utils.py(229) : [Construction] Score: 26.5279,  Loss: 599.8507,  Infeasible_rate: [100.0000%, 100.0000%], out: 80.2475, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:27] utils.py(229) : [Improvement] Score: 149.0962 [BSF: 147.6117],  Loss: 10.0299,  Infeasible_rate: [100.0000%, 100.0000%], out: 157.2887, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4091
+[2026-09-04 02:53:27] utils.py(229) : Diversity Loss: 9.5244, Constructive RL loss: 599.9458, Slack loss: 0.5837 (adds 59.99)
+[2026-09-04 02:53:29] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:29] utils.py(229) : [Construction] Score: 26.4683,  Loss: 606.5914,  Infeasible_rate: [100.0000%, 100.0000%], out: 80.4945, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:29] utils.py(229) : [Improvement] Score: 148.2120 [BSF: 146.8440],  Loss: 10.0487,  Infeasible_rate: [100.0000%, 100.0000%], out: 156.9862, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4140
+[2026-09-04 02:53:29] utils.py(229) : Diversity Loss: 9.5195, Constructive RL loss: 606.6865, Slack loss: 0.5853 (adds 60.66)
+[2026-09-04 02:53:31] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:31] utils.py(229) : [Construction] Score: 26.4820,  Loss: 608.3791,  Infeasible_rate: [100.0000%, 100.0000%], out: 80.0566, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:31] utils.py(229) : [Improvement] Score: 147.7767 [BSF: 146.3714],  Loss: 10.1105,  Infeasible_rate: [100.0000%, 100.0000%], out: 157.5726, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4152
+[2026-09-04 02:53:31] utils.py(229) : Diversity Loss: 9.5154, Constructive RL loss: 608.4741, Slack loss: 0.5861 (adds 60.84)
+[2026-09-04 02:53:33] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:33] utils.py(229) : [Construction] Score: 26.4689,  Loss: 601.2154,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.6988, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:33] utils.py(229) : [Improvement] Score: 147.3439 [BSF: 145.8205],  Loss: 10.2421,  Infeasible_rate: [100.0000%, 100.0000%], out: 156.8350, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4120
+[2026-09-04 02:53:33] utils.py(229) : Diversity Loss: 9.5145, Constructive RL loss: 601.3105, Slack loss: 0.5859 (adds 60.12)
+[2026-09-04 02:53:35] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:35] utils.py(229) : [Construction] Score: 26.5129,  Loss: 599.5961,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.7699, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:35] utils.py(229) : [Improvement] Score: 147.0180 [BSF: 145.5451],  Loss: 10.5534,  Infeasible_rate: [100.0000%, 100.0000%], out: 156.2982, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4134
+[2026-09-04 02:53:35] utils.py(229) : Diversity Loss: 9.5162, Constructive RL loss: 599.6912, Slack loss: 0.5861 (adds 59.96)
+[2026-09-04 02:53:37] utils.py(229) : Rank 0 >> Epoch 1: Train (5%)
+[2026-09-04 02:53:37] utils.py(229) : [Construction] Score: 26.5146,  Loss: 608.1213,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.6611, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:37] utils.py(229) : [Improvement] Score: 146.9804 [BSF: 145.5925],  Loss: 10.3001,  Infeasible_rate: [100.0000%, 100.0000%], out: 156.0777, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4140
+[2026-09-04 02:53:37] utils.py(229) : Diversity Loss: 9.5187, Constructive RL loss: 608.2164, Slack loss: 0.5868 (adds 60.81)
+[2026-09-04 02:53:39] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:39] utils.py(229) : [Construction] Score: 26.5235,  Loss: 611.1534,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.4355, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:39] utils.py(229) : [Improvement] Score: 147.0611 [BSF: 145.6862],  Loss: 10.2383,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.4869, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4132
+[2026-09-04 02:53:39] utils.py(229) : Diversity Loss: 9.5169, Constructive RL loss: 611.2485, Slack loss: 0.5867 (adds 61.12)
+[2026-09-04 02:53:42] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:42] utils.py(229) : [Construction] Score: 26.4770,  Loss: 611.2217,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.7579, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:42] utils.py(229) : [Improvement] Score: 147.4422 [BSF: 146.0926],  Loss: 10.3535,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.7533, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4163
+[2026-09-04 02:53:42] utils.py(229) : Diversity Loss: 9.5187, Constructive RL loss: 611.3169, Slack loss: 0.5874 (adds 61.12)
+[2026-09-04 02:53:44] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:44] utils.py(229) : [Construction] Score: 26.4985,  Loss: 616.8257,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.4123, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:44] utils.py(229) : [Improvement] Score: 147.0268 [BSF: 145.7265],  Loss: 10.1144,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.0594, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4149
+[2026-09-04 02:53:44] utils.py(229) : Diversity Loss: 9.5239, Constructive RL loss: 616.9208, Slack loss: 0.5868 (adds 61.68)
+[2026-09-04 02:53:46] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:46] utils.py(229) : [Construction] Score: 26.5013,  Loss: 619.1907,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.0902, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:46] utils.py(229) : [Improvement] Score: 146.8354 [BSF: 145.5428],  Loss: 10.0937,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.8720, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4157
+[2026-09-04 02:53:46] utils.py(229) : Diversity Loss: 9.5214, Constructive RL loss: 619.2858, Slack loss: 0.5870 (adds 61.92)
+[2026-09-04 02:53:48] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:48] utils.py(229) : [Construction] Score: 26.5317,  Loss: 624.2829,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.1147, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:48] utils.py(229) : [Improvement] Score: 147.0381 [BSF: 145.7972],  Loss: 10.1872,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.0941, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4140
+[2026-09-04 02:53:48] utils.py(229) : Diversity Loss: 9.5206, Constructive RL loss: 624.3781, Slack loss: 0.5869 (adds 62.43)
+[2026-09-04 02:53:50] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:50] utils.py(229) : [Construction] Score: 26.5295,  Loss: 619.7211,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.2786, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:50] utils.py(229) : [Improvement] Score: 147.1687 [BSF: 145.9843],  Loss: 10.1231,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.9331, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4152
+[2026-09-04 02:53:50] utils.py(229) : Diversity Loss: 9.5215, Constructive RL loss: 619.8163, Slack loss: 0.5862 (adds 61.97)
+[2026-09-04 02:53:52] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:52] utils.py(229) : [Construction] Score: 26.5410,  Loss: 622.0777,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.2999, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:52] utils.py(229) : [Improvement] Score: 146.8238 [BSF: 145.6701],  Loss: 9.9839,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.1186, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4127
+[2026-09-04 02:53:52] utils.py(229) : Diversity Loss: 9.5273, Constructive RL loss: 622.1729, Slack loss: 0.5860 (adds 62.21)
+[2026-09-04 02:53:54] utils.py(229) : Rank 0 >> Epoch 1: Train (10%)
+[2026-09-04 02:53:54] utils.py(229) : [Construction] Score: 26.5343,  Loss: 624.0055,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.3415, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:54] utils.py(229) : [Improvement] Score: 147.0502 [BSF: 145.8899],  Loss: 9.8291,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.5481, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4116
+[2026-09-04 02:53:54] utils.py(229) : Diversity Loss: 9.5233, Constructive RL loss: 624.1007, Slack loss: 0.5864 (adds 62.40)
+[2026-09-04 02:53:56] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:53:56] utils.py(229) : [Construction] Score: 26.5638,  Loss: 618.7968,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.0230, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:56] utils.py(229) : [Improvement] Score: 146.8398 [BSF: 145.6898],  Loss: 9.8371,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.8423, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4106
+[2026-09-04 02:53:56] utils.py(229) : Diversity Loss: 9.5258, Constructive RL loss: 618.8920, Slack loss: 0.5856 (adds 61.88)
+[2026-09-04 02:53:58] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:53:58] utils.py(229) : [Construction] Score: 26.5634,  Loss: 615.9515,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.1683, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:53:58] utils.py(229) : [Improvement] Score: 146.8932 [BSF: 145.7507],  Loss: 9.8668,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.1599, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4116
+[2026-09-04 02:53:58] utils.py(229) : Diversity Loss: 9.5228, Constructive RL loss: 616.0467, Slack loss: 0.5860 (adds 61.60)
+[2026-09-04 02:54:00] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:54:00] utils.py(229) : [Construction] Score: 26.5540,  Loss: 613.1076,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.5061, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:00] utils.py(229) : [Improvement] Score: 146.8198 [BSF: 145.6957],  Loss: 10.0855,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.3691, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4130
+[2026-09-04 02:54:00] utils.py(229) : Diversity Loss: 9.5204, Constructive RL loss: 613.2028, Slack loss: 0.5864 (adds 61.31)
+[2026-09-04 02:54:02] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:54:02] utils.py(229) : [Construction] Score: 26.5755,  Loss: 612.4822,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.5482, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:02] utils.py(229) : [Improvement] Score: 147.3127 [BSF: 146.0974],  Loss: 10.1133,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.6256, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4108
+[2026-09-04 02:54:02] utils.py(229) : Diversity Loss: 9.5215, Constructive RL loss: 612.5774, Slack loss: 0.5865 (adds 61.25)
+[2026-09-04 02:54:04] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:54:04] utils.py(229) : [Construction] Score: 26.5883,  Loss: 615.2745,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.5678, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:04] utils.py(229) : [Improvement] Score: 147.5193 [BSF: 146.3459],  Loss: 10.1227,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.5375, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4114
+[2026-09-04 02:54:04] utils.py(229) : Diversity Loss: 9.5245, Constructive RL loss: 615.3698, Slack loss: 0.5861 (adds 61.53)
+[2026-09-04 02:54:07] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:54:07] utils.py(229) : [Construction] Score: 26.5791,  Loss: 616.4624,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.6559, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:07] utils.py(229) : [Improvement] Score: 147.8740 [BSF: 146.7044],  Loss: 10.1280,  Infeasible_rate: [100.0000%, 100.0000%], out: 155.0802, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4110
+[2026-09-04 02:54:07] utils.py(229) : Diversity Loss: 9.5232, Constructive RL loss: 616.5576, Slack loss: 0.5866 (adds 61.65)
+[2026-09-04 02:54:09] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:54:09] utils.py(229) : [Construction] Score: 26.6199,  Loss: 615.5997,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.1319, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:09] utils.py(229) : [Improvement] Score: 147.2461 [BSF: 146.1143],  Loss: 10.0164,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.1280, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4119
+[2026-09-04 02:54:09] utils.py(229) : Diversity Loss: 9.5273, Constructive RL loss: 615.6950, Slack loss: 0.5855 (adds 61.56)
+[2026-09-04 02:54:11] utils.py(229) : Rank 0 >> Epoch 1: Train (15%)
+[2026-09-04 02:54:11] utils.py(229) : [Construction] Score: 26.6091,  Loss: 614.0558,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.1287, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:11] utils.py(229) : [Improvement] Score: 147.2142 [BSF: 146.0947],  Loss: 9.9965,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.6305, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4115
+[2026-09-04 02:54:11] utils.py(229) : Diversity Loss: 9.5262, Constructive RL loss: 614.1511, Slack loss: 0.5848 (adds 61.41)
+[2026-09-04 02:54:13] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:13] utils.py(229) : [Construction] Score: 26.5872,  Loss: 610.4049,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.6437, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:13] utils.py(229) : [Improvement] Score: 146.6851 [BSF: 145.5954],  Loss: 9.9155,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.7855, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4126
+[2026-09-04 02:54:13] utils.py(229) : Diversity Loss: 9.5302, Constructive RL loss: 610.5002, Slack loss: 0.5839 (adds 61.04)
+[2026-09-04 02:54:15] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:15] utils.py(229) : [Construction] Score: 26.6044,  Loss: 612.3092,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.5064, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:15] utils.py(229) : [Improvement] Score: 146.5547 [BSF: 145.4289],  Loss: 9.9539,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.7707, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4123
+[2026-09-04 02:54:15] utils.py(229) : Diversity Loss: 9.5314, Constructive RL loss: 612.4045, Slack loss: 0.5838 (adds 61.23)
+[2026-09-04 02:54:17] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:17] utils.py(229) : [Construction] Score: 26.6307,  Loss: 616.1453,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.1611, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:17] utils.py(229) : [Improvement] Score: 146.3863 [BSF: 145.2277],  Loss: 9.9020,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.8762, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4130
+[2026-09-04 02:54:17] utils.py(229) : Diversity Loss: 9.5290, Constructive RL loss: 616.2405, Slack loss: 0.5840 (adds 61.61)
+[2026-09-04 02:54:20] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:20] utils.py(229) : [Construction] Score: 26.6357,  Loss: 615.7095,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.1967, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:20] utils.py(229) : [Improvement] Score: 146.3569 [BSF: 145.2305],  Loss: 9.9093,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.0583, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4116
+[2026-09-04 02:54:20] utils.py(229) : Diversity Loss: 9.5271, Constructive RL loss: 615.8047, Slack loss: 0.5844 (adds 61.57)
+[2026-09-04 02:54:22] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:22] utils.py(229) : [Construction] Score: 26.6222,  Loss: 613.9699,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.3094, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:22] utils.py(229) : [Improvement] Score: 146.6507 [BSF: 145.5203],  Loss: 9.8726,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.3056, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4129
+[2026-09-04 02:54:22] utils.py(229) : Diversity Loss: 9.5266, Constructive RL loss: 614.0652, Slack loss: 0.5845 (adds 61.40)
+[2026-09-04 02:54:24] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:24] utils.py(229) : [Construction] Score: 26.6218,  Loss: 614.7798,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.3502, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:24] utils.py(229) : [Improvement] Score: 146.5297 [BSF: 145.3430],  Loss: 9.9149,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.3243, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4152
+[2026-09-04 02:54:24] utils.py(229) : Diversity Loss: 9.5256, Constructive RL loss: 614.8750, Slack loss: 0.5843 (adds 61.48)
+[2026-09-04 02:54:27] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:27] utils.py(229) : [Construction] Score: 26.6137,  Loss: 614.3258,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.3222, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:27] utils.py(229) : [Improvement] Score: 146.7355 [BSF: 145.5326],  Loss: 9.8706,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.5425, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4158
+[2026-09-04 02:54:27] utils.py(229) : Diversity Loss: 9.5230, Constructive RL loss: 614.4210, Slack loss: 0.5847 (adds 61.43)
+[2026-09-04 02:54:29] utils.py(229) : Rank 0 >> Epoch 1: Train (20%)
+[2026-09-04 02:54:29] utils.py(229) : [Construction] Score: 26.6126,  Loss: 613.0749,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.4291, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:29] utils.py(229) : [Improvement] Score: 146.6759 [BSF: 145.5031],  Loss: 9.7924,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.8206, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4159
+[2026-09-04 02:54:29] utils.py(229) : Diversity Loss: 9.5210, Constructive RL loss: 613.1701, Slack loss: 0.5847 (adds 61.31)
+[2026-09-04 02:54:31] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:31] utils.py(229) : [Construction] Score: 26.6148,  Loss: 612.2386,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.5434, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:31] utils.py(229) : [Improvement] Score: 146.6510 [BSF: 145.5068],  Loss: 9.8368,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.1512, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4165
+[2026-09-04 02:54:31] utils.py(229) : Diversity Loss: 9.5204, Constructive RL loss: 612.3338, Slack loss: 0.5848 (adds 61.22)
+[2026-09-04 02:54:33] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:33] utils.py(229) : [Construction] Score: 26.6005,  Loss: 614.7331,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.5660, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:33] utils.py(229) : [Improvement] Score: 146.6657 [BSF: 145.5488],  Loss: 9.8196,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.2145, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4175
+[2026-09-04 02:54:33] utils.py(229) : Diversity Loss: 9.5197, Constructive RL loss: 614.8283, Slack loss: 0.5847 (adds 61.47)
+[2026-09-04 02:54:35] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:35] utils.py(229) : [Construction] Score: 26.5968,  Loss: 614.2017,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.7996, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:35] utils.py(229) : [Improvement] Score: 147.3414 [BSF: 146.1910],  Loss: 9.8167,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.7166, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4171
+[2026-09-04 02:54:35] utils.py(229) : Diversity Loss: 9.5184, Constructive RL loss: 614.2969, Slack loss: 0.5852 (adds 61.42)
+[2026-09-04 02:54:37] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:37] utils.py(229) : [Construction] Score: 26.6028,  Loss: 614.6387,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.0632, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:37] utils.py(229) : [Improvement] Score: 147.6910 [BSF: 146.5668],  Loss: 9.8651,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.9667, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4173
+[2026-09-04 02:54:37] utils.py(229) : Diversity Loss: 9.5170, Constructive RL loss: 614.7339, Slack loss: 0.5854 (adds 61.46)
+[2026-09-04 02:54:40] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:40] utils.py(229) : [Construction] Score: 26.6173,  Loss: 613.5157,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.8800, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:40] utils.py(229) : [Improvement] Score: 147.3599 [BSF: 146.2607],  Loss: 9.8922,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.5874, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4176
+[2026-09-04 02:54:40] utils.py(229) : Diversity Loss: 9.5170, Constructive RL loss: 613.6109, Slack loss: 0.5854 (adds 61.35)
+[2026-09-04 02:54:42] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:42] utils.py(229) : [Construction] Score: 26.6300,  Loss: 612.2390,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.9068, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:42] utils.py(229) : [Improvement] Score: 147.2995 [BSF: 146.1822],  Loss: 9.8698,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.4473, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4173
+[2026-09-04 02:54:42] utils.py(229) : Diversity Loss: 9.5191, Constructive RL loss: 612.3342, Slack loss: 0.5853 (adds 61.22)
+[2026-09-04 02:54:44] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:44] utils.py(229) : [Construction] Score: 26.6111,  Loss: 612.6315,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.8340, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:44] utils.py(229) : [Improvement] Score: 147.4217 [BSF: 146.2878],  Loss: 9.8860,  Infeasible_rate: [100.0000%, 100.0000%], out: 154.4437, out_nodes: 56, Feasible_dist: 0.0000, Entropy: 2.4169
+[2026-09-04 02:54:44] utils.py(229) : Diversity Loss: 9.5186, Constructive RL loss: 612.7267, Slack loss: 0.5857 (adds 61.26)
+[2026-09-04 02:54:46] utils.py(229) : Rank 0 >> Epoch 1: Train (25%)
+[2026-09-04 02:54:46] utils.py(229) : [Construction] Score: 26.6022,  Loss: 613.6901,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.6566, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:46] utils.py(229) : [Improvement] Score: 147.1390 [BSF: 145.9773],  Loss: 9.8897,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.8731, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4160
+[2026-09-04 02:54:46] utils.py(229) : Diversity Loss: 9.5202, Constructive RL loss: 613.7853, Slack loss: 0.5855 (adds 61.37)
+[2026-09-04 02:54:49] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:54:49] utils.py(229) : [Construction] Score: 26.5836,  Loss: 614.8258,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.5422, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:49] utils.py(229) : [Improvement] Score: 146.9310 [BSF: 145.7709],  Loss: 9.7874,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.8158, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4162
+[2026-09-04 02:54:49] utils.py(229) : Diversity Loss: 9.5209, Constructive RL loss: 614.9210, Slack loss: 0.5857 (adds 61.48)
+[2026-09-04 02:54:51] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:54:51] utils.py(229) : [Construction] Score: 26.5840,  Loss: 613.6336,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.4893, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:51] utils.py(229) : [Improvement] Score: 146.8153 [BSF: 145.6568],  Loss: 9.7305,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.4874, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4163
+[2026-09-04 02:54:51] utils.py(229) : Diversity Loss: 9.5217, Constructive RL loss: 613.7289, Slack loss: 0.5853 (adds 61.36)
+[2026-09-04 02:54:53] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:54:53] utils.py(229) : [Construction] Score: 26.5897,  Loss: 613.8258,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.4499, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:53] utils.py(229) : [Improvement] Score: 146.6941 [BSF: 145.5412],  Loss: 9.7960,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.5209, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4183
+[2026-09-04 02:54:53] utils.py(229) : Diversity Loss: 9.5222, Constructive RL loss: 613.9210, Slack loss: 0.5855 (adds 61.38)
+[2026-09-04 02:54:56] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:54:56] utils.py(229) : [Construction] Score: 26.6099,  Loss: 615.4965,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.1885, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:56] utils.py(229) : [Improvement] Score: 146.5225 [BSF: 145.3682],  Loss: 9.8369,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.2878, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4196
+[2026-09-04 02:54:56] utils.py(229) : Diversity Loss: 9.5226, Constructive RL loss: 615.5917, Slack loss: 0.5856 (adds 61.55)
+[2026-09-04 02:54:58] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:54:58] utils.py(229) : [Construction] Score: 26.6098,  Loss: 615.8564,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.0552, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:54:58] utils.py(229) : [Improvement] Score: 146.1507 [BSF: 145.0179],  Loss: 9.8024,  Infeasible_rate: [100.0000%, 100.0000%], out: 153.1171, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4189
+[2026-09-04 02:54:58] utils.py(229) : Diversity Loss: 9.5241, Constructive RL loss: 615.9517, Slack loss: 0.5854 (adds 61.59)
+[2026-09-04 02:55:00] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:55:00] utils.py(229) : [Construction] Score: 26.5889,  Loss: 614.3872,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.6975, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:55:00] utils.py(229) : [Improvement] Score: 145.8052 [BSF: 144.6693],  Loss: 9.7756,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.7047, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4209
+[2026-09-04 02:55:00] utils.py(229) : Diversity Loss: 9.5244, Constructive RL loss: 614.4824, Slack loss: 0.5852 (adds 61.44)
+[2026-09-04 02:55:03] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:55:03] utils.py(229) : [Construction] Score: 26.5877,  Loss: 613.2604,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.8747, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:55:03] utils.py(229) : [Improvement] Score: 145.8327 [BSF: 144.6989],  Loss: 9.8437,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.8226, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4206
+[2026-09-04 02:55:03] utils.py(229) : Diversity Loss: 9.5237, Constructive RL loss: 613.3557, Slack loss: 0.5854 (adds 61.33)
+[2026-09-04 02:55:05] utils.py(229) : Rank 0 >> Epoch 1: Train (30%)
+[2026-09-04 02:55:05] utils.py(229) : [Construction] Score: 26.5939,  Loss: 611.0274,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.0036, out_nodes: 25, Feasible_dist: 0.0000
+[2026-09-04 02:55:05] utils.py(229) : [Improvement] Score: 145.9644 [BSF: 144.7830],  Loss: 9.8799,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.7133, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4211
+[2026-09-04 02:55:05] utils.py(229) : Diversity Loss: 9.5226, Constructive RL loss: 611.1226, Slack loss: 0.5856 (adds 61.10)
+[2026-09-04 02:55:08] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:08] utils.py(229) : [Construction] Score: 26.5866,  Loss: 610.4433,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.8277, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:08] utils.py(229) : [Improvement] Score: 145.8756 [BSF: 144.6829],  Loss: 9.9107,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.5437, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4217
+[2026-09-04 02:55:08] utils.py(229) : Diversity Loss: 9.5231, Constructive RL loss: 610.5385, Slack loss: 0.5853 (adds 61.04)
+[2026-09-04 02:55:10] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:10] utils.py(229) : [Construction] Score: 26.5771,  Loss: 611.5183,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.7712, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:10] utils.py(229) : [Improvement] Score: 145.7948 [BSF: 144.5978],  Loss: 9.9333,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.4665, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4216
+[2026-09-04 02:55:10] utils.py(229) : Diversity Loss: 9.5238, Constructive RL loss: 611.6136, Slack loss: 0.5853 (adds 61.15)
+[2026-09-04 02:55:12] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:12] utils.py(229) : [Construction] Score: 26.5848,  Loss: 610.5931,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.7121, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:12] utils.py(229) : [Improvement] Score: 145.8119 [BSF: 144.5991],  Loss: 9.9470,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.5432, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4215
+[2026-09-04 02:55:12] utils.py(229) : Diversity Loss: 9.5253, Constructive RL loss: 610.6883, Slack loss: 0.5851 (adds 61.06)
+[2026-09-04 02:55:14] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:14] utils.py(229) : [Construction] Score: 26.5713,  Loss: 611.7073,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.4793, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:14] utils.py(229) : [Improvement] Score: 145.5908 [BSF: 144.3467],  Loss: 9.8954,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.2227, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4208
+[2026-09-04 02:55:14] utils.py(229) : Diversity Loss: 9.5263, Constructive RL loss: 611.8026, Slack loss: 0.5851 (adds 61.17)
+[2026-09-04 02:55:17] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:17] utils.py(229) : [Construction] Score: 26.5659,  Loss: 611.2360,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.4353, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:17] utils.py(229) : [Improvement] Score: 145.5693 [BSF: 144.2944],  Loss: 9.8730,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.1990, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4209
+[2026-09-04 02:55:17] utils.py(229) : Diversity Loss: 9.5254, Constructive RL loss: 611.3313, Slack loss: 0.5852 (adds 61.12)
+[2026-09-04 02:55:19] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:19] utils.py(229) : [Construction] Score: 26.5481,  Loss: 614.5719,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.4429, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:19] utils.py(229) : [Improvement] Score: 145.5578 [BSF: 144.3034],  Loss: 9.8482,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.2125, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4206
+[2026-09-04 02:55:19] utils.py(229) : Diversity Loss: 9.5248, Constructive RL loss: 614.6671, Slack loss: 0.5854 (adds 61.46)
+[2026-09-04 02:55:21] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:21] utils.py(229) : [Construction] Score: 26.5547,  Loss: 611.9880,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.2326, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:21] utils.py(229) : [Improvement] Score: 145.4340 [BSF: 144.1718],  Loss: 9.8748,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.0683, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4203
+[2026-09-04 02:55:21] utils.py(229) : Diversity Loss: 9.5251, Constructive RL loss: 612.0832, Slack loss: 0.5852 (adds 61.20)
+[2026-09-04 02:55:23] utils.py(229) : Rank 0 >> Epoch 1: Train (35%)
+[2026-09-04 02:55:23] utils.py(229) : [Construction] Score: 26.5495,  Loss: 611.9216,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.0907, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:23] utils.py(229) : [Improvement] Score: 145.5453 [BSF: 144.2584],  Loss: 9.8214,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.2085, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4199
+[2026-09-04 02:55:23] utils.py(229) : Diversity Loss: 9.5251, Constructive RL loss: 612.0168, Slack loss: 0.5853 (adds 61.19)
+[2026-09-04 02:55:26] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:26] utils.py(229) : [Construction] Score: 26.5557,  Loss: 610.6228,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.2168, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:26] utils.py(229) : [Improvement] Score: 145.7068 [BSF: 144.3925],  Loss: 9.8470,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.5865, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4197
+[2026-09-04 02:55:26] utils.py(229) : Diversity Loss: 9.5243, Constructive RL loss: 610.7181, Slack loss: 0.5854 (adds 61.06)
+[2026-09-04 02:55:28] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:28] utils.py(229) : [Construction] Score: 26.5513,  Loss: 612.1974,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.3112, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:28] utils.py(229) : [Improvement] Score: 145.9104 [BSF: 144.6112],  Loss: 9.8565,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.7813, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4199
+[2026-09-04 02:55:28] utils.py(229) : Diversity Loss: 9.5239, Constructive RL loss: 612.2926, Slack loss: 0.5856 (adds 61.22)
+[2026-09-04 02:55:30] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:30] utils.py(229) : [Construction] Score: 26.5534,  Loss: 613.8173,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.1322, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:30] utils.py(229) : [Improvement] Score: 145.5970 [BSF: 144.2867],  Loss: 9.8612,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.6454, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4198
+[2026-09-04 02:55:30] utils.py(229) : Diversity Loss: 9.5253, Constructive RL loss: 613.9126, Slack loss: 0.5855 (adds 61.38)
+[2026-09-04 02:55:32] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:32] utils.py(229) : [Construction] Score: 26.5603,  Loss: 610.9619,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.9823, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:32] utils.py(229) : [Improvement] Score: 145.6226 [BSF: 144.2395],  Loss: 9.8623,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.4870, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4191
+[2026-09-04 02:55:32] utils.py(229) : Diversity Loss: 9.5266, Constructive RL loss: 611.0572, Slack loss: 0.5852 (adds 61.10)
+[2026-09-04 02:55:35] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:35] utils.py(229) : [Construction] Score: 26.5561,  Loss: 613.7940,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.9874, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:35] utils.py(229) : [Improvement] Score: 145.6531 [BSF: 144.2791],  Loss: 9.9386,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.6494, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4200
+[2026-09-04 02:55:35] utils.py(229) : Diversity Loss: 9.5259, Constructive RL loss: 613.8893, Slack loss: 0.5853 (adds 61.38)
+[2026-09-04 02:55:37] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:37] utils.py(229) : [Construction] Score: 26.5637,  Loss: 612.3902,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.8799, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:37] utils.py(229) : [Improvement] Score: 145.6103 [BSF: 144.2455],  Loss: 9.9106,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.4433, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4203
+[2026-09-04 02:55:37] utils.py(229) : Diversity Loss: 9.5254, Constructive RL loss: 612.4855, Slack loss: 0.5851 (adds 61.24)
+[2026-09-04 02:55:39] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:39] utils.py(229) : [Construction] Score: 26.5422,  Loss: 612.7566,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.9463, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:39] utils.py(229) : [Improvement] Score: 145.6632 [BSF: 144.3107],  Loss: 9.8770,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.4538, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4201
+[2026-09-04 02:55:39] utils.py(229) : Diversity Loss: 9.5263, Constructive RL loss: 612.8519, Slack loss: 0.5851 (adds 61.28)
+[2026-09-04 02:55:41] utils.py(229) : Rank 0 >> Epoch 1: Train (40%)
+[2026-09-04 02:55:41] utils.py(229) : [Construction] Score: 26.5590,  Loss: 612.1777,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.0045, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:41] utils.py(229) : [Improvement] Score: 145.7568 [BSF: 144.4231],  Loss: 9.8582,  Infeasible_rate: [100.0000%, 100.0000%], out: 152.5211, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4198
+[2026-09-04 02:55:41] utils.py(229) : Diversity Loss: 9.5263, Constructive RL loss: 612.2729, Slack loss: 0.5849 (adds 61.22)
+[2026-09-04 02:55:43] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:55:43] utils.py(229) : [Construction] Score: 26.5781,  Loss: 604.7219,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.3372, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:43] utils.py(229) : [Improvement] Score: 144.8288 [BSF: 143.5092],  Loss: 9.7386,  Infeasible_rate: [100.0000%, 100.0000%], out: 150.9668, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4231
+[2026-09-04 02:55:43] utils.py(229) : Diversity Loss: 9.5370, Constructive RL loss: 604.8173, Slack loss: 0.5823 (adds 60.47)
+[2026-09-04 02:55:46] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:55:46] utils.py(229) : [Construction] Score: 26.6176,  Loss: 599.1832,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.7093, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:46] utils.py(229) : [Improvement] Score: 144.0198 [BSF: 142.7181],  Loss: 9.6266,  Infeasible_rate: [100.0000%, 100.0000%], out: 149.5130, out_nodes: 55, Feasible_dist: 0.0000, Entropy: 2.4262
+[2026-09-04 02:55:46] utils.py(229) : Diversity Loss: 9.5481, Constructive RL loss: 599.2787, Slack loss: 0.5799 (adds 59.92)
+[2026-09-04 02:55:48] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:55:48] utils.py(229) : [Construction] Score: 26.6471,  Loss: 592.8680,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.0513, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:48] utils.py(229) : [Improvement] Score: 143.1829 [BSF: 141.8977],  Loss: 9.5144,  Infeasible_rate: [100.0000%, 100.0000%], out: 148.0092, out_nodes: 54, Feasible_dist: 0.0000, Entropy: 2.4302
+[2026-09-04 02:55:48] utils.py(229) : Diversity Loss: 9.5590, Constructive RL loss: 592.9636, Slack loss: 0.5775 (adds 59.29)
+[2026-09-04 02:55:51] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:55:51] utils.py(229) : [Construction] Score: 26.6791,  Loss: 587.1888,  Infeasible_rate: [100.0000%, 100.0000%], out: 74.5085, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:51] utils.py(229) : [Improvement] Score: 142.3726 [BSF: 141.1043],  Loss: 9.4088,  Infeasible_rate: [100.0000%, 100.0000%], out: 146.5818, out_nodes: 54, Feasible_dist: 0.0000, Entropy: 2.4339
+[2026-09-04 02:55:51] utils.py(229) : Diversity Loss: 9.5687, Constructive RL loss: 587.2845, Slack loss: 0.5752 (adds 58.72)
+[2026-09-04 02:55:53] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:55:53] utils.py(229) : [Construction] Score: 26.7116,  Loss: 581.0837,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.9026, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:53] utils.py(229) : [Improvement] Score: 141.5908 [BSF: 140.3360],  Loss: 9.3048,  Infeasible_rate: [100.0000%, 100.0000%], out: 145.2249, out_nodes: 54, Feasible_dist: 0.0000, Entropy: 2.4378
+[2026-09-04 02:55:53] utils.py(229) : Diversity Loss: 9.5780, Constructive RL loss: 581.1794, Slack loss: 0.5730 (adds 58.11)
+[2026-09-04 02:55:56] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:55:56] utils.py(229) : [Construction] Score: 26.7385,  Loss: 575.1903,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.3518, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:56] utils.py(229) : [Improvement] Score: 140.8222 [BSF: 139.5835],  Loss: 9.1929,  Infeasible_rate: [100.0000%, 100.0000%], out: 143.9038, out_nodes: 53, Feasible_dist: 0.0000, Entropy: 2.4406
+[2026-09-04 02:55:56] utils.py(229) : Diversity Loss: 9.5871, Constructive RL loss: 575.2862, Slack loss: 0.5709 (adds 57.52)
+[2026-09-04 02:55:58] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:55:58] utils.py(229) : [Construction] Score: 26.7651,  Loss: 570.1967,  Infeasible_rate: [100.0000%, 100.0000%], out: 72.7272, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:55:58] utils.py(229) : [Improvement] Score: 139.9987 [BSF: 138.7554],  Loss: 9.0857,  Infeasible_rate: [100.0000%, 100.0000%], out: 142.5276, out_nodes: 53, Feasible_dist: 0.0000, Entropy: 2.4438
+[2026-09-04 02:55:58] utils.py(229) : Diversity Loss: 9.5990, Constructive RL loss: 570.2927, Slack loss: 0.5687 (adds 57.02)
+[2026-09-04 02:56:01] utils.py(229) : Rank 0 >> Epoch 1: Train (45%)
+[2026-09-04 02:56:01] utils.py(229) : [Construction] Score: 26.7986,  Loss: 564.7210,  Infeasible_rate: [100.0000%, 100.0000%], out: 72.1146, out_nodes: 24, Feasible_dist: 0.0000
+[2026-09-04 02:56:01] utils.py(229) : [Improvement] Score: 139.2427 [BSF: 138.0113],  Loss: 8.9811,  Infeasible_rate: [100.0000%, 100.0000%], out: 141.2046, out_nodes: 53, Feasible_dist: 0.0000, Entropy: 2.4469
+[2026-09-04 02:56:01] utils.py(229) : Diversity Loss: 9.6088, Constructive RL loss: 564.8171, Slack loss: 0.5665 (adds 56.47)
+[2026-09-04 02:56:03] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:03] utils.py(229) : [Construction] Score: 26.8626,  Loss: 557.1068,  Infeasible_rate: [100.0000%, 100.0000%], out: 71.3406, out_nodes: 23, Feasible_dist: 0.0000
+[2026-09-04 02:56:03] utils.py(229) : [Improvement] Score: 138.3001 [BSF: 137.0824],  Loss: 8.8657,  Infeasible_rate: [100.0000%, 100.0000%], out: 139.6469, out_nodes: 52, Feasible_dist: 0.0000, Entropy: 2.4511
+[2026-09-04 02:56:03] utils.py(229) : Diversity Loss: 9.6279, Constructive RL loss: 557.2031, Slack loss: 0.5630 (adds 55.84)
+[2026-09-04 02:56:06] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:06] utils.py(229) : [Construction] Score: 26.9277,  Loss: 550.1406,  Infeasible_rate: [100.0000%, 100.0000%], out: 70.5941, out_nodes: 23, Feasible_dist: 0.0000
+[2026-09-04 02:56:06] utils.py(229) : [Improvement] Score: 137.3809 [BSF: 136.1768],  Loss: 8.7563,  Infeasible_rate: [100.0000%, 100.0000%], out: 138.1325, out_nodes: 52, Feasible_dist: 0.0000, Entropy: 2.4549
+[2026-09-04 02:56:06] utils.py(229) : Diversity Loss: 9.6460, Constructive RL loss: 550.2371, Slack loss: 0.5594 (adds 55.18)
+[2026-09-04 02:56:08] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:08] utils.py(229) : [Construction] Score: 27.0020,  Loss: 543.2939,  Infeasible_rate: [100.0000%, 100.0000%], out: 69.8288, out_nodes: 23, Feasible_dist: 0.0000
+[2026-09-04 02:56:08] utils.py(229) : [Improvement] Score: 136.4999 [BSF: 135.3085],  Loss: 8.6510,  Infeasible_rate: [100.0000%, 100.0000%], out: 136.6136, out_nodes: 52, Feasible_dist: 0.0000, Entropy: 2.4582
+[2026-09-04 02:56:08] utils.py(229) : Diversity Loss: 9.6653, Constructive RL loss: 543.3905, Slack loss: 0.5559 (adds 54.53)
+[2026-09-04 02:56:11] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:11] utils.py(229) : [Construction] Score: 27.0700,  Loss: 536.4073,  Infeasible_rate: [100.0000%, 100.0000%], out: 69.1344, out_nodes: 23, Feasible_dist: 0.0000
+[2026-09-04 02:56:11] utils.py(229) : [Improvement] Score: 135.6571 [BSF: 134.4799],  Loss: 8.5510,  Infeasible_rate: [100.0000%, 100.0000%], out: 135.1770, out_nodes: 51, Feasible_dist: 0.0000, Entropy: 2.4628
+[2026-09-04 02:56:11] utils.py(229) : Diversity Loss: 9.6817, Constructive RL loss: 536.5042, Slack loss: 0.5527 (adds 53.93)
+[2026-09-04 02:56:14] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:14] utils.py(229) : [Construction] Score: 27.1423,  Loss: 529.6233,  Infeasible_rate: [100.0000%, 100.0000%], out: 68.4336, out_nodes: 23, Feasible_dist: 0.0000
+[2026-09-04 02:56:14] utils.py(229) : [Improvement] Score: 134.8327 [BSF: 133.6687],  Loss: 8.4568,  Infeasible_rate: [100.0000%, 100.0000%], out: 133.7446, out_nodes: 51, Feasible_dist: 0.0000, Entropy: 2.4666
+[2026-09-04 02:56:14] utils.py(229) : Diversity Loss: 9.6989, Constructive RL loss: 529.7203, Slack loss: 0.5495 (adds 53.34)
+[2026-09-04 02:56:16] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:16] utils.py(229) : [Construction] Score: 27.1880,  Loss: 523.1584,  Infeasible_rate: [100.0000%, 100.0000%], out: 67.7495, out_nodes: 23, Feasible_dist: 0.0000
+[2026-09-04 02:56:16] utils.py(229) : [Improvement] Score: 133.9871 [BSF: 132.8366],  Loss: 8.3593,  Infeasible_rate: [100.0000%, 100.0000%], out: 132.3482, out_nodes: 51, Feasible_dist: 0.0000, Entropy: 2.4706
+[2026-09-04 02:56:16] utils.py(229) : Diversity Loss: 9.7162, Constructive RL loss: 523.2556, Slack loss: 0.5463 (adds 52.75)
+[2026-09-04 02:56:19] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:19] utils.py(229) : [Construction] Score: 27.2580,  Loss: 517.0401,  Infeasible_rate: [100.0000%, 100.0000%], out: 67.0848, out_nodes: 22, Feasible_dist: 0.0000
+[2026-09-04 02:56:19] utils.py(229) : [Improvement] Score: 133.1908 [BSF: 132.0519],  Loss: 8.2574,  Infeasible_rate: [100.0000%, 100.0000%], out: 131.0012, out_nodes: 50, Feasible_dist: 0.0000, Entropy: 2.4735
+[2026-09-04 02:56:19] utils.py(229) : Diversity Loss: 9.7337, Constructive RL loss: 517.1374, Slack loss: 0.5431 (adds 52.15)
+[2026-09-04 02:56:21] utils.py(229) : Rank 0 >> Epoch 1: Train (50%)
+[2026-09-04 02:56:21] utils.py(229) : [Construction] Score: 27.3022,  Loss: 510.8112,  Infeasible_rate: [100.0000%, 100.0000%], out: 66.4319, out_nodes: 22, Feasible_dist: 0.0000
+[2026-09-04 02:56:21] utils.py(229) : [Improvement] Score: 132.3822 [BSF: 131.2525],  Loss: 8.1599,  Infeasible_rate: [100.0000%, 100.0000%], out: 129.6798, out_nodes: 50, Feasible_dist: 0.0000, Entropy: 2.4771
+[2026-09-04 02:56:21] utils.py(229) : Diversity Loss: 9.7509, Constructive RL loss: 510.9087, Slack loss: 0.5402 (adds 51.60)
+[2026-09-04 02:56:24] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:24] utils.py(229) : [Construction] Score: 27.3966,  Loss: 504.8256,  Infeasible_rate: [100.0000%, 100.0000%], out: 65.7422, out_nodes: 22, Feasible_dist: 0.0000
+[2026-09-04 02:56:24] utils.py(229) : [Improvement] Score: 131.5798 [BSF: 130.4601],  Loss: 8.0690,  Infeasible_rate: [100.0000%, 100.0000%], out: 128.3168, out_nodes: 50, Feasible_dist: 0.0000, Entropy: 2.4807
+[2026-09-04 02:56:24] utils.py(229) : Diversity Loss: 9.7717, Constructive RL loss: 504.9234, Slack loss: 0.5366 (adds 51.04)
+[2026-09-04 02:56:27] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:27] utils.py(229) : [Construction] Score: 27.4667,  Loss: 498.8827,  Infeasible_rate: [100.0000%, 100.0000%], out: 65.0451, out_nodes: 22, Feasible_dist: 0.0000
+[2026-09-04 02:56:27] utils.py(229) : [Improvement] Score: 130.7326 [BSF: 129.6247],  Loss: 7.9793,  Infeasible_rate: [100.0000%, 100.0000%], out: 126.9709, out_nodes: 49, Feasible_dist: 0.0000, Entropy: 2.4849
+[2026-09-04 02:56:27] utils.py(229) : Diversity Loss: 9.7919, Constructive RL loss: 498.9807, Slack loss: 0.5332 (adds 50.51)
+[2026-09-04 02:56:30] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:30] utils.py(229) : [Construction] Score: 27.5593,  Loss: 493.0796,  Infeasible_rate: [100.0000%, 100.0000%], out: 64.3701, out_nodes: 22, Feasible_dist: 0.0000
+[2026-09-04 02:56:30] utils.py(229) : [Improvement] Score: 129.9577 [BSF: 128.8514],  Loss: 7.8915,  Infeasible_rate: [100.0000%, 100.0000%], out: 125.6580, out_nodes: 49, Feasible_dist: 0.0000, Entropy: 2.4888
+[2026-09-04 02:56:30] utils.py(229) : Diversity Loss: 9.8099, Constructive RL loss: 493.1777, Slack loss: 0.5298 (adds 49.98)
+[2026-09-04 02:56:33] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:33] utils.py(229) : [Construction] Score: 27.6567,  Loss: 487.3994,  Infeasible_rate: [100.0000%, 100.0000%], out: 63.7111, out_nodes: 21, Feasible_dist: 0.0000
+[2026-09-04 02:56:33] utils.py(229) : [Improvement] Score: 129.1823 [BSF: 128.0851],  Loss: 7.8057,  Infeasible_rate: [100.0000%, 100.0000%], out: 124.3661, out_nodes: 48, Feasible_dist: 0.0000, Entropy: 2.4922
+[2026-09-04 02:56:33] utils.py(229) : Diversity Loss: 9.8272, Constructive RL loss: 487.4976, Slack loss: 0.5264 (adds 49.47)
+[2026-09-04 02:56:35] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:35] utils.py(229) : [Construction] Score: 27.7493,  Loss: 481.8776,  Infeasible_rate: [100.0000%, 100.0000%], out: 63.0724, out_nodes: 21, Feasible_dist: 0.0000
+[2026-09-04 02:56:35] utils.py(229) : [Improvement] Score: 128.4306 [BSF: 127.3393],  Loss: 7.7219,  Infeasible_rate: [100.0000%, 100.0000%], out: 123.1100, out_nodes: 48, Feasible_dist: 0.0000, Entropy: 2.4955
+[2026-09-04 02:56:35] utils.py(229) : Diversity Loss: 9.8450, Constructive RL loss: 481.9760, Slack loss: 0.5231 (adds 48.97)
+[2026-09-04 02:56:38] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:38] utils.py(229) : [Construction] Score: 27.8333,  Loss: 476.3552,  Infeasible_rate: [100.0000%, 100.0000%], out: 62.4537, out_nodes: 21, Feasible_dist: 0.0000
+[2026-09-04 02:56:38] utils.py(229) : [Improvement] Score: 127.7021 [BSF: 126.6184],  Loss: 7.6387,  Infeasible_rate: [100.0000%, 100.0000%], out: 121.8876, out_nodes: 48, Feasible_dist: 0.0000, Entropy: 2.4980
+[2026-09-04 02:56:38] utils.py(229) : Diversity Loss: 9.8620, Constructive RL loss: 476.4538, Slack loss: 0.5199 (adds 48.49)
+[2026-09-04 02:56:41] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:41] utils.py(229) : [Construction] Score: 27.9099,  Loss: 471.1097,  Infeasible_rate: [100.0000%, 100.0000%], out: 61.8312, out_nodes: 21, Feasible_dist: 0.0000
+[2026-09-04 02:56:41] utils.py(229) : [Improvement] Score: 126.9610 [BSF: 125.8880],  Loss: 7.5549,  Infeasible_rate: [100.0000%, 100.0000%], out: 120.6722, out_nodes: 47, Feasible_dist: 0.0000, Entropy: 2.5015
+[2026-09-04 02:56:41] utils.py(229) : Diversity Loss: 9.8776, Constructive RL loss: 471.2085, Slack loss: 0.5169 (adds 48.00)
+[2026-09-04 02:56:44] utils.py(229) : Rank 0 >> Epoch 1: Train (55%)
+[2026-09-04 02:56:44] utils.py(229) : [Construction] Score: 27.9975,  Loss: 465.9992,  Infeasible_rate: [100.0000%, 100.0000%], out: 61.2185, out_nodes: 21, Feasible_dist: 0.0000
+[2026-09-04 02:56:44] utils.py(229) : [Improvement] Score: 126.2558 [BSF: 125.1906],  Loss: 7.4761,  Infeasible_rate: [100.0000%, 100.0000%], out: 119.4814, out_nodes: 47, Feasible_dist: 0.0000, Entropy: 2.5049
+[2026-09-04 02:56:44] utils.py(229) : Diversity Loss: 9.8925, Constructive RL loss: 466.0981, Slack loss: 0.5140 (adds 47.52)
+[2026-09-04 02:56:47] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:56:47] utils.py(229) : [Construction] Score: 28.1004,  Loss: 461.0416,  Infeasible_rate: [100.0000%, 100.0000%], out: 60.6063, out_nodes: 21, Feasible_dist: 0.0000
+[2026-09-04 02:56:47] utils.py(229) : [Improvement] Score: 125.5550 [BSF: 124.4943],  Loss: 7.3981,  Infeasible_rate: [100.0000%, 100.0000%], out: 118.3032, out_nodes: 47, Feasible_dist: 0.0000, Entropy: 2.5081
+[2026-09-04 02:56:47] utils.py(229) : Diversity Loss: 9.9097, Constructive RL loss: 461.1407, Slack loss: 0.5108 (adds 47.05)
+[2026-09-04 02:56:49] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:56:49] utils.py(229) : [Construction] Score: 28.1999,  Loss: 456.1849,  Infeasible_rate: [100.0000%, 100.0000%], out: 60.0076, out_nodes: 20, Feasible_dist: 0.0000
+[2026-09-04 02:56:49] utils.py(229) : [Improvement] Score: 124.8471 [BSF: 123.7958],  Loss: 7.3218,  Infeasible_rate: [100.0000%, 100.0000%], out: 117.1454, out_nodes: 46, Feasible_dist: 0.0000, Entropy: 2.5111
+[2026-09-04 02:56:49] utils.py(229) : Diversity Loss: 9.9282, Constructive RL loss: 456.2842, Slack loss: 0.5075 (adds 46.58)
+[2026-09-04 02:56:52] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:56:52] utils.py(229) : [Construction] Score: 28.3129,  Loss: 451.4109,  Infeasible_rate: [100.0000%, 100.0000%], out: 59.4220, out_nodes: 20, Feasible_dist: 0.0000
+[2026-09-04 02:56:52] utils.py(229) : [Improvement] Score: 124.1743 [BSF: 123.1333],  Loss: 7.2475,  Infeasible_rate: [100.0000%, 100.0000%], out: 116.0073, out_nodes: 46, Feasible_dist: 0.0000, Entropy: 2.5141
+[2026-09-04 02:56:52] utils.py(229) : Diversity Loss: 9.9431, Constructive RL loss: 451.5103, Slack loss: 0.5045 (adds 46.13)
+[2026-09-04 02:56:55] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:56:55] utils.py(229) : [Construction] Score: 28.4163,  Loss: 446.7415,  Infeasible_rate: [100.0000%, 100.0000%], out: 58.8393, out_nodes: 20, Feasible_dist: 0.0000
+[2026-09-04 02:56:55] utils.py(229) : [Improvement] Score: 123.4962 [BSF: 122.4623],  Loss: 7.1753,  Infeasible_rate: [100.0000%, 100.0000%], out: 114.8852, out_nodes: 46, Feasible_dist: 0.0000, Entropy: 2.5176
+[2026-09-04 02:56:55] utils.py(229) : Diversity Loss: 9.9587, Constructive RL loss: 446.8411, Slack loss: 0.5014 (adds 45.68)
+[2026-09-04 02:56:58] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:56:58] utils.py(229) : [Construction] Score: 28.5062,  Loss: 442.1283,  Infeasible_rate: [100.0000%, 100.0000%], out: 58.2735, out_nodes: 20, Feasible_dist: 0.0000
+[2026-09-04 02:56:58] utils.py(229) : [Improvement] Score: 122.8212 [BSF: 121.7967],  Loss: 7.1028,  Infeasible_rate: [100.0000%, 100.0000%], out: 113.7900, out_nodes: 45, Feasible_dist: 0.0000, Entropy: 2.5214
+[2026-09-04 02:56:58] utils.py(229) : Diversity Loss: 9.9744, Constructive RL loss: 442.2280, Slack loss: 0.4984 (adds 45.25)
+[2026-09-04 02:57:01] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:57:01] utils.py(229) : [Construction] Score: 28.5804,  Loss: 437.5477,  Infeasible_rate: [100.0000%, 100.0000%], out: 57.7229, out_nodes: 20, Feasible_dist: 0.0000
+[2026-09-04 02:57:01] utils.py(229) : [Improvement] Score: 122.1459 [BSF: 121.1305],  Loss: 7.0334,  Infeasible_rate: [100.0000%, 100.0000%], out: 112.7202, out_nodes: 45, Feasible_dist: 0.0000, Entropy: 2.5252
+[2026-09-04 02:57:01] utils.py(229) : Diversity Loss: 9.9919, Constructive RL loss: 437.6476, Slack loss: 0.4955 (adds 44.83)
+[2026-09-04 02:57:04] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:57:04] utils.py(229) : [Construction] Score: 28.6561,  Loss: 433.0635,  Infeasible_rate: [100.0000%, 100.0000%], out: 57.1777, out_nodes: 20, Feasible_dist: 0.0000
+[2026-09-04 02:57:04] utils.py(229) : [Improvement] Score: 121.4851 [BSF: 120.4791],  Loss: 6.9651,  Infeasible_rate: [100.0000%, 100.0000%], out: 111.6667, out_nodes: 45, Feasible_dist: 0.0000, Entropy: 2.5286
+[2026-09-04 02:57:04] utils.py(229) : Diversity Loss: 10.0062, Constructive RL loss: 433.1635, Slack loss: 0.4927 (adds 44.42)
+[2026-09-04 02:57:07] utils.py(229) : Rank 0 >> Epoch 1: Train (60%)
+[2026-09-04 02:57:07] utils.py(229) : [Construction] Score: 28.7460,  Loss: 428.6643,  Infeasible_rate: [100.0000%, 100.0000%], out: 56.6435, out_nodes: 19, Feasible_dist: 0.0000
+[2026-09-04 02:57:07] utils.py(229) : [Improvement] Score: 120.8537 [BSF: 119.8563],  Loss: 6.8984,  Infeasible_rate: [100.0000%, 100.0000%], out: 110.6345, out_nodes: 44, Feasible_dist: 0.0000, Entropy: 2.5324
+[2026-09-04 02:57:07] utils.py(229) : Diversity Loss: 10.0217, Constructive RL loss: 428.7645, Slack loss: 0.4898 (adds 44.01)
+[2026-09-04 02:57:10] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:10] utils.py(229) : [Construction] Score: 28.8522,  Loss: 424.4501,  Infeasible_rate: [100.0000%, 100.0000%], out: 56.1107, out_nodes: 19, Feasible_dist: 0.0000
+[2026-09-04 02:57:10] utils.py(229) : [Improvement] Score: 120.2331 [BSF: 119.2428],  Loss: 6.8326,  Infeasible_rate: [100.0000%, 100.0000%], out: 109.6116, out_nodes: 44, Feasible_dist: 0.0000, Entropy: 2.5356
+[2026-09-04 02:57:10] utils.py(229) : Diversity Loss: 10.0348, Constructive RL loss: 424.5505, Slack loss: 0.4869 (adds 43.61)
+[2026-09-04 02:57:13] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:13] utils.py(229) : [Construction] Score: 28.9600,  Loss: 420.2871,  Infeasible_rate: [100.0000%, 100.0000%], out: 55.5896, out_nodes: 19, Feasible_dist: 0.0000
+[2026-09-04 02:57:13] utils.py(229) : [Improvement] Score: 119.6396 [BSF: 118.6580],  Loss: 6.7684,  Infeasible_rate: [100.0000%, 100.0000%], out: 108.6101, out_nodes: 44, Feasible_dist: 0.0000, Entropy: 2.5387
+[2026-09-04 02:57:13] utils.py(229) : Diversity Loss: 10.0485, Constructive RL loss: 420.3876, Slack loss: 0.4841 (adds 43.21)
+[2026-09-04 02:57:16] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:16] utils.py(229) : [Construction] Score: 29.0559,  Loss: 416.2226,  Infeasible_rate: [100.0000%, 100.0000%], out: 55.0779, out_nodes: 19, Feasible_dist: 0.0000
+[2026-09-04 02:57:16] utils.py(229) : [Improvement] Score: 119.0318 [BSF: 118.0535],  Loss: 6.7045,  Infeasible_rate: [100.0000%, 100.0000%], out: 107.6273, out_nodes: 44, Feasible_dist: 0.0000, Entropy: 2.5418
+[2026-09-04 02:57:16] utils.py(229) : Diversity Loss: 10.0609, Constructive RL loss: 416.3233, Slack loss: 0.4813 (adds 42.82)
+[2026-09-04 02:57:19] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:19] utils.py(229) : [Construction] Score: 29.1459,  Loss: 412.2571,  Infeasible_rate: [100.0000%, 100.0000%], out: 54.5746, out_nodes: 19, Feasible_dist: 0.0000
+[2026-09-04 02:57:19] utils.py(229) : [Improvement] Score: 118.4435 [BSF: 117.4727],  Loss: 6.6421,  Infeasible_rate: [100.0000%, 100.0000%], out: 106.6610, out_nodes: 43, Feasible_dist: 0.0000, Entropy: 2.5446
+[2026-09-04 02:57:19] utils.py(229) : Diversity Loss: 10.0750, Constructive RL loss: 412.3578, Slack loss: 0.4786 (adds 42.44)
+[2026-09-04 02:57:22] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:22] utils.py(229) : [Construction] Score: 29.2542,  Loss: 408.3336,  Infeasible_rate: [100.0000%, 100.0000%], out: 54.0827, out_nodes: 19, Feasible_dist: 0.0000
+[2026-09-04 02:57:22] utils.py(229) : [Improvement] Score: 117.8814 [BSF: 116.9175],  Loss: 6.5803,  Infeasible_rate: [100.0000%, 100.0000%], out: 105.7147, out_nodes: 43, Feasible_dist: 0.0000, Entropy: 2.5474
+[2026-09-04 02:57:22] utils.py(229) : Diversity Loss: 10.0905, Constructive RL loss: 408.4345, Slack loss: 0.4758 (adds 42.06)
+[2026-09-04 02:57:25] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:25] utils.py(229) : [Construction] Score: 29.3452,  Loss: 404.5084,  Infeasible_rate: [100.0000%, 100.0000%], out: 53.5975, out_nodes: 18, Feasible_dist: 0.0000
+[2026-09-04 02:57:25] utils.py(229) : [Improvement] Score: 117.3041 [BSF: 116.3447],  Loss: 6.5205,  Infeasible_rate: [100.0000%, 100.0000%], out: 104.7843, out_nodes: 43, Feasible_dist: 0.0000, Entropy: 2.5499
+[2026-09-04 02:57:25] utils.py(229) : Diversity Loss: 10.1047, Constructive RL loss: 404.6095, Slack loss: 0.4731 (adds 41.69)
+[2026-09-04 02:57:27] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:27] utils.py(229) : [Construction] Score: 29.4294,  Loss: 400.7345,  Infeasible_rate: [100.0000%, 100.0000%], out: 53.1237, out_nodes: 18, Feasible_dist: 0.0000
+[2026-09-04 02:57:27] utils.py(229) : [Improvement] Score: 116.7539 [BSF: 115.7994],  Loss: 6.4625,  Infeasible_rate: [100.0000%, 100.0000%], out: 103.8775, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5522
+[2026-09-04 02:57:27] utils.py(229) : Diversity Loss: 10.1177, Constructive RL loss: 400.8357, Slack loss: 0.4704 (adds 41.33)
+[2026-09-04 02:57:31] utils.py(229) : Rank 0 >> Epoch 1: Train (65%)
+[2026-09-04 02:57:31] utils.py(229) : [Construction] Score: 29.5420,  Loss: 397.1251,  Infeasible_rate: [100.0000%, 100.0000%], out: 52.6554, out_nodes: 18, Feasible_dist: 0.0000
+[2026-09-04 02:57:31] utils.py(229) : [Improvement] Score: 116.2450 [BSF: 115.2959],  Loss: 6.4052,  Infeasible_rate: [100.0000%, 100.0000%], out: 102.9802, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5547
+[2026-09-04 02:57:31] utils.py(229) : Diversity Loss: 10.1292, Constructive RL loss: 397.2264, Slack loss: 0.4678 (adds 40.96)
+[2026-09-04 02:57:34] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:34] utils.py(229) : [Construction] Score: 29.6320,  Loss: 393.5209,  Infeasible_rate: [100.0000%, 100.0000%], out: 52.1916, out_nodes: 18, Feasible_dist: 0.0000
+[2026-09-04 02:57:34] utils.py(229) : [Improvement] Score: 115.6902 [BSF: 114.7470],  Loss: 6.3487,  Infeasible_rate: [100.0000%, 100.0000%], out: 102.0914, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5580
+[2026-09-04 02:57:34] utils.py(229) : Diversity Loss: 10.1426, Constructive RL loss: 393.6224, Slack loss: 0.4652 (adds 40.61)
+[2026-09-04 02:57:37] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:37] utils.py(229) : [Construction] Score: 29.7305,  Loss: 389.9972,  Infeasible_rate: [100.0000%, 100.0000%], out: 51.7374, out_nodes: 18, Feasible_dist: 0.0000
+[2026-09-04 02:57:37] utils.py(229) : [Improvement] Score: 115.1631 [BSF: 114.2262],  Loss: 6.2925,  Infeasible_rate: [100.0000%, 100.0000%], out: 101.2210, out_nodes: 42, Feasible_dist: 0.0000, Entropy: 2.5608
+[2026-09-04 02:57:37] utils.py(229) : Diversity Loss: 10.1549, Constructive RL loss: 390.0988, Slack loss: 0.4626 (adds 40.26)
+[2026-09-04 02:57:40] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:40] utils.py(229) : [Construction] Score: 29.8243,  Loss: 386.5327,  Infeasible_rate: [100.0000%, 100.0000%], out: 51.2917, out_nodes: 18, Feasible_dist: 0.0000
+[2026-09-04 02:57:40] utils.py(229) : [Improvement] Score: 114.6447 [BSF: 113.7127],  Loss: 6.2382,  Infeasible_rate: [100.0000%, 100.0000%], out: 100.3659, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5631
+[2026-09-04 02:57:40] utils.py(229) : Diversity Loss: 10.1661, Constructive RL loss: 386.6344, Slack loss: 0.4601 (adds 39.92)
+[2026-09-04 02:57:42] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:42] utils.py(229) : [Construction] Score: 29.9358,  Loss: 383.1366,  Infeasible_rate: [100.0000%, 100.0000%], out: 50.8534, out_nodes: 18, Feasible_dist: 0.0000
+[2026-09-04 02:57:42] utils.py(229) : [Improvement] Score: 114.1572 [BSF: 113.2266],  Loss: 6.1848,  Infeasible_rate: [100.0000%, 100.0000%], out: 99.5265, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5655
+[2026-09-04 02:57:42] utils.py(229) : Diversity Loss: 10.1781, Constructive RL loss: 383.2384, Slack loss: 0.4575 (adds 39.58)
+[2026-09-04 02:57:45] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:45] utils.py(229) : [Construction] Score: 30.0339,  Loss: 379.7914,  Infeasible_rate: [100.0000%, 100.0000%], out: 50.4251, out_nodes: 17, Feasible_dist: 0.0000
+[2026-09-04 02:57:45] utils.py(229) : [Improvement] Score: 113.6649 [BSF: 112.7374],  Loss: 6.1311,  Infeasible_rate: [100.0000%, 100.0000%], out: 98.7018, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5677
+[2026-09-04 02:57:45] utils.py(229) : Diversity Loss: 10.1914, Constructive RL loss: 379.8933, Slack loss: 0.4551 (adds 39.25)
+[2026-09-04 02:57:48] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:48] utils.py(229) : [Construction] Score: 30.1403,  Loss: 376.4641,  Infeasible_rate: [100.0000%, 100.0000%], out: 50.0032, out_nodes: 17, Feasible_dist: 0.0000
+[2026-09-04 02:57:48] utils.py(229) : [Improvement] Score: 113.1976 [BSF: 112.2746],  Loss: 6.0800,  Infeasible_rate: [100.0000%, 100.0000%], out: 97.8927, out_nodes: 41, Feasible_dist: 0.0000, Entropy: 2.5702
+[2026-09-04 02:57:48] utils.py(229) : Diversity Loss: 10.2050, Constructive RL loss: 376.5661, Slack loss: 0.4526 (adds 38.93)
+[2026-09-04 02:57:51] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:51] utils.py(229) : [Construction] Score: 30.2439,  Loss: 373.2166,  Infeasible_rate: [100.0000%, 100.0000%], out: 49.5865, out_nodes: 17, Feasible_dist: 0.0000
+[2026-09-04 02:57:51] utils.py(229) : [Improvement] Score: 112.7278 [BSF: 111.8106],  Loss: 6.0285,  Infeasible_rate: [100.0000%, 100.0000%], out: 97.0952, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5723
+[2026-09-04 02:57:51] utils.py(229) : Diversity Loss: 10.2173, Constructive RL loss: 373.3188, Slack loss: 0.4501 (adds 38.61)
+[2026-09-04 02:57:54] utils.py(229) : Rank 0 >> Epoch 1: Train (70%)
+[2026-09-04 02:57:54] utils.py(229) : [Construction] Score: 30.3318,  Loss: 370.0088,  Infeasible_rate: [100.0000%, 100.0000%], out: 49.1770, out_nodes: 17, Feasible_dist: 0.0000
+[2026-09-04 02:57:54] utils.py(229) : [Improvement] Score: 112.2457 [BSF: 111.3329],  Loss: 5.9787,  Infeasible_rate: [100.0000%, 100.0000%], out: 96.3071, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5750
+[2026-09-04 02:57:54] utils.py(229) : Diversity Loss: 10.2269, Constructive RL loss: 370.1110, Slack loss: 0.4479 (adds 38.30)
+[2026-09-04 02:57:57] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:57:57] utils.py(229) : [Construction] Score: 30.4463,  Loss: 366.9064,  Infeasible_rate: [100.0000%, 100.0000%], out: 48.7717, out_nodes: 17, Feasible_dist: 0.0000
+[2026-09-04 02:57:57] utils.py(229) : [Improvement] Score: 111.8034 [BSF: 110.8967],  Loss: 5.9291,  Infeasible_rate: [100.0000%, 100.0000%], out: 95.5306, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5773
+[2026-09-04 02:57:57] utils.py(229) : Diversity Loss: 10.2380, Constructive RL loss: 367.0088, Slack loss: 0.4455 (adds 37.98)
+[2026-09-04 02:58:00] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:58:00] utils.py(229) : [Construction] Score: 30.5250,  Loss: 363.8385,  Infeasible_rate: [100.0000%, 100.0000%], out: 48.3725, out_nodes: 17, Feasible_dist: 0.0000
+[2026-09-04 02:58:00] utils.py(229) : [Improvement] Score: 111.3285 [BSF: 110.4269],  Loss: 5.8807,  Infeasible_rate: [100.0000%, 100.0000%], out: 94.7655, out_nodes: 40, Feasible_dist: 0.0000, Entropy: 2.5800
+[2026-09-04 02:58:00] utils.py(229) : Diversity Loss: 10.2480, Constructive RL loss: 363.9410, Slack loss: 0.4432 (adds 37.68)
+[2026-09-04 02:58:03] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:58:03] utils.py(229) : [Construction] Score: 30.6101,  Loss: 360.8127,  Infeasible_rate: [100.0000%, 100.0000%], out: 47.9798, out_nodes: 17, Feasible_dist: 0.0000
+[2026-09-04 02:58:03] utils.py(229) : [Improvement] Score: 110.8663 [BSF: 109.9678],  Loss: 5.8329,  Infeasible_rate: [100.0000%, 100.0000%], out: 94.0151, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5815
+[2026-09-04 02:58:03] utils.py(229) : Diversity Loss: 10.2607, Constructive RL loss: 360.9153, Slack loss: 0.4409 (adds 37.38)
+[2026-09-04 02:58:06] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:58:06] utils.py(229) : [Construction] Score: 30.7070,  Loss: 357.8399,  Infeasible_rate: [100.0000%, 100.0000%], out: 47.5940, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:06] utils.py(229) : [Improvement] Score: 110.4277 [BSF: 109.5327],  Loss: 5.7859,  Infeasible_rate: [100.0000%, 100.0000%], out: 93.2766, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5843
+[2026-09-04 02:58:06] utils.py(229) : Diversity Loss: 10.2699, Constructive RL loss: 357.9426, Slack loss: 0.4386 (adds 37.08)
+[2026-09-04 02:58:09] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:58:09] utils.py(229) : [Construction] Score: 30.8044,  Loss: 354.9109,  Infeasible_rate: [100.0000%, 100.0000%], out: 47.2165, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:09] utils.py(229) : [Improvement] Score: 109.9981 [BSF: 109.1071],  Loss: 5.7394,  Infeasible_rate: [100.0000%, 100.0000%], out: 92.5510, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5864
+[2026-09-04 02:58:09] utils.py(229) : Diversity Loss: 10.2833, Constructive RL loss: 355.0137, Slack loss: 0.4363 (adds 36.79)
+[2026-09-04 02:58:12] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:58:12] utils.py(229) : [Construction] Score: 30.8957,  Loss: 352.0221,  Infeasible_rate: [100.0000%, 100.0000%], out: 46.8438, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:12] utils.py(229) : [Improvement] Score: 109.5689 [BSF: 108.6820],  Loss: 5.6939,  Infeasible_rate: [100.0000%, 100.0000%], out: 91.8354, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5884
+[2026-09-04 02:58:12] utils.py(229) : Diversity Loss: 10.2934, Constructive RL loss: 352.1250, Slack loss: 0.4341 (adds 36.51)
+[2026-09-04 02:58:15] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:58:15] utils.py(229) : [Construction] Score: 30.9730,  Loss: 349.2075,  Infeasible_rate: [100.0000%, 100.0000%], out: 46.4752, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:15] utils.py(229) : [Improvement] Score: 109.1373 [BSF: 108.2531],  Loss: 5.6491,  Infeasible_rate: [100.0000%, 100.0000%], out: 91.1316, out_nodes: 39, Feasible_dist: 0.0000, Entropy: 2.5904
+[2026-09-04 02:58:15] utils.py(229) : Diversity Loss: 10.3036, Constructive RL loss: 349.3105, Slack loss: 0.4320 (adds 36.23)
+[2026-09-04 02:58:18] utils.py(229) : Rank 0 >> Epoch 1: Train (75%)
+[2026-09-04 02:58:18] utils.py(229) : [Construction] Score: 31.0835,  Loss: 346.4335,  Infeasible_rate: [100.0000%, 100.0000%], out: 46.1139, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:18] utils.py(229) : [Improvement] Score: 108.7500 [BSF: 107.8716],  Loss: 5.6053,  Infeasible_rate: [100.0000%, 100.0000%], out: 90.4367, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5927
+[2026-09-04 02:58:18] utils.py(229) : Diversity Loss: 10.3128, Constructive RL loss: 346.5367, Slack loss: 0.4299 (adds 35.95)
+[2026-09-04 02:58:21] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:21] utils.py(229) : [Construction] Score: 31.1839,  Loss: 343.7171,  Infeasible_rate: [100.0000%, 100.0000%], out: 45.7570, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:21] utils.py(229) : [Improvement] Score: 108.3552 [BSF: 107.4818],  Loss: 5.5617,  Infeasible_rate: [100.0000%, 100.0000%], out: 89.7530, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5952
+[2026-09-04 02:58:21] utils.py(229) : Diversity Loss: 10.3213, Constructive RL loss: 343.8203, Slack loss: 0.4278 (adds 35.67)
+[2026-09-04 02:58:24] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:24] utils.py(229) : [Construction] Score: 31.2684,  Loss: 341.0262,  Infeasible_rate: [100.0000%, 100.0000%], out: 45.4060, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:24] utils.py(229) : [Improvement] Score: 107.9471 [BSF: 107.0779],  Loss: 5.5185,  Infeasible_rate: [100.0000%, 100.0000%], out: 89.0786, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5972
+[2026-09-04 02:58:24] utils.py(229) : Diversity Loss: 10.3323, Constructive RL loss: 341.1295, Slack loss: 0.4258 (adds 35.40)
+[2026-09-04 02:58:26] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:26] utils.py(229) : [Construction] Score: 31.3462,  Loss: 338.3650,  Infeasible_rate: [100.0000%, 100.0000%], out: 45.0601, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:26] utils.py(229) : [Improvement] Score: 107.5360 [BSF: 106.6717],  Loss: 5.4767,  Infeasible_rate: [100.0000%, 100.0000%], out: 88.4142, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.5993
+[2026-09-04 02:58:26] utils.py(229) : Diversity Loss: 10.3430, Constructive RL loss: 338.4684, Slack loss: 0.4237 (adds 35.14)
+[2026-09-04 02:58:29] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:29] utils.py(229) : [Construction] Score: 31.4124,  Loss: 335.7674,  Infeasible_rate: [100.0000%, 100.0000%], out: 44.7188, out_nodes: 16, Feasible_dist: 0.0000
+[2026-09-04 02:58:29] utils.py(229) : [Improvement] Score: 107.1188 [BSF: 106.2565],  Loss: 5.4350,  Infeasible_rate: [100.0000%, 100.0000%], out: 87.7583, out_nodes: 38, Feasible_dist: 0.0000, Entropy: 2.6011
+[2026-09-04 02:58:29] utils.py(229) : Diversity Loss: 10.3545, Constructive RL loss: 335.8709, Slack loss: 0.4217 (adds 34.87)
+[2026-09-04 02:58:32] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:32] utils.py(229) : [Construction] Score: 31.4887,  Loss: 333.2120,  Infeasible_rate: [100.0000%, 100.0000%], out: 44.3830, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:32] utils.py(229) : [Improvement] Score: 106.7221 [BSF: 105.8633],  Loss: 5.3940,  Infeasible_rate: [100.0000%, 100.0000%], out: 87.1139, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.6034
+[2026-09-04 02:58:32] utils.py(229) : Diversity Loss: 10.3642, Constructive RL loss: 333.3157, Slack loss: 0.4197 (adds 34.62)
+[2026-09-04 02:58:35] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:35] utils.py(229) : [Construction] Score: 31.5796,  Loss: 330.6801,  Infeasible_rate: [100.0000%, 100.0000%], out: 44.0522, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:35] utils.py(229) : [Improvement] Score: 106.3432 [BSF: 105.4888],  Loss: 5.3541,  Infeasible_rate: [100.0000%, 100.0000%], out: 86.4795, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.6051
+[2026-09-04 02:58:35] utils.py(229) : Diversity Loss: 10.3733, Constructive RL loss: 330.7838, Slack loss: 0.4177 (adds 34.36)
+[2026-09-04 02:58:38] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:38] utils.py(229) : [Construction] Score: 31.6490,  Loss: 328.1679,  Infeasible_rate: [100.0000%, 100.0000%], out: 43.7264, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:38] utils.py(229) : [Improvement] Score: 105.9525 [BSF: 105.1029],  Loss: 5.3142,  Infeasible_rate: [100.0000%, 100.0000%], out: 85.8561, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.6072
+[2026-09-04 02:58:38] utils.py(229) : Diversity Loss: 10.3834, Constructive RL loss: 328.2717, Slack loss: 0.4158 (adds 34.11)
+[2026-09-04 02:58:41] utils.py(229) : Rank 0 >> Epoch 1: Train (80%)
+[2026-09-04 02:58:41] utils.py(229) : [Construction] Score: 31.7395,  Loss: 325.7320,  Infeasible_rate: [100.0000%, 100.0000%], out: 43.4049, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:41] utils.py(229) : [Improvement] Score: 105.5924 [BSF: 104.7462],  Loss: 5.2749,  Infeasible_rate: [100.0000%, 100.0000%], out: 85.2398, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.6093
+[2026-09-04 02:58:41] utils.py(229) : Diversity Loss: 10.3911, Constructive RL loss: 325.8359, Slack loss: 0.4139 (adds 33.86)
+[2026-09-04 02:58:44] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:58:44] utils.py(229) : [Construction] Score: 31.8245,  Loss: 323.3465,  Infeasible_rate: [100.0000%, 100.0000%], out: 43.0891, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:44] utils.py(229) : [Improvement] Score: 105.2235 [BSF: 104.3818],  Loss: 5.2361,  Infeasible_rate: [100.0000%, 100.0000%], out: 84.6309, out_nodes: 37, Feasible_dist: 0.0000, Entropy: 2.6113
+[2026-09-04 02:58:44] utils.py(229) : Diversity Loss: 10.3990, Constructive RL loss: 323.4505, Slack loss: 0.4120 (adds 33.62)
+[2026-09-04 02:58:47] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:58:47] utils.py(229) : [Construction] Score: 31.8887,  Loss: 320.9744,  Infeasible_rate: [100.0000%, 100.0000%], out: 42.7771, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:47] utils.py(229) : [Improvement] Score: 104.8446 [BSF: 104.0069],  Loss: 5.1981,  Infeasible_rate: [100.0000%, 100.0000%], out: 84.0317, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.6131
+[2026-09-04 02:58:47] utils.py(229) : Diversity Loss: 10.4081, Constructive RL loss: 321.0785, Slack loss: 0.4101 (adds 33.38)
+[2026-09-04 02:58:50] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:58:50] utils.py(229) : [Construction] Score: 31.9539,  Loss: 318.6304,  Infeasible_rate: [100.0000%, 100.0000%], out: 42.4696, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:50] utils.py(229) : [Improvement] Score: 104.4719 [BSF: 103.6392],  Loss: 5.1610,  Infeasible_rate: [100.0000%, 100.0000%], out: 83.4407, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.6152
+[2026-09-04 02:58:50] utils.py(229) : Diversity Loss: 10.4174, Constructive RL loss: 318.7346, Slack loss: 0.4083 (adds 33.14)
+[2026-09-04 02:58:53] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:58:53] utils.py(229) : [Construction] Score: 32.0255,  Loss: 316.3267,  Infeasible_rate: [100.0000%, 100.0000%], out: 42.1662, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:53] utils.py(229) : [Improvement] Score: 104.1189 [BSF: 103.2875],  Loss: 5.1243,  Infeasible_rate: [100.0000%, 100.0000%], out: 82.8585, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.6170
+[2026-09-04 02:58:53] utils.py(229) : Diversity Loss: 10.4254, Constructive RL loss: 316.4309, Slack loss: 0.4065 (adds 32.91)
+[2026-09-04 02:58:56] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:58:56] utils.py(229) : [Construction] Score: 32.0914,  Loss: 314.0523,  Infeasible_rate: [100.0000%, 100.0000%], out: 41.8672, out_nodes: 15, Feasible_dist: 0.0000
+[2026-09-04 02:58:56] utils.py(229) : [Improvement] Score: 103.7596 [BSF: 102.9300],  Loss: 5.0878,  Infeasible_rate: [100.0000%, 100.0000%], out: 82.2847, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.6191
+[2026-09-04 02:58:56] utils.py(229) : Diversity Loss: 10.4325, Constructive RL loss: 314.1566, Slack loss: 0.4048 (adds 32.68)
+[2026-09-04 02:58:59] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:58:59] utils.py(229) : [Construction] Score: 32.1677,  Loss: 311.8106,  Infeasible_rate: [100.0000%, 100.0000%], out: 41.5728, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:58:59] utils.py(229) : [Improvement] Score: 103.4209 [BSF: 102.5939],  Loss: 5.0517,  Infeasible_rate: [100.0000%, 100.0000%], out: 81.7206, out_nodes: 36, Feasible_dist: 0.0000, Entropy: 2.6208
+[2026-09-04 02:58:59] utils.py(229) : Diversity Loss: 10.4417, Constructive RL loss: 311.9150, Slack loss: 0.4030 (adds 32.45)
+[2026-09-04 02:59:02] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:59:02] utils.py(229) : [Construction] Score: 32.2430,  Loss: 309.6054,  Infeasible_rate: [100.0000%, 100.0000%], out: 41.2824, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:02] utils.py(229) : [Improvement] Score: 103.0837 [BSF: 102.2608],  Loss: 5.0165,  Infeasible_rate: [100.0000%, 100.0000%], out: 81.1633, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6225
+[2026-09-04 02:59:02] utils.py(229) : Diversity Loss: 10.4487, Constructive RL loss: 309.7099, Slack loss: 0.4013 (adds 32.23)
+[2026-09-04 02:59:05] utils.py(229) : Rank 0 >> Epoch 1: Train (85%)
+[2026-09-04 02:59:05] utils.py(229) : [Construction] Score: 32.3207,  Loss: 307.4163,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.9962, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:05] utils.py(229) : [Improvement] Score: 102.7519 [BSF: 101.9342],  Loss: 4.9817,  Infeasible_rate: [100.0000%, 100.0000%], out: 80.6128, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6247
+[2026-09-04 02:59:05] utils.py(229) : Diversity Loss: 10.4559, Constructive RL loss: 307.5209, Slack loss: 0.3996 (adds 32.01)
+[2026-09-04 02:59:07] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:07] utils.py(229) : [Construction] Score: 32.3923,  Loss: 305.2600,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.7135, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:07] utils.py(229) : [Improvement] Score: 102.4257 [BSF: 101.6110],  Loss: 4.9477,  Infeasible_rate: [100.0000%, 100.0000%], out: 80.0718, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6266
+[2026-09-04 02:59:07] utils.py(229) : Diversity Loss: 10.4628, Constructive RL loss: 305.3646, Slack loss: 0.3978 (adds 31.79)
+[2026-09-04 02:59:10] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:10] utils.py(229) : [Construction] Score: 32.4763,  Loss: 303.1508,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.4349, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:10] utils.py(229) : [Improvement] Score: 102.1214 [BSF: 101.3101],  Loss: 4.9140,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.5365, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6283
+[2026-09-04 02:59:10] utils.py(229) : Diversity Loss: 10.4720, Constructive RL loss: 303.2555, Slack loss: 0.3961 (adds 31.57)
+[2026-09-04 02:59:13] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:13] utils.py(229) : [Construction] Score: 32.5465,  Loss: 301.0653,  Infeasible_rate: [100.0000%, 100.0000%], out: 40.1601, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:13] utils.py(229) : [Improvement] Score: 101.7982 [BSF: 100.9911],  Loss: 4.8807,  Infeasible_rate: [100.0000%, 100.0000%], out: 79.0072, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6299
+[2026-09-04 02:59:13] utils.py(229) : Diversity Loss: 10.4789, Constructive RL loss: 301.1701, Slack loss: 0.3944 (adds 31.36)
+[2026-09-04 02:59:16] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:16] utils.py(229) : [Construction] Score: 32.6203,  Loss: 299.0035,  Infeasible_rate: [100.0000%, 100.0000%], out: 39.8887, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:16] utils.py(229) : [Improvement] Score: 101.4883 [BSF: 100.6841],  Loss: 4.8475,  Infeasible_rate: [100.0000%, 100.0000%], out: 78.4866, out_nodes: 35, Feasible_dist: 0.0000, Entropy: 2.6315
+[2026-09-04 02:59:16] utils.py(229) : Diversity Loss: 10.4882, Constructive RL loss: 299.1084, Slack loss: 0.3927 (adds 31.15)
+[2026-09-04 02:59:19] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:19] utils.py(229) : [Construction] Score: 32.6985,  Loss: 296.9778,  Infeasible_rate: [100.0000%, 100.0000%], out: 39.6211, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:19] utils.py(229) : [Improvement] Score: 101.1857 [BSF: 100.3853],  Loss: 4.8152,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.9733, out_nodes: 34, Feasible_dist: 0.0000, Entropy: 2.6332
+[2026-09-04 02:59:19] utils.py(229) : Diversity Loss: 10.4948, Constructive RL loss: 297.0828, Slack loss: 0.3911 (adds 30.94)
+[2026-09-04 02:59:22] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:22] utils.py(229) : [Construction] Score: 32.7831,  Loss: 294.9740,  Infeasible_rate: [100.0000%, 100.0000%], out: 39.3573, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:22] utils.py(229) : [Improvement] Score: 100.9048 [BSF: 100.1059],  Loss: 4.7832,  Infeasible_rate: [100.0000%, 100.0000%], out: 77.4672, out_nodes: 34, Feasible_dist: 0.0000, Entropy: 2.6352
+[2026-09-04 02:59:22] utils.py(229) : Diversity Loss: 10.5014, Constructive RL loss: 295.0790, Slack loss: 0.3895 (adds 30.74)
+[2026-09-04 02:59:25] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:25] utils.py(229) : [Construction] Score: 32.8474,  Loss: 292.9954,  Infeasible_rate: [100.0000%, 100.0000%], out: 39.0968, out_nodes: 14, Feasible_dist: 0.0000
+[2026-09-04 02:59:25] utils.py(229) : [Improvement] Score: 100.5988 [BSF: 99.8014],  Loss: 4.7518,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.9656, out_nodes: 34, Feasible_dist: 0.0000, Entropy: 2.6367
+[2026-09-04 02:59:25] utils.py(229) : Diversity Loss: 10.5090, Constructive RL loss: 293.1005, Slack loss: 0.3879 (adds 30.54)
+[2026-09-04 02:59:28] utils.py(229) : Rank 0 >> Epoch 1: Train (90%)
+[2026-09-04 02:59:28] utils.py(229) : [Construction] Score: 32.9307,  Loss: 291.0278,  Infeasible_rate: [100.0000%, 100.0000%], out: 38.8399, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:28] utils.py(229) : [Improvement] Score: 100.3201 [BSF: 99.5242],  Loss: 4.7202,  Infeasible_rate: [100.0000%, 100.0000%], out: 76.4719, out_nodes: 34, Feasible_dist: 0.0000, Entropy: 2.6381
+[2026-09-04 02:59:28] utils.py(229) : Diversity Loss: 10.5177, Constructive RL loss: 291.1330, Slack loss: 0.3863 (adds 30.34)
+[2026-09-04 02:59:31] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:31] utils.py(229) : [Construction] Score: 33.0220,  Loss: 289.0949,  Infeasible_rate: [100.0000%, 100.0000%], out: 38.5861, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:31] utils.py(229) : [Improvement] Score: 100.0532 [BSF: 99.2601],  Loss: 4.6892,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.9839, out_nodes: 34, Feasible_dist: 0.0000, Entropy: 2.6394
+[2026-09-04 02:59:31] utils.py(229) : Diversity Loss: 10.5257, Constructive RL loss: 289.2002, Slack loss: 0.3846 (adds 30.15)
+[2026-09-04 02:59:34] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:34] utils.py(229) : [Construction] Score: 33.1113,  Loss: 287.1993,  Infeasible_rate: [100.0000%, 100.0000%], out: 38.3356, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:34] utils.py(229) : [Improvement] Score: 99.7867 [BSF: 98.9956],  Loss: 4.6590,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.5026, out_nodes: 34, Feasible_dist: 0.0000, Entropy: 2.6407
+[2026-09-04 02:59:34] utils.py(229) : Diversity Loss: 10.5334, Constructive RL loss: 287.3047, Slack loss: 0.3830 (adds 29.95)
+[2026-09-04 02:59:37] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:37] utils.py(229) : [Construction] Score: 33.1830,  Loss: 285.3277,  Infeasible_rate: [100.0000%, 100.0000%], out: 38.0883, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:37] utils.py(229) : [Improvement] Score: 99.5104 [BSF: 98.7189],  Loss: 4.6290,  Infeasible_rate: [100.0000%, 100.0000%], out: 75.0277, out_nodes: 34, Feasible_dist: 0.0000, Entropy: 2.6419
+[2026-09-04 02:59:37] utils.py(229) : Diversity Loss: 10.5393, Constructive RL loss: 285.4331, Slack loss: 0.3815 (adds 29.76)
+[2026-09-04 02:59:40] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:40] utils.py(229) : [Construction] Score: 33.2506,  Loss: 283.4822,  Infeasible_rate: [100.0000%, 100.0000%], out: 37.8442, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:40] utils.py(229) : [Improvement] Score: 99.2312 [BSF: 98.4407],  Loss: 4.5995,  Infeasible_rate: [100.0000%, 100.0000%], out: 74.5585, out_nodes: 33, Feasible_dist: 0.0000, Entropy: 2.6432
+[2026-09-04 02:59:40] utils.py(229) : Diversity Loss: 10.5447, Constructive RL loss: 283.5877, Slack loss: 0.3800 (adds 29.57)
+[2026-09-04 02:59:42] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:42] utils.py(229) : [Construction] Score: 33.3322,  Loss: 281.6602,  Infeasible_rate: [100.0000%, 100.0000%], out: 37.6031, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:42] utils.py(229) : [Improvement] Score: 98.9688 [BSF: 98.1822],  Loss: 4.5701,  Infeasible_rate: [100.0000%, 100.0000%], out: 74.0946, out_nodes: 33, Feasible_dist: 0.0000, Entropy: 2.6449
+[2026-09-04 02:59:42] utils.py(229) : Diversity Loss: 10.5523, Constructive RL loss: 281.7657, Slack loss: 0.3784 (adds 29.39)
+[2026-09-04 02:59:45] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:45] utils.py(229) : [Construction] Score: 33.4019,  Loss: 279.8454,  Infeasible_rate: [100.0000%, 100.0000%], out: 37.3654, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:45] utils.py(229) : [Improvement] Score: 98.6952 [BSF: 97.9118],  Loss: 4.5413,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.6367, out_nodes: 33, Feasible_dist: 0.0000, Entropy: 2.6463
+[2026-09-04 02:59:45] utils.py(229) : Diversity Loss: 10.5597, Constructive RL loss: 279.9510, Slack loss: 0.3769 (adds 29.20)
+[2026-09-04 02:59:48] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:48] utils.py(229) : [Construction] Score: 33.4739,  Loss: 278.0634,  Infeasible_rate: [100.0000%, 100.0000%], out: 37.1305, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:48] utils.py(229) : [Improvement] Score: 98.4331 [BSF: 97.6521],  Loss: 4.5121,  Infeasible_rate: [100.0000%, 100.0000%], out: 73.1847, out_nodes: 33, Feasible_dist: 0.0000, Entropy: 2.6477
+[2026-09-04 02:59:48] utils.py(229) : Diversity Loss: 10.5653, Constructive RL loss: 278.1691, Slack loss: 0.3755 (adds 29.02)
+[2026-09-04 02:59:51] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:51] utils.py(229) : [Construction] Score: 33.5359,  Loss: 276.3020,  Infeasible_rate: [100.0000%, 100.0000%], out: 36.8984, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:51] utils.py(229) : [Improvement] Score: 98.1618 [BSF: 97.3845],  Loss: 4.4842,  Infeasible_rate: [100.0000%, 100.0000%], out: 72.7390, out_nodes: 33, Feasible_dist: 0.0000, Entropy: 2.6491
+[2026-09-04 02:59:51] utils.py(229) : Diversity Loss: 10.5726, Constructive RL loss: 276.4078, Slack loss: 0.3740 (adds 28.84)
+[2026-09-04 02:59:53] utils.py(229) : Rank 0 >> Epoch 1: Train (95%)
+[2026-09-04 02:59:53] utils.py(229) : [Construction] Score: 33.5359,  Loss: 276.3020,  Infeasible_rate: [100.0000%, 100.0000%], out: 36.8984, out_nodes: 13, Feasible_dist: 0.0000
+[2026-09-04 02:59:53] utils.py(229) : [Improvement] Score: 98.1618 [BSF: 97.3845],  Loss: 4.4842,  Infeasible_rate: [100.0000%, 100.0000%], out: 72.7390, out_nodes: 33, Feasible_dist: 0.0000, Entropy: 2.6491
+[2026-09-04 02:59:53] utils.py(229) : Diversity Loss: 10.5726, Constructive RL loss: 276.4078, Slack loss: 0.3740 (adds 28.84)
+[2026-09-04 02:59:53] utils.py(229) : dummy_size: 35.1
+[2026-09-04 02:59:53] utils.py(229) : Rank 0 >> Epoch 1/10: Time Est.: Elapsed[6.82m], Remain[1.02h]
+[2026-09-04 02:59:53] utils.py(229) : >> Val 64 instances.
+[2026-09-04 02:59:53] utils.py(229) : >> validation eval type:
+[2026-09-04 02:59:53] utils.py(229) : argmax
+[2026-09-04 02:59:53] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 02:59:53] utils.py(229) : 0.3882486820220947
+[2026-09-04 02:59:53] utils.py(229) : ! solution size:
+[2026-09-04 02:59:53] utils.py(229) : torch.Size([256, 1, 100])
+[2026-09-04 02:59:56] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 02:59:56] utils.py(229) : 2.6629040241241455
+[2026-09-04 02:59:56] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 02:59:56] utils.py(229) : 0.34709930419921875
+[2026-09-04 02:59:56] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 02:59:56] utils.py(229) : 0.33092689514160156
+[2026-09-04 02:59:56] utils.py(229) : ! solution size:
+[2026-09-04 02:59:56] utils.py(229) : torch.Size([256, 1, 100])
+[2026-09-04 02:59:59] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 02:59:59] utils.py(229) : 2.638977527618408
+[2026-09-04 02:59:59] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 02:59:59] utils.py(229) : 0.3667457103729248
+[2026-09-04 02:59:59] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 02:59:59] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 02:59:59] utils.py(229) : >> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+[2026-09-04 02:59:59] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+[2026-09-04 02:59:59] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+[2026-09-04 02:59:59] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 47.6461, NO_AUG_Gap: 240.3509% --> AUG_Score: 46.088, AUG_Gap: 229.4505%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+[2026-09-04 02:59:59] utils.py(229) : ================================================================================
+[2026-09-04 03:07:49] utils.py(229) : Rank 0 >> Epoch 2: Train (95%)
+[2026-09-04 03:07:49] utils.py(229) : [Construction] Score: 46.1452,  Loss: -1.1416,  Infeasible_rate: [100.0000%, 100.0000%], out: 0.0007, out_nodes: 0, Feasible_dist: 0.0000
+[2026-09-04 03:07:49] utils.py(229) : [Improvement] Score: 57.0632 [BSF: 56.7306],  Loss: 0.0168,  Infeasible_rate: [100.0000%, 100.0000%], out: 1.5682, out_nodes: 10, Feasible_dist: 0.0000, Entropy: 2.8331
+[2026-09-04 03:07:49] utils.py(229) : Diversity Loss: 12.0014, Constructive RL loss: -1.0216, Slack loss: 0.1198 (adds 0.12)
+[2026-09-04 03:07:49] utils.py(229) : dummy_size: 49.125
+[2026-09-04 03:07:49] utils.py(229) : Rank 0 >> Epoch 2/10: Time Est.: Elapsed[14.76m], Remain[59.05m]
+[2026-09-04 03:07:49] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:07:49] utils.py(229) : >> Val 64 instances.
+[2026-09-04 03:07:49] utils.py(229) : >> validation eval type:
+[2026-09-04 03:07:49] utils.py(229) : argmax
+[2026-09-04 03:07:50] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:07:50] utils.py(229) : 0.3531472682952881
+[2026-09-04 03:07:50] utils.py(229) : ! solution size:
+[2026-09-04 03:07:50] utils.py(229) : torch.Size([256, 1, 100])
+[2026-09-04 03:07:52] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:07:52] utils.py(229) : 2.6231627464294434
+[2026-09-04 03:07:53] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:07:53] utils.py(229) : 0.3385326862335205
+[2026-09-04 03:07:53] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:07:53] utils.py(229) : 0.3318014144897461
+[2026-09-04 03:07:53] utils.py(229) : ! solution size:
+[2026-09-04 03:07:53] utils.py(229) : torch.Size([256, 1, 100])
+[2026-09-04 03:07:56] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:07:56] utils.py(229) : 2.6085689067840576
+[2026-09-04 03:07:56] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:07:56] utils.py(229) : 0.3455936908721924
+[2026-09-04 03:07:56] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:07:56] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:07:56] utils.py(229) : >> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+[2026-09-04 03:07:56] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+[2026-09-04 03:07:56] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+[2026-09-04 03:07:56] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 48.2657, NO_AUG_Gap: 244.7708% --> AUG_Score: 46.8755, AUG_Gap: 234.7933%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+[2026-09-04 03:07:56] utils.py(229) : ================================================================================
+[2026-09-04 03:15:37] utils.py(229) : Rank 0 >> Epoch 3: Train (95%)
+[2026-09-04 03:15:37] utils.py(229) : [Construction] Score: 45.6429,  Loss: -0.6617,  Infeasible_rate: [100.0000%, 100.0000%], out: 0.0001, out_nodes: 0, Feasible_dist: 0.0000
+[2026-09-04 03:15:37] utils.py(229) : [Improvement] Score: 56.2243 [BSF: 55.7683],  Loss: 0.0083,  Infeasible_rate: [100.0000%, 100.0000%], out: 1.8358, out_nodes: 10, Feasible_dist: 0.0000, Entropy: 2.8696
+[2026-09-04 03:15:37] utils.py(229) : Diversity Loss: 12.4338, Constructive RL loss: -0.5373, Slack loss: 0.1033 (adds 0.08)
+[2026-09-04 03:15:37] utils.py(229) : dummy_size: 47.93125
+[2026-09-04 03:15:37] utils.py(229) : Rank 0 >> Epoch 3/10: Time Est.: Elapsed[22.56m], Remain[52.65m]
+[2026-09-04 03:15:37] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:15:37] utils.py(229) : ================================================================================
+[2026-09-04 03:23:06] utils.py(229) : Rank 0 >> Epoch 4: Train (95%)
+[2026-09-04 03:23:06] utils.py(229) : [Construction] Score: 43.6165,  Loss: -1.6224,  Infeasible_rate: [100.0000%, 100.0000%], out: 0.0006, out_nodes: 0, Feasible_dist: 0.0000
+[2026-09-04 03:23:06] utils.py(229) : [Improvement] Score: 54.5780 [BSF: 53.7745],  Loss: -0.0060,  Infeasible_rate: [100.0000%, 100.0000%], out: 2.5065, out_nodes: 11, Feasible_dist: 0.0000, Entropy: 2.9115
+[2026-09-04 03:23:06] utils.py(229) : Diversity Loss: 12.4713, Constructive RL loss: -1.4977, Slack loss: 0.0904 (adds 0.16)
+[2026-09-04 03:23:06] utils.py(229) : dummy_size: 45.2
+[2026-09-04 03:23:06] utils.py(229) : Rank 0 >> Epoch 4/10: Time Est.: Elapsed[30.04m], Remain[45.06m]
+[2026-09-04 03:23:06] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:23:06] utils.py(229) : >> Val 64 instances.
+[2026-09-04 03:23:06] utils.py(229) : >> validation eval type:
+[2026-09-04 03:23:06] utils.py(229) : argmax
+[2026-09-04 03:23:06] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:23:06] utils.py(229) : 0.37114810943603516
+[2026-09-04 03:23:06] utils.py(229) : ! solution size:
+[2026-09-04 03:23:06] utils.py(229) : torch.Size([256, 1, 96])
+[2026-09-04 03:23:09] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:23:09] utils.py(229) : 2.482522964477539
+[2026-09-04 03:23:09] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:23:09] utils.py(229) : 0.3596987724304199
+[2026-09-04 03:23:09] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:23:09] utils.py(229) : 0.3589487075805664
+[2026-09-04 03:23:09] utils.py(229) : ! solution size:
+[2026-09-04 03:23:09] utils.py(229) : torch.Size([256, 1, 96])
+[2026-09-04 03:23:12] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:23:12] utils.py(229) : 2.485008716583252
+[2026-09-04 03:23:12] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:23:12] utils.py(229) : 0.3372330665588379
+[2026-09-04 03:23:12] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:23:12] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:23:12] utils.py(229) : >> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+[2026-09-04 03:23:12] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+[2026-09-04 03:23:12] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+[2026-09-04 03:23:12] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 45.7218, NO_AUG_Gap: 226.6767% --> AUG_Score: 44.0828, AUG_Gap: 215.2761%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+[2026-09-04 03:23:12] utils.py(229) : ================================================================================
+[2026-09-04 03:30:23] utils.py(229) : Rank 0 >> Epoch 5: Train (95%)
+[2026-09-04 03:30:23] utils.py(229) : [Construction] Score: 41.1647,  Loss: -3.1579,  Infeasible_rate: [100.0000%, 100.0000%], out: 0.0015, out_nodes: 0, Feasible_dist: 0.0000
+[2026-09-04 03:30:23] utils.py(229) : [Improvement] Score: 52.5052 [BSF: 51.1903],  Loss: -0.0170,  Infeasible_rate: [100.0000%, 100.0000%], out: 3.1578, out_nodes: 12, Feasible_dist: 0.0000, Entropy: 2.8527
+[2026-09-04 03:30:23] utils.py(229) : Diversity Loss: 12.3596, Constructive RL loss: -3.0343, Slack loss: 0.0780 (adds 0.32)
+[2026-09-04 03:30:23] utils.py(229) : dummy_size: 41.84375
+[2026-09-04 03:30:23] utils.py(229) : Rank 0 >> Epoch 5/10: Time Est.: Elapsed[37.32m], Remain[37.32m]
+[2026-09-04 03:30:23] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:30:23] utils.py(229) : Rank 0 >> Saving trained_model
+[2026-09-04 03:30:23] utils.py(229) : ================================================================================
+[2026-09-04 03:37:12] utils.py(229) : Rank 0 >> Epoch 6: Train (95%)
+[2026-09-04 03:37:12] utils.py(229) : [Construction] Score: 38.9195,  Loss: -4.8158,  Infeasible_rate: [99.9863%, 99.5312%], out: 0.0020, out_nodes: 0, Feasible_dist: 39.6348
+[2026-09-04 03:37:12] utils.py(229) : [Improvement] Score: 50.6965 [BSF: 48.8589],  Loss: -0.0146,  Infeasible_rate: [100.0000%, 100.0000%], out: 3.7563, out_nodes: 12, Feasible_dist: 0.0000, Entropy: 2.7758
+[2026-09-04 03:37:12] utils.py(229) : Diversity Loss: 12.2493, Constructive RL loss: -4.6933, Slack loss: 0.0658 (adds 0.48)
+[2026-09-04 03:37:12] utils.py(229) : dummy_size: 38.8375
+[2026-09-04 03:37:12] utils.py(229) : Rank 0 >> Epoch 6/10: Time Est.: Elapsed[44.14m], Remain[29.42m]
+[2026-09-04 03:37:12] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:37:12] utils.py(229) : >> Val 64 instances.
+[2026-09-04 03:37:12] utils.py(229) : >> validation eval type:
+[2026-09-04 03:37:12] utils.py(229) : argmax
+[2026-09-04 03:37:12] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:37:12] utils.py(229) : 0.32814526557922363
+[2026-09-04 03:37:12] utils.py(229) : ! solution size:
+[2026-09-04 03:37:12] utils.py(229) : torch.Size([256, 1, 89])
+[2026-09-04 03:37:14] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:37:14] utils.py(229) : 2.274725914001465
+[2026-09-04 03:37:15] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:37:15] utils.py(229) : 0.3204047679901123
+[2026-09-04 03:37:15] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:37:15] utils.py(229) : 0.29752278327941895
+[2026-09-04 03:37:15] utils.py(229) : ! solution size:
+[2026-09-04 03:37:15] utils.py(229) : torch.Size([256, 1, 89])
+[2026-09-04 03:37:17] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:37:17] utils.py(229) : 2.302677869796753
+[2026-09-04 03:37:18] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:37:18] utils.py(229) : 0.31569433212280273
+[2026-09-04 03:37:18] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:37:18] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:37:18] utils.py(229) : >> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+[2026-09-04 03:37:18] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 39.0595, NO_AUG_Gap: 190.0976% --> AUG_Score: 40.4956, AUG_Gap: 189.8332%; Infeasible rate: 99.609% (solution-level), 96.875% (instance-level)
+[2026-09-04 03:37:18] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 39.0595, NO_AUG_Gap: 190.0976% --> AUG_Score: 40.4956, AUG_Gap: 189.8332%; Infeasible rate: 99.609% (solution-level), 96.875% (instance-level)
+[2026-09-04 03:37:18] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 41.1334, NO_AUG_Gap: 194.4638% --> AUG_Score: 38.7942, AUG_Gap: 177.4969%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+[2026-09-04 03:37:18] utils.py(229) : ================================================================================
+[2026-09-04 03:43:48] utils.py(229) : Rank 0 >> Epoch 7: Train (95%)
+[2026-09-04 03:43:48] utils.py(229) : [Construction] Score: 36.2936,  Loss: -6.3288,  Infeasible_rate: [99.9649%, 98.8281%], out: 0.0065, out_nodes: 0, Feasible_dist: 37.2411
+[2026-09-04 03:43:48] utils.py(229) : [Improvement] Score: 48.4082 [BSF: 46.0484],  Loss: -0.0164,  Infeasible_rate: [100.0000%, 100.0000%], out: 4.3169, out_nodes: 13, Feasible_dist: 0.0000, Entropy: 2.6818
+[2026-09-04 03:43:48] utils.py(229) : Diversity Loss: 12.1873, Constructive RL loss: -6.2070, Slack loss: 0.0547 (adds 0.63)
+[2026-09-04 03:43:48] utils.py(229) : dummy_size: 35.3375
+[2026-09-04 03:43:48] utils.py(229) : Rank 0 >> Epoch 7/10: Time Est.: Elapsed[50.74m], Remain[21.75m]
+[2026-09-04 03:43:48] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:43:48] utils.py(229) : ================================================================================
+[2026-09-04 03:50:05] utils.py(229) : Rank 0 >> Epoch 8: Train (95%)
+[2026-09-04 03:50:05] utils.py(229) : [Construction] Score: 33.8830,  Loss: -7.1624,  Infeasible_rate: [99.7920%, 93.7891%], out: 0.0099, out_nodes: 0, Feasible_dist: 35.9943
+[2026-09-04 03:50:05] utils.py(229) : [Improvement] Score: 45.6994 [BSF: 43.2828],  Loss: -0.0115,  Infeasible_rate: [100.0000%, 100.0000%], out: 4.3977, out_nodes: 13, Feasible_dist: 0.0000, Entropy: 2.5995
+[2026-09-04 03:50:05] utils.py(229) : Diversity Loss: 12.3315, Constructive RL loss: -7.0390, Slack loss: 0.0460 (adds 0.72)
+[2026-09-04 03:50:05] utils.py(229) : dummy_size: 32.78125
+[2026-09-04 03:50:05] utils.py(229) : Rank 0 >> Epoch 8/10: Time Est.: Elapsed[57.03m], Remain[14.26m]
+[2026-09-04 03:50:05] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:50:05] utils.py(229) : >> Val 64 instances.
+[2026-09-04 03:50:05] utils.py(229) : >> validation eval type:
+[2026-09-04 03:50:05] utils.py(229) : argmax
+[2026-09-04 03:50:06] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:50:06] utils.py(229) : 0.3060617446899414
+[2026-09-04 03:50:06] utils.py(229) : ! solution size:
+[2026-09-04 03:50:06] utils.py(229) : torch.Size([256, 1, 83])
+[2026-09-04 03:50:08] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:50:08] utils.py(229) : 2.601327657699585
+[2026-09-04 03:50:09] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:50:09] utils.py(229) : 0.31531333923339844
+[2026-09-04 03:50:09] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 03:50:09] utils.py(229) : 0.29393887519836426
+[2026-09-04 03:50:09] utils.py(229) : ! solution size:
+[2026-09-04 03:50:09] utils.py(229) : torch.Size([256, 1, 85])
+[2026-09-04 03:50:11] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 03:50:11] utils.py(229) : 2.370966911315918
+[2026-09-04 03:50:12] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 03:50:12] utils.py(229) : 0.29387950897216797
+[2026-09-04 03:50:12] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:50:12] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 03:50:12] utils.py(229) : >> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+[2026-09-04 03:50:12] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: 34.8624, AUG_Gap: 159.1536%; Infeasible rate: 96.289% (solution-level), 76.562% (instance-level)
+[2026-09-04 03:50:12] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: 34.8624, AUG_Gap: 159.1536%; Infeasible rate: 96.289% (solution-level), 76.562% (instance-level)
+[2026-09-04 03:50:12] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 35.8639, NO_AUG_Gap: 156.7004% --> AUG_Score: 32.9196, AUG_Gap: 136.0371%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+[2026-09-04 03:50:12] utils.py(229) : ================================================================================
+[2026-09-04 03:56:20] utils.py(229) : Rank 0 >> Epoch 9: Train (95%)
+[2026-09-04 03:56:20] utils.py(229) : [Construction] Score: 31.9028,  Loss: -7.0668,  Infeasible_rate: [99.2627%, 80.9375%], out: 0.0102, out_nodes: 0, Feasible_dist: 33.9897
+[2026-09-04 03:56:20] utils.py(229) : [Improvement] Score: 43.1922 [BSF: 40.8992],  Loss: -0.0096,  Infeasible_rate: [100.0000%, 100.0000%], out: 4.1909, out_nodes: 12, Feasible_dist: 0.0000, Entropy: 2.5249
+[2026-09-04 03:56:20] utils.py(229) : Diversity Loss: 12.6880, Constructive RL loss: -6.9400, Slack loss: 0.0412 (adds 0.71)
+[2026-09-04 03:56:20] utils.py(229) : dummy_size: 31.3375
+[2026-09-04 03:56:20] utils.py(229) : Rank 0 >> Epoch 9/10: Time Est.: Elapsed[1.05h], Remain[7.03m]
+[2026-09-04 03:56:20] utils.py(229) : Rank 0 >> Best model of construction saved!
+[2026-09-04 03:56:20] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 03:56:20] utils.py(229) : ================================================================================
+[2026-09-04 04:02:18] utils.py(229) : Rank 0 >> Epoch 10: Train (95%)
+[2026-09-04 04:02:18] utils.py(229) : [Construction] Score: 29.7198,  Loss: -7.1484,  Infeasible_rate: [98.7597%, 72.9688%], out: 0.0128, out_nodes: 0, Feasible_dist: 32.0309
+[2026-09-04 04:02:18] utils.py(229) : [Improvement] Score: 40.8033 [BSF: 38.6301],  Loss: -0.0063,  Infeasible_rate: [100.0000%, 100.0000%], out: 4.1363, out_nodes: 12, Feasible_dist: 0.0000, Entropy: 2.4399
+[2026-09-04 04:02:18] utils.py(229) : Diversity Loss: 13.0669, Constructive RL loss: -7.0177, Slack loss: 0.0387 (adds 0.71)
+[2026-09-04 04:02:18] utils.py(229) : dummy_size: 29.31875
+[2026-09-04 04:02:18] utils.py(229) : Rank 0 >> Epoch 10/10: Time Est.: Elapsed[1.15h], Remain[0.00m]
+[2026-09-04 04:02:18] utils.py(229) : Rank 0 >> Best model of construction saved!
+[2026-09-04 04:02:18] utils.py(229) : Rank 0 >> Best model of improvement saved!
+[2026-09-04 04:02:18] utils.py(229) : Rank 0 >> Saving trained_model
+[2026-09-04 04:02:18] utils.py(229) : >> Val 64 instances.
+[2026-09-04 04:02:18] utils.py(229) : >> validation eval type:
+[2026-09-04 04:02:18] utils.py(229) : argmax
+[2026-09-04 04:02:18] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 04:02:18] utils.py(229) : 0.27840232849121094
+[2026-09-04 04:02:18] utils.py(229) : ! solution size:
+[2026-09-04 04:02:18] utils.py(229) : torch.Size([256, 1, 79])
+[2026-09-04 04:02:20] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 04:02:20] utils.py(229) : 2.0106425285339355
+[2026-09-04 04:02:21] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 04:02:21] utils.py(229) : 0.28505635261535645
+[2026-09-04 04:02:21] utils.py(229) : Rank 0 >> val construction time:
+[2026-09-04 04:02:21] utils.py(229) : 0.27556347846984863
+[2026-09-04 04:02:21] utils.py(229) : ! solution size:
+[2026-09-04 04:02:21] utils.py(229) : torch.Size([256, 1, 80])
+[2026-09-04 04:02:23] utils.py(229) : Rank 0 >> val improvement time:
+[2026-09-04 04:02:23] utils.py(229) : 2.037245273590088
+[2026-09-04 04:02:23] utils.py(229) : Rank 0 >> val reconstruction time [w. mask]:
+[2026-09-04 04:02:23] utils.py(229) : 0.27721166610717773
+[2026-09-04 04:02:23] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 04:02:23] utils.py(229) : >> Only feasible solutions are under consideration!
+[2026-09-04 04:02:23] utils.py(229) : >> Load optimal solution from: ./data/VRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+[2026-09-04 04:02:23] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 28.1379, NO_AUG_Gap: 121.8413% --> AUG_Score: 30.6282, AUG_Gap: 123.776%; Infeasible rate: 92.383% (solution-level), 60.938% (instance-level)
+[2026-09-04 04:02:23] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 28.1379, NO_AUG_Gap: 121.8413% --> AUG_Score: 30.6282, AUG_Gap: 123.776%; Infeasible rate: 92.383% (solution-level), 60.938% (instance-level)
+[2026-09-04 04:02:23] utils.py(229) : Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 31.1026, NO_AUG_Gap: 123.2222% --> AUG_Score: 29.1224, AUG_Gap: 108.9394%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+[2026-09-04 04:02:23] utils.py(229) : >> Finish VRPBLTW Training using SINGLE Model ...
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33m20260904_035255train_interface[0m at: [34mhttps://wandb.ai/shoraaa-vnu/unified_solver/runs/8kxpfzea[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20260904_025301-8kxpfzea/logs[0m
+[W904 04:02:26.997612231 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

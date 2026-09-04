@@ -1,0 +1,400 @@
+_wandb:
+    value:
+        cli_version: 0.28.1
+        e:
+            o14bxvycfrxyi4zdzmstzppomnb9dc2b:
+                args:
+                    - --problem
+                    - VRPBLTW
+                    - --problem_size
+                    - "50"
+                    - --epochs
+                    - "10"
+                    - --train_episodes
+                    - "2560"
+                    - --train_batch_size
+                    - "16"
+                    - --accumulation_steps
+                    - "8"
+                    - --improve_steps
+                    - "5"
+                    - --validation_improve_steps
+                    - "20"
+                    - --validation_batch_size
+                    - "32"
+                    - --val_episodes
+                    - "64"
+                    - --validation_interval
+                    - "2"
+                    - --model_save_interval
+                    - "5"
+                    - --val_dataset
+                    - vrpbltw50_uniform.pkl
+                    - --constraint_repr
+                    - attr
+                    - --seed
+                    - "1234"
+                    - --empty_cache_per_batch
+                    - "True"
+                    - --wandb_logger
+                    - "True"
+                    - --tb_logger
+                    - "False"
+                    - --log_dir
+                    - results/composition/train_attr
+                codePath: baselines/CaR-constraint/train.py
+                codePathLocal: train.py
+                cpu_count: 10
+                cpu_count_logical: 16
+                disk:
+                    /:
+                        total: "857947705344"
+                        used: "777271590912"
+                email: shoraaa@protonmail.com
+                executable: /home/shora/Research/PRISM/.venv/bin/python
+                git:
+                    commit: 84f06019c4f2c7bd1ae5d108e056a1ae28933e48
+                    remote: https://github.com/shoraaa/PRISM.git
+                gpu: AMD Radeon RX 6800
+                gpu_amd:
+                    - id: "0"
+                      maxPower: "203.0"
+                      model: "0x73bf"
+                      performanceLevel: auto
+                      series: AMD Radeon RX 6800
+                      sku: D4140XL
+                      uniqueId: "0x29c544c06137b302"
+                      vbiosVersion: 113-D4140XL-YT
+                      vendor: Advanced Micro Devices, Inc. [AMD/ATI]
+                gpu_count: 1
+                host: shora-pc
+                memory:
+                    total: "33472647168"
+                os: Linux-7.1.8-1-cachyos-x86_64-with-glibc2.44
+                program: /home/shora/Research/PRISM/baselines/CaR-constraint/train.py
+                python: CPython 3.13.13
+                root: /home/shora/Research/PRISM/baselines/CaR-constraint
+                startedAt: "2026-09-03T15:59:38.512932Z"
+                writerId: o14bxvycfrxyi4zdzmstzppomnb9dc2b
+        m: []
+        python_version: 3.13.13
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+            "2":
+                - 1
+                - 5
+                - 53
+            "3":
+                - 13
+                - 16
+                - 61
+            "4": 3.13.13
+            "5": 0.28.1
+            "12": 0.28.1
+            "13": linux-x86_64
+EAS_params:
+    value:
+        enable: false
+        iterations: 200
+        iterations_impr: 20
+        lambda: 0.05
+        lr: 0.0001
+        resample: true
+accumulation_steps:
+    value: 8
+active_constraints:
+    value:
+        - backhaul
+        - route_limit
+        - time_window
+amp_training:
+    value: true
+aspect_num:
+    value: 2
+aux_mask:
+    value: true
+backhaul_mask:
+    value: soft
+baseline:
+    value: group
+best_solution_path:
+    value: null
+bonus_for_construction:
+    value: false
+boundary:
+    value: 0.5
+checkpoint:
+    value: null
+clean_cache:
+    value: false
+coefficient:
+    value: 100
+consequence_hidden_dim:
+    value: 16
+consequence_interface:
+    value: false
+constraint_number:
+    value: 4
+constraint_repr:
+    value: attr
+decoder_layer_num:
+    value: 1
+diversity:
+    value: kendall_tau_distance
+diversity_loss:
+    value: true
+diversity_reward:
+    value: false
+diversity_weight:
+    value: 0.01
+dual_decoder:
+    value: false
+dummy_improve_selected:
+    value: random
+dummy_improve_steps:
+    value: 0
+dynamic_coefficient:
+    value: false
+embedding_dim:
+    value: 128
+empty_cache_per_batch:
+    value: true
+encoder_layer_num:
+    value: 6
+epochs:
+    value: 10
+epsilon:
+    value: 3.67
+epsilon_base:
+    value: 5
+epsilon_decay_beta:
+    value: 0.001
+eval_only:
+    value: false
+eval_type:
+    value: argmax
+extra_bonus:
+    value: false
+extra_weight:
+    value: 0.1
+ff_hidden_dim:
+    value: 512
+fsb_dist_only:
+    value: true
+fsb_reward_only:
+    value: true
+generate_PI_mask:
+    value: false
+gumbel:
+    value: false
+hardness:
+    value: hard
+head_num:
+    value: 8
+imitation_learning:
+    value: true
+imitation_loss_weight:
+    value: 1
+impr_encoder_start_idx:
+    value: 0
+improve_start_when_dummy_ok:
+    value: false
+improve_steps:
+    value: 5
+improvement_method:
+    value: kopt
+improvement_only:
+    value: false
+infsb_dist_penalty:
+    value: false
+init_sol_strategy:
+    value: POMO
+insert_before:
+    value: true
+is_lib:
+    value: false
+k_max:
+    value: 4
+k_unconfident:
+    value: 10
+lazy_pip_model:
+    value: false
+load_optimizer:
+    value: true
+load_which_pip:
+    value: train_fsb_bsf
+logit_clipping:
+    value: 10
+max_dummy_size:
+    value: 18
+model_save_interval:
+    value: 5
+n2s_decoder:
+    value: false
+neighborhood_search:
+    value: false
+non_linear:
+    value: null
+non_linear_cons:
+    value: false
+norm:
+    value: instance
+norm_loc:
+    value: norm_last
+optimizer:
+    value:
+        lr: 0.0001
+        weight_decay: 1e-06
+out_node_reward:
+    value: true
+out_reward:
+    value: true
+pairwise_merge:
+    value:
+        - feature
+        - attention
+penalty_factor:
+    value: 1
+penalty_normalize:
+    value: false
+pip_checkpoint:
+    value: null
+pip_decoder:
+    value: false
+pip_last_growup:
+    value: 50
+pip_step:
+    value: 1
+pip_update_epoch:
+    value: 20
+pip_update_interval:
+    value: 1000
+pomo_feasible_start:
+    value: false
+pomo_size:
+    value: 50
+pomo_start:
+    value: false
+problem:
+    value: VRPBLTW
+problem_size:
+    value: 50
+probs_return:
+    value: false
+qkv_dim:
+    value: 16
+random_delta_t:
+    value: 0
+reconstruct:
+    value: false
+reconstruct_improve_bonus:
+    value: false
+refinement_history_path:
+    value: null
+repeats:
+    value: 1
+reward_gating:
+    value: false
+rm_num:
+    value: 1
+sample_size:
+    value: 1
+scheduler:
+    value:
+        gamma: 0.1
+        milestones:
+            - 4501
+select_strategy:
+    value: quality
+select_top_k:
+    value: 10
+select_top_k_val:
+    value: 1
+seperate_obj_penalty:
+    value: false
+simulation_stop_epoch:
+    value: 100
+soft_constrained:
+    value: true
+sop_variant:
+    value: 1
+sqrt_embedding_dim:
+    value: 11.313708498984761
+stochastic_probability:
+    value: 0.5
+subgradient:
+    value: false
+subgradient_lr:
+    value: 0.1
+succ_attention_bias:
+    value: 1
+supplement_feature_dim:
+    value: 17
+test_batch_size:
+    value: 10000
+test_dataset:
+    value: null
+test_episodes:
+    value: 10000
+test_opt_path:
+    value: null
+test_pomo_size:
+    value: 1
+total_history:
+    value: 3
+train_batch_size:
+    value: 16
+train_episodes:
+    value: 2560
+tw_normalize:
+    value: true
+uncertainty_weight:
+    value: false
+unified_decoder:
+    value: false
+unified_encoder:
+    value: true
+use_fast_attention:
+    value: true
+use_real_PI_mask:
+    value: false
+v_range:
+    value: 6
+val_dataset:
+    value:
+        - vrpbltw50_uniform.pkl
+val_episodes:
+    value: 64
+val_init_sol_strategy:
+    value: POMO
+val_opt_path:
+    value: null
+val_pomo_size:
+    value: 1
+val_reconstruct_times:
+    value: 1
+validation_batch_size:
+    value: 32
+validation_improve_steps:
+    value: 20
+validation_interval:
+    value: 2
+which_feature:
+    value: both
+with_RNN:
+    value: true
+with_bonus:
+    value: false
+with_explore_stat_feature:
+    value: true
+with_infsb_feature:
+    value: true
+with_regular:
+    value: false
+wo_node_penalty:
+    value: false
+wo_tour_penalty:
+    value: false

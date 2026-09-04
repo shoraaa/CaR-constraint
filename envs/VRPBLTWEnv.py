@@ -48,6 +48,8 @@ class Reset_State:
     # shape: (batch, problem)
     prob_emb: torch.Tensor = None
     # shape: (num_training_prob)
+    node_resource_features: torch.Tensor = None
+    # shape: (batch, problem+1, rows, NODE_ROW_DIM), depot at index 0
     dummy_xy: torch.Tensor = None
     dummy_demand: torch.Tensor = None
     dummy_tw_end: torch.Tensor = None
@@ -80,9 +82,18 @@ class Step_State:
     # shape: (batch, pomo)
     current_coord: torch.Tensor = None
     # shape: (batch, pomo, 2)
+    consequence: torch.Tensor = None
+    # shape: (batch, pomo, problem+1, rows, CONSEQUENCE_DIM)
 
 
 class VRPBLTWEnv:
+    NO_ROUTE_LIMIT = 1.0e4
+    # Fraction of customers given a binding draft limit, and the seed the limits
+    # are drawn with.  A fixed seed keeps the probe paired across arms: every
+    # model is asked about the same instances under the same added row.
+    DRAFT_FRACTION = 0.5
+    DRAFT_SEED = 0xD3AF7
+
     def __init__(self, **env_params):
 
         # Const @INIT
@@ -90,6 +101,56 @@ class VRPBLTWEnv:
         self.problem = "VRPBLTW"
         self.env_params = env_params
         self.backhaul_ratio = 0.2
+        # Which of the three optional constraint rows are active.  VRPBLTW is
+        # all three; the subsets below are the zero-shot evaluation grid.  The
+        # instance geometry is untouched by this switch -- only which rows are
+        # enforced and which bounds the network is shown.  The demands are
+        # untouched too under the default `backhaul_absent`; see below.
+        active = env_params.get("active_constraints", ("backhaul", "route_limit", "time_window"))
+        self.active_constraints = tuple(active)
+        self.has_backhaul = "backhaul" in self.active_constraints
+        # How a dropped backhaul row is expressed in the demand vector.  The
+        # row has no bound to widen -- its presence *is* the sign of the
+        # demand -- so removing it has to be done in the data.
+        #
+        #   `zero`  the 10 pickups stop moving capacity but still have to be
+        #           visited.  Total delivery load then equals the linehaul
+        #           load of the backhaul-active cell exactly, so the two cells
+        #           differ in one thing only.
+        #   `abs`   the 10 pickups become deliveries.  On the 128 test
+        #           instances this raises total delivery load from 4.997 to
+        #           6.291 (+26%), so the cells differ in two things at once.
+        #
+        # Neither is a relaxation, and the grid must not be read across the
+        # backhaul axis under either.  `step` applies `self.load -= demand`
+        # (below) with no branch on `has_backhaul`, so a pickup *returns*
+        # delivery capacity, capped at 1.0 by `exceed_capacity`: a backhaul
+        # customer is a refill, not a restriction.  Measured on those
+        # instances the route bound is ceil(L-B) = 4.17 with the row and
+        # ceil(L) = 5.45 without it, so the backhaul cell is the easier one
+        # by ~1.32x and comes out shorter.  `abs` compounds that to ~1.66x.
+        #
+        # `abs` was the original behaviour and is kept for reproducing grids
+        # measured before this was found.  Within-cell arm-against-arm
+        # comparison is unaffected by the choice, since every arm sees the
+        # same instances either way.
+        self.backhaul_absent = env_params.get("backhaul_absent", "zero")
+        assert self.backhaul_absent in ("zero", "abs"), self.backhaul_absent
+        self.has_route_limit = "route_limit" in self.active_constraints
+        self.has_time_window = "time_window" in self.active_constraints
+        # An unseen-resource probe: an accumulator over served load against a
+        # *per-node* upper bound (TSPDL's draft limit).  It is built from
+        # coordinates the trained rows already exercise -- capacity's signed
+        # increment and the time window's per-node bound -- recombined into a
+        # row no training composition contains.  Off by default; switching it on
+        # adds a row to the interface and needs no new network parameters.
+        self.has_draft_limit = "draft_limit" in self.active_constraints
+        self.served = None
+        self.node_draft_limit = None
+        # Emit the per-candidate consequence interface alongside the mask.
+        self.consequence_interface = env_params.get("consequence_interface", False)
+        self.consequence_bound = env_params.get("consequence_bound", "clamp")
+        self.consequence = None
         self.problem_size = env_params['problem_size']
         self.pomo_size = env_params['pomo_size']
         self.k_max = self.env_params['k_max'] if 'k_max' in env_params.keys() else None
@@ -117,6 +178,7 @@ class VRPBLTWEnv:
         # shape: (batch, problem+1)
         self.speed = 1.0
         self.depot_start, self.depot_end = 0., 3.  # tw for depot [0, 3]
+        # A duration limit no route can reach, used when the row is inactive.
 
         # Dynamic-1
         ####################################
@@ -163,6 +225,21 @@ class VRPBLTWEnv:
         self.batch_size = depot_xy.size(0)
         route_limit = route_limit[:, None] if route_limit.dim() == 1 else route_limit
 
+        # Instantiate the requested variant out of the VRPBLTW instance.  An
+        # inactive row is not "masked off": its bound is set to the widest value
+        # its own declaration admits (a window equal to the horizon, a duration
+        # limit no route can reach), which is what "this requirement is absent"
+        # means operationally, and its mask is skipped in step().
+        if not self.has_backhaul:
+            node_demand = (torch.clamp_min(node_demand, 0.0)
+                           if self.backhaul_absent == "zero" else node_demand.abs())
+        if not self.has_route_limit:
+            route_limit = torch.full_like(route_limit, self.NO_ROUTE_LIMIT)
+        if not self.has_time_window:
+            tw_start = torch.zeros_like(tw_start)
+            tw_end = torch.full_like(tw_end, self.depot_end)
+            service_time = torch.zeros_like(service_time)
+
         if aug_factor > 1:
             if aug_factor == 8:
                 self.batch_size = self.batch_size * 8
@@ -199,6 +276,8 @@ class VRPBLTWEnv:
         self.depot_node_tw_end = torch.cat((depot_tw_end, tw_end), dim=1)
         # shape: (batch, problem+1)
 
+        self.node_draft_limit = self._draft_limits(node_demand)
+
         self.BATCH_IDX = torch.arange(self.batch_size)[:, None].expand(self.batch_size, self.pomo_size).to(self.device)
         self.POMO_IDX = torch.arange(self.pomo_size)[None, :].expand(self.batch_size, self.pomo_size).to(self.device)
 
@@ -209,6 +288,7 @@ class VRPBLTWEnv:
         self.reset_state.node_tw_start = tw_start
         self.reset_state.node_tw_end = tw_end
         self.reset_state.prob_emb = torch.FloatTensor([1, 0, 1, 1, 1]).unsqueeze(0).to(self.device)  # bit vector for [C, O, B, L, TW]
+        self.reset_state.node_resource_features = self._node_resource_features()
 
         self.step_state.BATCH_IDX = self.BATCH_IDX
         self.step_state.POMO_IDX = self.POMO_IDX
@@ -224,6 +304,7 @@ class VRPBLTWEnv:
         self.timeout_list = torch.zeros((self.batch_size, self.pomo_size, 0)).to(self.device)
         self.out_of_dl_list = torch.zeros((self.batch_size, self.pomo_size, 0)).to(self.device)
         self.out_of_capacity_list = torch.zeros((self.batch_size, self.pomo_size, 0)).to(self.device)
+        self.out_of_draft_list = torch.zeros((self.batch_size, self.pomo_size, 0)).to(self.device)
 
         # shape: (batch, pomo, 0~)
 
@@ -251,6 +332,8 @@ class VRPBLTWEnv:
         self.current_coord = self.depot_node_xy[:, :1, :]  # depot
         # shape: (batch, pomo, 2)
 
+        self.served = torch.zeros(size=(self.batch_size, self.pomo_size)).to(self.device)
+        self.consequence = None
         self.dummy_xy = None
         self.dummy_demand = None
         self.dummy_size = None
@@ -272,6 +355,7 @@ class VRPBLTWEnv:
         self.step_state.current_time = self.current_time
         self.step_state.length = self.length
         self.step_state.current_coord = self.current_coord
+        self.step_state.consequence = self.consequence
 
         reward = None
         done = False
@@ -332,6 +416,16 @@ class VRPBLTWEnv:
         # shape: (batch, pomo)
         self.load[reset_index] = 0.
 
+        # Distance from the current node to every candidate, and from every
+        # candidate back to the depot.  Both were computed twice below (once for
+        # the duration limit, once for the time window); naming them once keeps
+        # the consequence interface and the mask reading the same numbers.
+        dist_to_next = (self.current_coord[:, :, None, :]
+                        - self.depot_node_xy[:, None, :, :].expand(-1, self.pomo_size, -1, -1)).norm(p=2, dim=-1)
+        dist_next_depot = (self.depot_node_xy[:, None, :1, :]
+                           - self.depot_node_xy[:, None, :, :].expand(-1, self.pomo_size, -1, -1)).norm(p=2, dim=-1)
+        # shape: (batch, pomo, problem+1)
+
         # capacity constraint
         #   a. the remaining vehicle capacity >= the customer demands
         #   b. the remaining vehicle capacity <= the vehicle capacity (i.e., 1.0) [specified for backhaul; cannot ]
@@ -354,9 +448,25 @@ class VRPBLTWEnv:
         route_limit = self.route_limit[:, :, None].expand(self.batch_size, self.pomo_size, self.problem_size + 1)
         # shape: (batch, pomo, problem+1)
         # check route limit constraint: length + cur->next->depot <= route_limit
-        route_too_large = self.length[:, :, None] + (self.current_coord[:, :, None, :] - self.depot_node_xy[:, None, :, :].expand(-1, self.pomo_size, -1, -1)).norm(p=2, dim=-1) + \
-                          (self.depot_node_xy[:, None, :1, :] - self.depot_node_xy[:, None, :, :].expand(-1, self.pomo_size, -1, -1)).norm(p=2, dim=-1) > route_limit + round_error_epsilon
+        # --- draft limit: net load served since the route opened, tested on
+        #     arrival against the arriving node's own cap ----------------------
+        self.served = self.served + selected_demand
+        self.served[self.at_the_depot] = 0.0
+        draft_post = self.served[:, :, None] + demand_list
+        if self.has_draft_limit:
+            draft_limit = self.node_draft_limit[:, None, :].expand_as(demand_list)
+            out_of_draft = draft_post > draft_limit + round_error_epsilon
+            if not soft_constrained:
+                self.ninf_mask[out_of_draft] = float('-inf')
+            self.constraints_ninf_flag[out_of_draft] += 1.
+        else:
+            draft_limit = torch.ones_like(demand_list)
+
+        route_post = self.length[:, :, None] + dist_to_next + dist_next_depot
+        route_too_large = route_post > route_limit + round_error_epsilon
         # shape: (batch, pomo, problem+1)
+        if not self.has_route_limit:
+            route_too_large = torch.zeros_like(route_too_large)
         if not soft_constrained:
             self.ninf_mask[route_too_large] = float('-inf')
         self.constraints_ninf_flag[route_too_large] += 1.
@@ -370,17 +480,31 @@ class VRPBLTWEnv:
         self.current_time = torch.max(self.current_time + new_length / self.speed, self.depot_node_tw_start[torch.arange(self.batch_size)[:, None], selected]) + self.depot_node_service_time[torch.arange(self.batch_size)[:, None], selected]
         self.current_time[self.at_the_depot] = 0
         # shape: (batch, pomo)
-        arrival_time = torch.max(self.current_time[:, :, None] + (self.current_coord[:, :, None, :] - self.depot_node_xy[:, None, :, :].expand(-1, self.pomo_size, -1, -1)).norm(p=2, dim=-1) / self.speed, self.depot_node_tw_start[:, None, :].expand(-1, self.pomo_size, -1))
-        out_of_tw = arrival_time > self.depot_node_tw_end[:, None, :].expand(-1, self.pomo_size, -1) + round_error_epsilon
+        reach_time = self.current_time[:, :, None] + dist_to_next / self.speed
+        tw_start_all = self.depot_node_tw_start[:, None, :].expand(-1, self.pomo_size, -1)
+        tw_end_all = self.depot_node_tw_end[:, None, :].expand(-1, self.pomo_size, -1)
+        arrival_time = torch.max(reach_time, tw_start_all)
+        out_of_tw = arrival_time > tw_end_all + round_error_epsilon
         # shape: (batch, pomo, problem+1)
+        depot_return_time = (arrival_time
+                             + self.depot_node_service_time[:, None, :].expand(-1, self.pomo_size, -1)
+                             + dist_next_depot / self.speed)
+        fail_return_depot = depot_return_time > self.depot_end + round_error_epsilon
+        # shape: (batch, pomo, problem+1)
+        if not self.has_time_window:
+            out_of_tw = torch.zeros_like(out_of_tw)
+            fail_return_depot = torch.zeros_like(fail_return_depot)
         if not soft_constrained:
             self.ninf_mask[out_of_tw] = float('-inf')
-        fail_return_depot = arrival_time + self.depot_node_service_time[:, None, :].expand(-1, self.pomo_size, -1) + (self.depot_node_xy[:, None, :1, :] - self.depot_node_xy[:, None, :, :].expand(-1, self.pomo_size, -1, -1)).norm(p=2, dim=-1) / self.speed > self.depot_end + round_error_epsilon
-        # shape: (batch, pomo, problem+1)
-        if not soft_constrained:
             self.ninf_mask[fail_return_depot] = float('-inf')
         self.constraints_ninf_flag[(fail_return_depot.int()+out_of_tw.int()) > 0] += 1.
         self.tw_ninf_flag[(fail_return_depot.int()+out_of_tw.int()) > 0] = float('-inf')
+
+        if self.consequence_interface:
+            self.consequence = self._build_consequence(
+                demand_list, route_limit, route_post, arrival_time,
+                depot_return_time, reach_time, tw_start_all, tw_end_all,
+                draft_post, draft_limit)
 
         self.simulated_ninf_flag[self.constraints_ninf_flag>=1] = float('-inf')
 
@@ -389,6 +513,8 @@ class VRPBLTWEnv:
         # out of time: timeout value of the selected node = (current time - service time) - tw_end
         total_timeout = self.current_time - self.depot_node_service_time[torch.arange(self.batch_size)[:, None], selected] - self.depot_node_tw_end[torch.arange(self.batch_size)[:, None], selected]
         total_timeout = torch.clamp(total_timeout - round_error_epsilon, min=0)# negative value means arrival time < tw_end, turn it into 0
+        if not self.has_time_window:
+            total_timeout = torch.zeros_like(total_timeout)
         self.timeout_list = torch.cat((self.timeout_list, total_timeout[:, :, None]), dim=2) # shape: (batch, pomo, solution)
         if not soft_constrained:
             if (total_timeout!=0).any():
@@ -396,6 +522,8 @@ class VRPBLTWEnv:
 
         # out of duration limit: out_of_dl value = current_length - route_limit
         out_of_dl = torch.clamp(self.length - self.route_limit - round_error_epsilon, min=0)
+        if not self.has_route_limit:
+            out_of_dl = torch.zeros_like(out_of_dl)
         self.out_of_dl_list = torch.cat((self.out_of_dl_list, out_of_dl[:, :, None]), dim=2)
         if not soft_constrained:
             if (out_of_dl!=0).any():
@@ -410,6 +538,15 @@ class VRPBLTWEnv:
             if (out_of_capacity!=0).any():
                 print("out of capacity")
         self.out_of_capacity_list = torch.cat((self.out_of_capacity_list, out_of_capacity[:, :, None]), dim=2)
+
+        # out of draft limit: served load on arrival minus the node's own cap
+        if self.has_draft_limit:
+            selected_limit = self.node_draft_limit[
+                torch.arange(self.batch_size)[:, None], selected]
+            out_of_draft = torch.clamp(self.served - selected_limit - round_error_epsilon, min=0)
+        else:
+            out_of_draft = torch.zeros_like(self.served)
+        self.out_of_draft_list = torch.cat((self.out_of_draft_list, out_of_draft[:, :, None]), dim=2)
 
         newly_finished = (self.visited_ninf_flag == float('-inf')).all(dim=2)
         # shape: (batch, pomo)
@@ -428,6 +565,7 @@ class VRPBLTWEnv:
         self.step_state.current_time = self.current_time
         self.step_state.length = self.length
         self.step_state.current_coord = self.current_coord
+        self.step_state.consequence = self.consequence
 
         # returning values
         infeasible = 0.
@@ -440,7 +578,13 @@ class VRPBLTWEnv:
             out_of_dl_nodes_reward = -torch.where(self.out_of_dl_list > round_error_epsilon, torch.ones_like(self.out_of_dl_list),self.out_of_dl_list).sum(-1).int()
             total_out_of_capacity_reward = -self.out_of_capacity_list.sum(dim=-1)
             out_of_capacity_nodes_reward = -torch.where(self.out_of_capacity_list > round_error_epsilon, torch.ones_like(self.out_of_capacity_list), self.out_of_capacity_list).sum(-1).int()
-            self.infeasible = (timeout_nodes_reward + out_of_dl_nodes_reward + out_of_capacity_nodes_reward != 0.)
+            out_of_draft_nodes_reward = -torch.where(
+                self.out_of_draft_list > round_error_epsilon,
+                torch.ones_like(self.out_of_draft_list),
+                self.out_of_draft_list).sum(-1).int()
+            self.infeasible = (timeout_nodes_reward + out_of_dl_nodes_reward
+                               + out_of_capacity_nodes_reward
+                               + out_of_draft_nodes_reward != 0.)
             # shape: (batch, pomo)
             infeasible = self.infeasible
             reward = -self._get_travel_distance()  # note the minus sign!
@@ -452,6 +596,195 @@ class VRPBLTWEnv:
             reward = None
 
         return self.step_state, reward, done, infeasible
+
+    def _draft_limits(self, node_demand):
+        """Per-node caps on the load carried on arrival.
+
+        Every limit is at least the node's own demand, so the all-singletons
+        solution stays feasible and the probe cannot be trivially unsolvable --
+        the same well-posedness condition PRISM's battery range satisfies.  A
+        limit of one is the capacity itself and so does not bind.
+        """
+        if not self.has_draft_limit:
+            return None
+        # `torch.set_default_tensor_type('torch.cuda.FloatTensor')` in train.py
+        # makes torch.rand default to CUDA, which a CPU generator rejects, so
+        # the device is named explicitly here.
+        generator = torch.Generator(device="cpu").manual_seed(self.DRAFT_SEED)
+        demand = node_demand.abs().cpu()
+        draw = torch.rand(demand.shape, generator=generator, device="cpu")
+        binding = torch.rand(demand.shape, generator=generator,
+                             device="cpu") < self.DRAFT_FRACTION
+        # Uniform in [demand, 1] where it binds, 1 (inert) elsewhere.
+        limit = torch.where(binding, demand + (1.0 - demand) * draw,
+                            torch.ones_like(demand))
+        depot = torch.ones(demand.shape[0], 1, device="cpu")
+        return torch.cat((depot, limit), dim=1).to(self.device)
+
+    def _node_resource_features(self):
+        """Static per-node attributes, indexed by row rather than named.
+
+        The same six coordinates PRISM publishes -- the node's increment split
+        by sign, the operand of any tropical join, the binding side of the
+        bound, any term charged after the bound, and the node's rank in whatever
+        order the row declares -- plus an active flag so an absent row
+        contributes nothing.  Each is normalized by the scale its own row
+        publishes, so a demand in capacity units and a window in hours land on
+        one axis.
+
+        This is what lets the encoder stop having a per-formulation feature
+        layout: `demand`, `tw_start` and `tw_end` are not three named columns,
+        they are what two particular rows happen to report here.
+        """
+        batch, nodes = self.depot_node_demand.shape
+        zero = torch.zeros(batch, nodes, device=self.device)
+        one = torch.ones(batch, nodes, device=self.device)
+
+        def unit(value):
+            return value.clamp(0.0, 1.0)
+
+        rows = []
+        # --- capacity: signed node increment against a two-sided bound --------
+        demand = self.depot_node_demand
+        rows.append(self._node_row(True, unit(demand.clamp(min=0.0)),
+                                   unit((-demand).clamp(min=0.0)),
+                                   zero, one, zero, zero))
+        # --- duration limit: no node term, bound is the declared limit --------
+        rows.append(self._node_row(self.has_route_limit, zero, zero, zero,
+                                   one, zero, zero))
+        # --- time window: the join is the open, the bound the close, the
+        #     service time is charged after the bound -------------------------
+        horizon = max(self.depot_end, 1.0e-6)
+        rows.append(self._node_row(
+            self.has_time_window, zero, zero,
+            unit(self.depot_node_tw_start / horizon),
+            unit(self.depot_node_tw_end / horizon),
+            unit(self.depot_node_service_time / horizon), zero))
+        # --- draft limit: same increment as capacity, but the bound is the
+        #     node's own cap rather than a constant ---------------------------
+        if self.has_draft_limit:
+            rows.append(self._node_row(True, unit(demand.clamp(min=0.0)),
+                                       unit((-demand).clamp(min=0.0)), zero,
+                                       unit(self.node_draft_limit), zero, zero))
+
+        return torch.stack(rows, dim=2)
+
+    @staticmethod
+    def _node_row(active, increase, decrease, join, bound, after, rank):
+        row = torch.stack((torch.ones_like(increase), increase, decrease,
+                           join, bound, after, rank), dim=-1)
+        return row if active else torch.zeros_like(row)
+
+    def _build_consequence(self, demand_list, route_limit, route_post, arrival_time,
+                           depot_return_time, reach_time, tw_start_all, tw_end_all,
+                           draft_post=None, draft_limit=None):
+        """Execute each active row against every candidate and write the result
+        into one common interface.
+
+        Every row populates the same six coordinates with the same meaning, each
+        one normalized by the scale that row's own declaration publishes, so a
+        load in capacity units and an arrival in hours arrive on one axis.  The
+        rows carry no identity: what distinguishes them here is the value they
+        report, not the slot they occupy, which is what lets a row drop out
+        without disturbing the others.
+        """
+        eps = 1.0e-6
+        rows = []
+        depot_event = torch.zeros_like(demand_list)
+        depot_event[:, :, 0] = 1.0  # arriving at the depot fires every route reset
+
+        # --- capacity: two-sided, scale = vehicle capacity (demands are /cap) --
+        cap_state = self.load[:, :, None].expand_as(demand_list)
+        cap_post = self.load[:, :, None] - demand_list
+        cap_margin = torch.minimum(cap_post, 1.0 - cap_post)
+        rows.append(self._consequence_row(True, cap_state, cap_post, cap_margin, depot_event))
+
+        # --- duration limit: scale = the declared limit, horizon = depot return
+        limit = route_limit.clamp(min=eps)
+        rows.append(self._consequence_row(
+            self.has_route_limit,
+            self.length[:, :, None].expand_as(demand_list) / limit,
+            route_post / limit,
+            (route_limit - route_post) / limit,
+            depot_event))
+
+        # --- time window: scale = the depot horizon, horizon = depot return ---
+        horizon = max(self.depot_end, eps)
+        tw_margin = torch.minimum(tw_end_all - arrival_time,
+                                  self.depot_end - depot_return_time) / horizon
+        wait_event = (reach_time < tw_start_all).float()  # the tropical join fires
+        rows.append(self._consequence_row(
+            self.has_time_window,
+            self.current_time[:, :, None].expand_as(demand_list) / horizon,
+            arrival_time / horizon,
+            tw_margin,
+            wait_event))
+
+        # --- draft limit: capacity's increment against a per-node bound -----
+        if self.has_draft_limit:
+            rows.append(self._consequence_row(
+                True,
+                self.served[:, :, None].expand_as(demand_list),
+                draft_post,
+                draft_limit - draft_post,
+                depot_event))
+
+        return torch.stack(rows, dim=3)
+        # shape: (batch, pomo, problem+1, rows, CONSEQUENCE_DIM)
+
+    @staticmethod
+    def _soft_bound(x):
+        """Identity on [-1, 1]; a smooth, bounded, order-preserving extension
+        past it.
+
+        PRISM clips every published coordinate to its row's declared scale --
+        `std::clamp(signed_margin / runtime_resource_scale, -1, 1)` at
+        `decoder.cpp:3159` for the margin, `resource_state_feature` for the
+        live state.  That is a no-op there, because PRISM's construction masks
+        infeasible candidates (`decoder.cpp:3461`) and so the clock never runs
+        past the horizon: every coordinate the network sees already lies in
+        range.  CaR's soft construction scores infeasible candidates instead,
+        and under it the time-window row runs to ~6x its own scale, so the clip
+        stopped being a guard and became the dominant behaviour -- 43% of live
+        candidates arrived at the network reporting an identical -1 margin,
+        mutually unrankable.  Bending recovers that ordering while leaving
+        every in-range coordinate bit-for-bit unchanged, so a row that already
+        respected its scale (capacity here, and every row under PRISM's own
+        masked construction) is unaffected.  The derivative is 1 on both sides
+        of |x| = 1, and the image is (-2, 2).
+        """
+        magnitude = x.abs()
+        bent = 2.0 - 1.0 / magnitude.clamp(min=1.0)
+        return torch.where(magnitude <= 1.0, x, torch.sign(x) * bent)
+
+    def _bound(self, x):
+        """Put a coordinate on its published range.
+
+        `clamp` is PRISM's own operation (`decoder.cpp:3159`,
+        `resource_state_feature`) and is the default.  `bend` substitutes
+        `_soft_bound`.  It is off by default because it was measured to fire on
+        0.0% of live candidates for every trained checkpoint probed -- epoch 5
+        and 20, on the trained composition and on both kinds of held-out cell --
+        while costing 46.9 ms per 51-step rollout, 63% of the whole env-side
+        interface overhead and more than building the consequence tensor itself.
+        A guard that never fires is not worth that.
+        """
+        if self.consequence_bound == "bend":
+            return self._soft_bound(x)
+        return x.clamp(-1.0, 1.0)
+
+    def _consequence_row(self, active, state, post, margin, event):
+        """One row's report on every candidate: presence, live state, post-state,
+        signed admissibility margin, the legality bit that margin implies, and
+        whether a transition event fires."""
+        # The legality bit reads the *raw* margin: the bend is monotone through
+        # zero, so this is only a statement about which quantity is
+        # authoritative, not a change of value.
+        valid = (margin >= 0.0).float()
+        row = torch.stack((torch.ones_like(state), self._bound(state),
+                           self._bound(post), self._bound(margin),
+                           valid, event.expand_as(state)), dim=-1)
+        return row if active else torch.zeros_like(row)
 
     def _get_travel_distance(self):
         gathering_index = self.selected_node_list[:, :, :, None].expand(-1, -1, -1, 2)
@@ -688,6 +1021,8 @@ class VRPBLTWEnv:
         # constraint violation
         # 1. time window: arrival time - tw end
         exceed_time_window = torch.clamp_min(context[4] - self.dummy_tw_end, 0.0)
+        if not self.has_time_window:
+            exceed_time_window = torch.zeros_like(exceed_time_window)
         out_node_penalty = (exceed_time_window > 1e-5).sum(-1).unsqueeze(0)
         out_penalty = exceed_time_window.sum(-1).unsqueeze(0)
         # 2. capacity:

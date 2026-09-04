@@ -1,0 +1,438 @@
+
+>>> CVRP :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag CVRP --wandb_logger False --active_constraints --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 1000
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.4362866878509521
+! solution size:  torch.Size([8000, 1, 62])
+Rank 0 >> val improvement time:  17.74022936820984
+Rank 0 >> val reconstruction time [w. mask]:  1.1093623638153076
+episode 1000/1000, Elapsed[0.34m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, --> AUG_Score: nan; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 16.6237, --> AUG_Score: 16.4011; Infeasible rate: 94.538% (solution-level), 69.2% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 15.5108, --> AUG_Score: 13.7257; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 20.40s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: nan, Gap: 0.0000 
+ AUGMENTATION SCORE: nan, Gap: 0.0000 
+Solution level Infeasible rate: 100.000%
+Instance level Infeasible rate: 100.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 16.6237, Gap: 0.0000 
+ AUGMENTATION SCORE: 16.4011, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 93.800%
+Solution level Infeasible rate: 94.538%
+Instance level Infeasible rate: 69.200%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 15.5108, Gap: 0.0000 
+ AUGMENTATION SCORE: 13.7257, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt50.csv
+
+>>> VRPB :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag VRPB --wandb_logger False --active_constraints backhaul --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 1000
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.3713278770446777
+! solution size:  torch.Size([8000, 1, 61])
+Rank 0 >> val improvement time:  17.602349519729614
+Rank 0 >> val reconstruction time [w. mask]:  1.025759220123291
+episode 1000/1000, Elapsed[0.33m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 13.7858, --> AUG_Score: 13.7365; Infeasible rate: 99.788% (solution-level), 98.5% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 14.6891, --> AUG_Score: 13.8678; Infeasible rate: 65.025% (solution-level), 6.9% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 14.5114, --> AUG_Score: 12.5623; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 20.09s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 13.7858, Gap: 0.0000 
+ AUGMENTATION SCORE: 13.7365, Gap: 0.0000 
+Solution level Infeasible rate: 99.788%
+Instance level Infeasible rate: 98.500%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 14.6891, Gap: 0.0000 
+ AUGMENTATION SCORE: 13.8678, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 63.500%
+Solution level Infeasible rate: 65.025%
+Instance level Infeasible rate: 6.900%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 14.5114, Gap: 0.0000 
+ AUGMENTATION SCORE: 12.5623, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt50.csv
+
+>>> VRPL :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag VRPL --wandb_logger False --active_constraints route_limit --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 1000
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.3748188018798828
+! solution size:  torch.Size([8000, 1, 62])
+Rank 0 >> val improvement time:  17.731528282165527
+Rank 0 >> val reconstruction time [w. mask]:  1.1225800514221191
+episode 1000/1000, Elapsed[0.34m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, --> AUG_Score: nan; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 16.4615, --> AUG_Score: 16.3751; Infeasible rate: 93.712% (solution-level), 63.5% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 15.1267, --> AUG_Score: 13.5404; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 20.34s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: nan, Gap: 0.0000 
+ AUGMENTATION SCORE: nan, Gap: 0.0000 
+Solution level Infeasible rate: 100.000%
+Instance level Infeasible rate: 100.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 16.4615, Gap: 0.0000 
+ AUGMENTATION SCORE: 16.3751, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 93.900%
+Solution level Infeasible rate: 93.712%
+Instance level Infeasible rate: 63.500%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 15.1267, Gap: 0.0000 
+ AUGMENTATION SCORE: 13.5404, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt50.csv
+
+>>> VRPTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag VRPTW --wandb_logger False --active_constraints time_window --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 1000
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.438788652420044
+! solution size:  torch.Size([8000, 1, 64])
+Rank 0 >> val improvement time:  18.217837810516357
+Rank 0 >> val reconstruction time [w. mask]:  1.097766637802124
+episode 1000/1000, Elapsed[0.35m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 14.5023, --> AUG_Score: 14.3437; Infeasible rate: 30.125% (solution-level), 5.6% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 14.3955, --> AUG_Score: 14.1902; Infeasible rate: 17.387% (solution-level), 1.7% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 15.1047, --> AUG_Score: 14.2873; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 20.85s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 14.5023, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.3437, Gap: 0.0000 
+Solution level Infeasible rate: 30.125%
+Instance level Infeasible rate: 5.600%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 14.3955, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.1902, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 16.700%
+Solution level Infeasible rate: 17.387%
+Instance level Infeasible rate: 1.700%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 15.1047, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.2873, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt50.csv
+
+>>> VRPBL :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag VRPBL --wandb_logger False --active_constraints backhaul route_limit --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 1000
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.344254732131958
+! solution size:  torch.Size([8000, 1, 61])
+Rank 0 >> val improvement time:  17.33085870742798
+Rank 0 >> val reconstruction time [w. mask]:  1.0125179290771484
+episode 1000/1000, Elapsed[0.33m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: nan, --> AUG_Score: nan; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 14.8824, --> AUG_Score: 13.9148; Infeasible rate: 69.263% (solution-level), 8.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 13.0459, --> AUG_Score: 11.3737; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 19.78s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: nan, Gap: 0.0000 
+ AUGMENTATION SCORE: nan, Gap: 0.0000 
+Solution level Infeasible rate: 100.000%
+Instance level Infeasible rate: 100.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 14.8824, Gap: 0.0000 
+ AUGMENTATION SCORE: 13.9148, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 68.300%
+Solution level Infeasible rate: 69.263%
+Instance level Infeasible rate: 8.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 13.0459, Gap: 0.0000 
+ AUGMENTATION SCORE: 11.3737, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt50.csv
+
+>>> VRPBTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag VRPBTW --wandb_logger False --active_constraints backhaul time_window --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 1000
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.431769609451294
+! solution size:  torch.Size([8000, 1, 65])
+Rank 0 >> val improvement time:  19.971022605895996
+Rank 0 >> val reconstruction time [w. mask]:  1.1168162822723389
+episode 1000/1000, Elapsed[0.38m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 15.0075, --> AUG_Score: 14.7994; Infeasible rate: 20.863% (solution-level), 3.4% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 14.9657, --> AUG_Score: 14.7499; Infeasible rate: 18.3% (solution-level), 2.5% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 15.727, --> AUG_Score: 14.8498; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 22.61s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 15.0075, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.7994, Gap: 0.0000 
+Solution level Infeasible rate: 20.863%
+Instance level Infeasible rate: 3.400%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 14.9657, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.7499, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 18.600%
+Solution level Infeasible rate: 18.300%
+Instance level Infeasible rate: 2.500%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 15.727, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.8498, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt50.csv
+
+>>> VRPLTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag VRPLTW --wandb_logger False --active_constraints route_limit time_window --val_opt_path /nonexistent --test_opt_path /nonexistent
+Memory access fault by GPU node-1 (Agent handle: 0x497f52e0) on address 0x7f38e2c86000. Reason: Page not present or supervisor privilege.
+>>> VRPLTW FAILED with code -6
+
+>>> VRPBLTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt --disable_preset_args --constraint_repr attr --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/composition/published_car_kopt50.csv --variant_tag VRPBLTW --wandb_logger False --active_constraints backhaul route_limit time_window
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 1000
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.3917553424835205
+! solution size:  torch.Size([8000, 1, 65])
+Rank 0 >> val improvement time:  19.83070468902588
+Rank 0 >> val reconstruction time [w. mask]:  1.1089751720428467
+episode 1000/1000, Elapsed[0.37m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/CVRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 15.0075, NO_AUG_Gap: 4.9491% --> AUG_Score: 14.7994, AUG_Gap: 2.1377%; Infeasible rate: 20.863% (solution-level), 3.4% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 14.9657, NO_AUG_Gap: 4.5494% --> AUG_Score: 14.7499, AUG_Gap: 1.7154%; Infeasible rate: 18.325% (solution-level), 2.5% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 15.727, NO_AUG_Gap: 7.7935% --> AUG_Score: 14.8498, AUG_Gap: 2.1384%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 22.43s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 15.0075, Gap: 4.9491 
+ AUGMENTATION SCORE: 14.7994, Gap: 2.1377 
+Solution level Infeasible rate: 20.863%
+Instance level Infeasible rate: 3.400%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 14.9657, Gap: 4.5494 
+ AUGMENTATION SCORE: 14.7499, Gap: 1.7154 
+NO AUG Solution level Infeasible rate: 18.600%
+Solution level Infeasible rate: 18.325%
+Instance level Infeasible rate: 2.500%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 15.727, Gap: 7.7935 
+ AUGMENTATION SCORE: 14.8498, Gap: 2.1384 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt50.csv

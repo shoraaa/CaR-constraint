@@ -1,0 +1,49 @@
+[2026-09-04 16:36:55] utils.py(229) : >> Use unified encoder for Improvement and Construction!
+[2026-09-04 16:36:55] utils.py(229) : >> Use kopt decoder for Improvement!
+[2026-09-04 16:36:55] utils.py(229) : lambda_:
+[2026-09-04 16:36:55] utils.py(229) : 1.0
+[2026-09-04 16:36:56] utils.py(229) : Number of Parameters: 1645818
+[2026-09-04 16:36:56] utils.py(229) : [copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_ops.py not found. Skipping.
+[2026-09-04 16:36:56] utils.py(229) : [copy_all_src] Warning: /home/shora/Research/PRISM/baselines/CaR-constraint/_classes.py not found. Skipping.
+[2026-09-04 16:36:56] utils.py(229) : ================================================================================
+Traceback (most recent call last):
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/train.py", line 520, in <module>
+    main(0, args.world_size, args, env_params, model_params, optimizer_params, trainer_params,tester_params)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/train.py", line 194, in main
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/Trainer.py", line 353, in train
+    self._train_one_epoch(epoch)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/Trainer.py", line 616, in _train_one_epoch
+    sl_output = self._train_one_batch(data, env, batch_reward, weights, accumulation_step=accumulation_step)
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/Trainer.py", line 794, in _train_one_batch
+    improve_loss, improve_reward, select_idx, best_solution, best_reward, is_improved = self._improvement(env, self.trainer_params["epsilon"], cons_reward, batch_reward, weights, cons_log_prob)
+                                                                                        ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/Trainer.py", line 1674, in _improvement
+    action, log_lh, entro_p, improvement_method = self.model(state, solver="improvement", require_entropy=True)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shora/Research/PRISM/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/shora/Research/PRISM/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/models/SINGLEModel.py", line 436, in forward
+    h_em_final = self.encoder(depot_feature, node_feature, route_attn=aux_scores, precedence_matrix=precedence_matrix, succ_attention_bias=succ_attention_bias) # already includes the supplementary features
+  File "/home/shora/Research/PRISM/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/shora/Research/PRISM/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/shora/Research/PRISM/baselines/CaR-constraint/models/SINGLEModel.py", line 640, in forward
+    embedded_node = self.embedding_node(node_xy_demand_tw)
+  File "/home/shora/Research/PRISM/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/shora/Research/PRISM/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/shora/Research/PRISM/.venv/lib/python3.13/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (12000x22 and 23x128)

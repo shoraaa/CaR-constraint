@@ -1,0 +1,8 @@
+chain finished; last sweep done
+./watch_and_eval.sh: line 37: unexpected EOF while looking for matching `''
+=== evaluating car_soft_interface_slack0.1 ===
+=== car_soft_interface_slack0.1 done ===
+=== evaluating car_soft_attr ===
+=== car_soft_attr done ===
+=== evaluating car_soft_interface_slack0.1_fixed ===
+=== car_soft_interface_slack0.1_fixed done ===

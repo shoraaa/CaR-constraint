@@ -1,5 +1,6 @@
 import pytz
 import argparse
+import sys
 import pprint as pp
 from datetime import datetime
 import wandb
@@ -32,6 +33,11 @@ def args2dict(args):
                   "k_max": args.k_max,
                   # reward shaping
                   "with_regular": args.with_regular, "with_bonus": args.with_bonus,
+                  # constraint composition and the consequence interface
+                  "active_constraints": tuple(args.active_constraints),
+                  "backhaul_absent": args.backhaul_absent,
+                  "consequence_interface": args.constraint_repr != "attr" or args.slack_weight > 0,
+                  "consequence_bound": args.consequence_bound,
                   }
 
     tester_params = {"eval_only": args.eval_only, "test_episodes": args.test_episodes,
@@ -39,6 +45,8 @@ def args2dict(args):
                      "test_pomo_size": args.test_pomo_size,
                      "sample_size": args.sample_size, "aux_mask": args.aux_mask, "is_lib": args.is_lib,
                      "refinement_history_path": args.refinement_history_path, "best_solution_path": args.best_solution_path,
+                     "results_csv": args.results_csv, "variant_tag": args.variant_tag,
+                     "arm_tag": args.arm_tag,
                      'EAS_params': {
                          'enable': args.enable_eas,
                          'iterations': args.iterations,
@@ -54,6 +62,17 @@ def args2dict(args):
                     "qkv_dim": args.qkv_dim, "head_num": args.head_num, "logit_clipping": args.logit_clipping,
                     "ff_hidden_dim": args.ff_hidden_dim, "eval_type": args.eval_type,
                     "norm": args.norm, "norm_loc": args.norm_loc, "problem": args.problem,
+                    "constraint_repr": args.constraint_repr,
+                    "consequence_hidden_dim": args.consequence_hidden_dim,
+                    "slack_weight": args.slack_weight,
+                    "slack_normalize": args.slack_normalize,
+                    "slack_stride": args.slack_stride,
+                    "couple_rows": args.couple_rows,
+                    "consequence_norm": args.consequence_norm,
+                    "node_repr": args.node_repr,
+                    "node_repr_dim": args.node_repr_dim,
+                    "consequence_context_dim": args.consequence_context_dim,
+                    "consequence_compact": args.consequence_compact,
                     "use_fast_attention": args.use_fast_attention,
                     "dual_decoder": args.dual_decoder, "clean_cache": args.clean_cache,
                     "gumbel": args.gumbel,
@@ -124,43 +143,60 @@ def args2dict(args):
 
     return env_params, model_params, optimizer_params, trainer_params, tester_params
 
+def _explicit_flags():
+    """Flag names the user actually typed.
+
+    The per-problem presets below exist so the published checkpoints load with
+    the settings they were trained under, but they also silently overwrite
+    anything passed on the command line -- which makes settings like
+    `pomo_start` unreachable.  Presets now yield to an explicit argument.
+    """
+    return {token.split("=", 1)[0].lstrip("-") for token in sys.argv[1:]
+            if token.startswith("--")}
+
+
 def set_problem_defaults(args):
     problem = args.problem
+    explicit = _explicit_flags()
+
+    def preset(name, value):
+        if name not in explicit:
+            setattr(args, name, value)
     
     if problem == "CVRP":
-        args.pomo_start = True
-        args.supplement_feature_dim = 5
-        args.improvement_method = "kopt"
-        args.n2s_decoder = False
-        args.test_batch_size = 1000
-        args.test_episodes = 1000
-        args.test_pomo_size = args.problem_size
-        args.pomo_size = args.problem_size  # Ensure pomo_size <= problem_size for CVRP
-        args.soft_constrained = False
-        args.select_top_k_val = 2 if args.problem_size == 50 else 1
-        args.eval_type = "softmax"
+        preset('pomo_start', True)
+        preset('supplement_feature_dim', 5)
+        preset('improvement_method', "kopt")
+        preset('n2s_decoder', False)
+        preset('test_batch_size', 1000)
+        preset('test_episodes', 1000)
+        preset('test_pomo_size', args.problem_size)
+        preset('pomo_size', args.problem_size)  # Ensure pomo_size <= problem_size for CVRP
+        preset('soft_constrained', False)
+        preset('select_top_k_val', 2 if args.problem_size == 50 else 1)
+        preset('eval_type', "softmax")
     elif problem == "VRPBLTW":
-        args.pomo_start = False
-        args.soft_constrained = True
-        args.supplement_feature_dim = 17
+        preset('pomo_start', False)
+        preset('soft_constrained', True)
+        preset('supplement_feature_dim', 17)
         if "rr" in args.checkpoint:
             args.improvement_method = "rm_n_insert"
             args.n2s_decoder = True
         else:
             args.improvement_method = "kopt"
             args.n2s_decoder = False
-        args.aux_mask = True
-        args.test_batch_size = 1000
-        args.test_episodes = 1000
+        preset('aux_mask', True)
+        preset('test_batch_size', 1000)
+        preset('test_episodes', 1000)
     elif problem == "TSPDL" or problem == "TSPTW":
-        args.pomo_start = False
-        args.soft_constrained = True
-        args.supplement_feature_dim = 5
-        args.improvement_method = "kopt"
-        args.n2s_decoder = False
-        args.test_episodes = 10000
-        args.test_batch_size = 3334 if args.problem_size == 50 else 1250
-        args.eval_type = "softmax"
+        preset('pomo_start', False)
+        preset('soft_constrained', True)
+        preset('supplement_feature_dim', 5)
+        preset('improvement_method', "kopt")
+        preset('n2s_decoder', False)
+        preset('test_episodes', 10000)
+        preset('test_batch_size', 3334 if args.problem_size == 50 else 1250)
+        preset('eval_type', "softmax")
         if "PIP" in args.checkpoint:
             args.generate_PI_mask = True
             args.use_real_PI_mask = True
@@ -168,14 +204,14 @@ def set_problem_defaults(args):
             args.generate_PI_mask = False
             args.use_real_PI_mask = False
     elif problem == "SOP":
-        args.eval_type = "softmax"
-        args.soft_constrained = False
-        args.pomo_start = False
-        args.supplement_feature_dim = 5
-        args.improvement_method = "rm_n_insert"
-        args.n2s_decoder = True
-        args.test_episodes = 10000
-        args.test_batch_size = 3334
+        preset('eval_type', "softmax")
+        preset('soft_constrained', False)
+        preset('pomo_start', False)
+        preset('supplement_feature_dim', 5)
+        preset('improvement_method', "rm_n_insert")
+        preset('n2s_decoder', True)
+        preset('test_episodes', 10000)
+        preset('test_batch_size', 3334)
         if "Variant1" in args.checkpoint: args.sop_variant = 1
         elif "Variant2" in args.checkpoint: args.sop_variant = 2
 
@@ -264,6 +300,60 @@ if __name__ == "__main__":
 
     # tester_params
     parser.add_argument('--eval_only', type=str2bool, default=True)
+    parser.add_argument('--constraint_repr', type=str, default="attr",
+                        choices=["attr", "interface", "interface_nomargin"])
+    parser.add_argument('--slack_normalize', type=str2bool, default=True,
+                        help="treat --slack_weight as a ratio to the RL loss "
+                             "magnitude rather than an absolute coefficient")
+    parser.add_argument('--slack_stride', type=int, default=5,
+                        help="supervise every Nth decoding step; 1 is every step, "
+                             "which retains one activation per step until backward")
+    parser.add_argument('--consequence_norm', type=str, default='layer',
+                        choices=['layer', 'none'],
+                        help="normalisation before the shared row MLP; 'none' drops a "
+                             "layer_norm that is 74%% of its cost and is redundant "
+                             "given the coordinates are already scaled")
+    parser.add_argument('--consequence_hidden_dim', type=int, default=16)
+    parser.add_argument('--node_repr', type=str, default='named',
+                        choices=['named', 'rows'],
+                        help="how the encoder describes a node: the published "
+                             "per-problem feature tuple, or row-indexed attributes "
+                             "pooled without identity")
+    parser.add_argument('--node_repr_dim', type=int, default=4)
+    # 0 keeps CaR's per-problem ATTR_WIDTH, so checkpoints trained before this
+    # flag load unchanged. A positive value declares the identity-free query
+    # context's width, which is what removes the last problem-name lookup from
+    # the parameter shapes (`Wq_last`); pair it with `--node_repr rows`.
+    parser.add_argument('--consequence_context_dim', type=int, default=0)
+    # How a published coordinate is put on its range. `clamp` is PRISM's own
+    # operation and the default; `bend` keeps ordering past the range but was
+    # measured to never fire, at 63% of the env-side interface overhead.
+    parser.add_argument('--consequence_bound', type=str, default='clamp',
+                        choices=['clamp', 'bend'])
+    # Restrict the per-candidate valuation to live candidates. Numerically
+    # identical either way; 1.50x on the RX 6800, 0.93x on the A100, so it is a
+    # per-machine switch rather than a default.
+    parser.add_argument('--consequence_compact', type=str2bool, default=False)
+    parser.add_argument('--couple_rows', type=str2bool, default=True,
+                        help="modulate each row's field by a multiplier coupled to the "
+                             "other active rows' live state; False leaves every "
+                             "multiplier at one (PRISM's state-coupler ablation)")
+    parser.add_argument('--slack_weight', type=float, default=0.0,
+                        help="weight on the admissibility supervision (PRISM's slack "
+                             "loss): regress the executed signed margin from the shared "
+                             "representation. 0 disables the head entirely.")
+    parser.add_argument('--backhaul_absent', type=str, default='zero',
+                        choices=['zero', 'abs'],
+                        help="how a dropped backhaul row is expressed in the demands: 'zero' makes the pickups capacity-free (a true relaxation, so the grid may be read across the backhaul axis); 'abs' turns them into deliveries, which raises total load ~26% and makes the backhaul-free cell harder than the backhaul cell")
+    parser.add_argument('--active_constraints', type=str, nargs='*',
+                        default=["backhaul", "route_limit", "time_window"],
+                        choices=["backhaul", "route_limit", "time_window", "draft_limit"])
+    parser.add_argument('--results_csv', type=str, default=None,
+                        help="append one machine-readable result row to this file")
+    parser.add_argument('--arm_tag', type=str, default=None,
+                        help="name for the arm being evaluated in the results CSV")
+    parser.add_argument('--variant_tag', type=str, default=None,
+                        help="name for the composition being evaluated, e.g. VRPBTW")
     parser.add_argument('--disable_preset_args', action='store_false', default=True)
     parser.add_argument('--test_episodes', type=int, default=1000)
     parser.add_argument('--test_batch_size', type=int, default=1000)

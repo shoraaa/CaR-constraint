@@ -1,0 +1,778 @@
+
+>>> interface_slack0.1 :: /home/shora/Research/PRISM/baselines/CaR-constraint/../../.venv/bin/python eval_composition.py --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --results_csv results/matched_ep15/grid.csv --arm_tag interface_slack0.1 --test_batch_size 16 --test_episodes 128 --backhaul_absent zero --improve_steps 5 --validation_improve_steps 20 --constraint_repr interface --slack_weight 0.1 --couple_rows True
+
+>>> CVRP :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag CVRP --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  1.2534708976745605
+! solution size:  torch.Size([128, 1, 71])
+Rank 0 >> val improvement time:  1.630673885345459
+Rank 0 >> val reconstruction time [w. mask]:  0.2050788402557373
+episode  16/128, Elapsed[0.05m], Remain[0.38m]
+Rank 0 >> val construction time:  0.20332598686218262
+! solution size:  torch.Size([128, 1, 71])
+Rank 0 >> val improvement time:  1.499028205871582
+Rank 0 >> val reconstruction time [w. mask]:  0.20501255989074707
+episode  32/128, Elapsed[0.09m], Remain[0.26m]
+Rank 0 >> val construction time:  0.20157384872436523
+! solution size:  torch.Size([128, 1, 71])
+Rank 0 >> val improvement time:  1.521219253540039
+Rank 0 >> val reconstruction time [w. mask]:  0.20930862426757812
+episode  48/128, Elapsed[0.12m], Remain[0.20m]
+Rank 0 >> val construction time:  0.20919346809387207
+! solution size:  torch.Size([128, 1, 73])
+Rank 0 >> val improvement time:  1.5356075763702393
+Rank 0 >> val reconstruction time [w. mask]:  0.21552729606628418
+episode  64/128, Elapsed[0.15m], Remain[0.15m]
+Rank 0 >> val construction time:  0.20462250709533691
+! solution size:  torch.Size([128, 1, 72])
+Rank 0 >> val improvement time:  1.510974407196045
+Rank 0 >> val reconstruction time [w. mask]:  0.2079167366027832
+episode  80/128, Elapsed[0.18m], Remain[0.11m]
+Rank 0 >> val construction time:  0.21142935752868652
+! solution size:  torch.Size([128, 1, 74])
+Rank 0 >> val improvement time:  1.5586905479431152
+Rank 0 >> val reconstruction time [w. mask]:  0.23888301849365234
+episode  96/128, Elapsed[0.22m], Remain[0.07m]
+Rank 0 >> val construction time:  0.2038884162902832
+! solution size:  torch.Size([128, 1, 71])
+Rank 0 >> val improvement time:  1.5145771503448486
+Rank 0 >> val reconstruction time [w. mask]:  0.20405101776123047
+episode 112/128, Elapsed[0.25m], Remain[0.04m]
+Rank 0 >> val construction time:  0.201127290725708
+! solution size:  torch.Size([128, 1, 73])
+Rank 0 >> val improvement time:  1.5390231609344482
+Rank 0 >> val reconstruction time [w. mask]:  0.20961523056030273
+episode 128/128, Elapsed[0.28m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 17.6223, --> AUG_Score: 14.601; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 17.4998, --> AUG_Score: 14.5393; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 17.4032, --> AUG_Score: 14.4198; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 16.96s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 17.6223, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.601, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 17.4998, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.5393, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 0.000%
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 17.4032, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.4198, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv
+
+>>> VRPB :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag VRPB --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints backhaul --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.8135635852813721
+! solution size:  torch.Size([128, 1, 69])
+Rank 0 >> val improvement time:  1.5306837558746338
+Rank 0 >> val reconstruction time [w. mask]:  0.2102804183959961
+episode  16/128, Elapsed[0.04m], Remain[0.31m]
+Rank 0 >> val construction time:  0.2022707462310791
+! solution size:  torch.Size([128, 1, 69])
+Rank 0 >> val improvement time:  1.455806016921997
+Rank 0 >> val reconstruction time [w. mask]:  0.22687149047851562
+episode  32/128, Elapsed[0.08m], Remain[0.23m]
+Rank 0 >> val construction time:  0.19131684303283691
+! solution size:  torch.Size([128, 1, 69])
+Rank 0 >> val improvement time:  1.463594913482666
+Rank 0 >> val reconstruction time [w. mask]:  0.20995163917541504
+episode  48/128, Elapsed[0.11m], Remain[0.18m]
+Rank 0 >> val construction time:  0.20888137817382812
+! solution size:  torch.Size([128, 1, 71])
+Rank 0 >> val improvement time:  1.5128464698791504
+Rank 0 >> val reconstruction time [w. mask]:  0.20692062377929688
+episode  64/128, Elapsed[0.14m], Remain[0.14m]
+Rank 0 >> val construction time:  0.196608304977417
+! solution size:  torch.Size([128, 1, 71])
+Rank 0 >> val improvement time:  1.520493745803833
+Rank 0 >> val reconstruction time [w. mask]:  0.20033597946166992
+episode  80/128, Elapsed[0.17m], Remain[0.10m]
+Rank 0 >> val construction time:  0.21314716339111328
+! solution size:  torch.Size([128, 1, 74])
+Rank 0 >> val improvement time:  1.581536054611206
+Rank 0 >> val reconstruction time [w. mask]:  0.2154078483581543
+episode  96/128, Elapsed[0.21m], Remain[0.07m]
+Rank 0 >> val construction time:  0.1921548843383789
+! solution size:  torch.Size([128, 1, 69])
+Rank 0 >> val improvement time:  1.4690148830413818
+Rank 0 >> val reconstruction time [w. mask]:  0.22635173797607422
+episode 112/128, Elapsed[0.24m], Remain[0.03m]
+Rank 0 >> val construction time:  0.19807887077331543
+! solution size:  torch.Size([128, 1, 71])
+Rank 0 >> val improvement time:  1.4966940879821777
+Rank 0 >> val reconstruction time [w. mask]:  0.21493291854858398
+episode 128/128, Elapsed[0.27m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 18.6753, --> AUG_Score: 14.9268; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 18.5339, --> AUG_Score: 14.859; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 17.8776, --> AUG_Score: 14.4761; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 16.22s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 18.6753, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.9268, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 18.5339, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.859, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 0.000%
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 17.8776, Gap: 0.0000 
+ AUGMENTATION SCORE: 14.4761, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv
+
+>>> VRPL :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag VRPL --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints route_limit --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.7802894115447998
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.5920264720916748
+Rank 0 >> val reconstruction time [w. mask]:  0.19909954071044922
+episode  16/128, Elapsed[0.05m], Remain[0.32m]
+Rank 0 >> val construction time:  0.18303680419921875
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3599541187286377
+Rank 0 >> val reconstruction time [w. mask]:  0.1894083023071289
+episode  32/128, Elapsed[0.07m], Remain[0.22m]
+Rank 0 >> val construction time:  0.18492627143859863
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3481738567352295
+Rank 0 >> val reconstruction time [w. mask]:  0.1848278045654297
+episode  48/128, Elapsed[0.10m], Remain[0.17m]
+Rank 0 >> val construction time:  0.18444347381591797
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3638672828674316
+Rank 0 >> val reconstruction time [w. mask]:  0.18448376655578613
+episode  64/128, Elapsed[0.13m], Remain[0.13m]
+Rank 0 >> val construction time:  0.18729519844055176
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3405489921569824
+Rank 0 >> val reconstruction time [w. mask]:  0.18630242347717285
+episode  80/128, Elapsed[0.16m], Remain[0.10m]
+Rank 0 >> val construction time:  0.1800227165222168
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3479104042053223
+Rank 0 >> val reconstruction time [w. mask]:  0.19158029556274414
+episode  96/128, Elapsed[0.19m], Remain[0.06m]
+Rank 0 >> val construction time:  0.19015002250671387
+! solution size:  torch.Size([128, 1, 66])
+Rank 0 >> val improvement time:  1.390261173248291
+Rank 0 >> val reconstruction time [w. mask]:  0.19616389274597168
+episode 112/128, Elapsed[0.22m], Remain[0.03m]
+Rank 0 >> val construction time:  0.18629765510559082
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.4320330619812012
+Rank 0 >> val reconstruction time [w. mask]:  0.1892688274383545
+episode 128/128, Elapsed[0.25m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 14.6785, --> AUG_Score: 12.2159; Infeasible rate: 0.391% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 14.6231, --> AUG_Score: 12.2046; Infeasible rate: 0.098% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 14.1936, --> AUG_Score: 12.0496; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 15.05s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 14.6785, Gap: 0.0000 
+ AUGMENTATION SCORE: 12.2159, Gap: 0.0000 
+Solution level Infeasible rate: 0.391%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 14.6231, Gap: 0.0000 
+ AUGMENTATION SCORE: 12.2046, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 0.000%
+Solution level Infeasible rate: 0.098%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 14.1936, Gap: 0.0000 
+ AUGMENTATION SCORE: 12.0496, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv
+
+>>> VRPTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag VRPTW --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints time_window --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.7774465084075928
+! solution size:  torch.Size([128, 1, 69])
+Rank 0 >> val improvement time:  1.5601229667663574
+Rank 0 >> val reconstruction time [w. mask]:  0.19182133674621582
+episode  16/128, Elapsed[0.04m], Remain[0.31m]
+Rank 0 >> val construction time:  0.19100213050842285
+! solution size:  torch.Size([128, 1, 69])
+Rank 0 >> val improvement time:  1.4586751461029053
+Rank 0 >> val reconstruction time [w. mask]:  0.1983039379119873
+episode  32/128, Elapsed[0.08m], Remain[0.23m]
+Rank 0 >> val construction time:  0.18653106689453125
+! solution size:  torch.Size([128, 1, 67])
+Rank 0 >> val improvement time:  1.4154720306396484
+Rank 0 >> val reconstruction time [w. mask]:  0.1999063491821289
+episode  48/128, Elapsed[0.11m], Remain[0.18m]
+Rank 0 >> val construction time:  0.18477702140808105
+! solution size:  torch.Size([128, 1, 67])
+Rank 0 >> val improvement time:  1.4377481937408447
+Rank 0 >> val reconstruction time [w. mask]:  0.19391822814941406
+episode  64/128, Elapsed[0.14m], Remain[0.14m]
+Rank 0 >> val construction time:  0.1932365894317627
+! solution size:  torch.Size([128, 1, 68])
+Rank 0 >> val improvement time:  1.4305691719055176
+Rank 0 >> val reconstruction time [w. mask]:  0.2124190330505371
+episode  80/128, Elapsed[0.17m], Remain[0.10m]
+Rank 0 >> val construction time:  0.1900937557220459
+! solution size:  torch.Size([128, 1, 68])
+Rank 0 >> val improvement time:  1.4591596126556396
+Rank 0 >> val reconstruction time [w. mask]:  0.2119274139404297
+episode  96/128, Elapsed[0.20m], Remain[0.07m]
+Rank 0 >> val construction time:  0.20150351524353027
+! solution size:  torch.Size([128, 1, 68])
+Rank 0 >> val improvement time:  1.4243783950805664
+Rank 0 >> val reconstruction time [w. mask]:  0.1990032196044922
+episode 112/128, Elapsed[0.23m], Remain[0.03m]
+Rank 0 >> val construction time:  0.2003469467163086
+! solution size:  torch.Size([128, 1, 70])
+Rank 0 >> val improvement time:  1.4592063426971436
+Rank 0 >> val reconstruction time [w. mask]:  0.2033100128173828
+episode 128/128, Elapsed[0.26m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 18.2977, --> AUG_Score: 17.1064; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 18.1169, --> AUG_Score: 16.9947; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 17.6858, --> AUG_Score: 16.6743; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 15.63s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 18.2977, Gap: 0.0000 
+ AUGMENTATION SCORE: 17.1064, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 18.1169, Gap: 0.0000 
+ AUGMENTATION SCORE: 16.9947, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 0.000%
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 17.6858, Gap: 0.0000 
+ AUGMENTATION SCORE: 16.6743, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv
+
+>>> VRPBL :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag VRPBL --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints backhaul route_limit --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.6993353366851807
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.437819242477417
+Rank 0 >> val reconstruction time [w. mask]:  0.18790578842163086
+episode  16/128, Elapsed[0.04m], Remain[0.28m]
+Rank 0 >> val construction time:  0.20018339157104492
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3456408977508545
+Rank 0 >> val reconstruction time [w. mask]:  0.19071435928344727
+episode  32/128, Elapsed[0.07m], Remain[0.21m]
+Rank 0 >> val construction time:  0.18343687057495117
+! solution size:  torch.Size([128, 1, 63])
+Rank 0 >> val improvement time:  1.3504395484924316
+Rank 0 >> val reconstruction time [w. mask]:  0.1882319450378418
+episode  48/128, Elapsed[0.10m], Remain[0.16m]
+Rank 0 >> val construction time:  0.18576526641845703
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.3925654888153076
+Rank 0 >> val reconstruction time [w. mask]:  0.19189834594726562
+episode  64/128, Elapsed[0.13m], Remain[0.13m]
+Rank 0 >> val construction time:  0.18193554878234863
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3680362701416016
+Rank 0 >> val reconstruction time [w. mask]:  0.18818068504333496
+episode  80/128, Elapsed[0.16m], Remain[0.09m]
+Rank 0 >> val construction time:  0.1833508014678955
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3571312427520752
+Rank 0 >> val reconstruction time [w. mask]:  0.1842341423034668
+episode  96/128, Elapsed[0.19m], Remain[0.06m]
+Rank 0 >> val construction time:  0.18692278861999512
+! solution size:  torch.Size([128, 1, 64])
+Rank 0 >> val improvement time:  1.3762812614440918
+Rank 0 >> val reconstruction time [w. mask]:  0.19437193870544434
+episode 112/128, Elapsed[0.22m], Remain[0.03m]
+Rank 0 >> val construction time:  0.21101856231689453
+! solution size:  torch.Size([128, 1, 66])
+Rank 0 >> val improvement time:  1.3945550918579102
+Rank 0 >> val reconstruction time [w. mask]:  0.20715665817260742
+episode 128/128, Elapsed[0.25m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 14.8, --> AUG_Score: 11.8002; Infeasible rate: 0.586% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 14.5057, --> AUG_Score: 11.714; Infeasible rate: 0.488% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 14.0366, --> AUG_Score: 11.5404; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 14.83s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 14.8, Gap: 0.0000 
+ AUGMENTATION SCORE: 11.8002, Gap: 0.0000 
+Solution level Infeasible rate: 0.586%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 14.5057, Gap: 0.0000 
+ AUGMENTATION SCORE: 11.714, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 0.000%
+Solution level Infeasible rate: 0.488%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 14.0366, Gap: 0.0000 
+ AUGMENTATION SCORE: 11.5404, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv
+
+>>> VRPBTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag VRPBTW --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints backhaul time_window --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.71195387840271
+! solution size:  torch.Size([128, 1, 70])
+Rank 0 >> val improvement time:  1.5331034660339355
+Rank 0 >> val reconstruction time [w. mask]:  0.1990344524383545
+episode  16/128, Elapsed[0.04m], Remain[0.30m]
+Rank 0 >> val construction time:  0.19771242141723633
+! solution size:  torch.Size([128, 1, 70])
+Rank 0 >> val improvement time:  1.504467487335205
+Rank 0 >> val reconstruction time [w. mask]:  0.2024250030517578
+episode  32/128, Elapsed[0.07m], Remain[0.22m]
+Rank 0 >> val construction time:  0.19999337196350098
+! solution size:  torch.Size([128, 1, 70])
+Rank 0 >> val improvement time:  1.4723262786865234
+Rank 0 >> val reconstruction time [w. mask]:  0.1986069679260254
+episode  48/128, Elapsed[0.11m], Remain[0.18m]
+Rank 0 >> val construction time:  0.20328235626220703
+! solution size:  torch.Size([128, 1, 70])
+Rank 0 >> val improvement time:  1.4789223670959473
+Rank 0 >> val reconstruction time [w. mask]:  0.19620203971862793
+episode  64/128, Elapsed[0.14m], Remain[0.14m]
+Rank 0 >> val construction time:  0.20277905464172363
+! solution size:  torch.Size([128, 1, 72])
+Rank 0 >> val improvement time:  1.540795087814331
+Rank 0 >> val reconstruction time [w. mask]:  0.20767641067504883
+episode  80/128, Elapsed[0.17m], Remain[0.10m]
+Rank 0 >> val construction time:  0.20507550239562988
+! solution size:  torch.Size([128, 1, 72])
+Rank 0 >> val improvement time:  1.5269861221313477
+Rank 0 >> val reconstruction time [w. mask]:  0.20743203163146973
+episode  96/128, Elapsed[0.20m], Remain[0.07m]
+Rank 0 >> val construction time:  0.20785307884216309
+! solution size:  torch.Size([128, 1, 72])
+Rank 0 >> val improvement time:  1.5090725421905518
+Rank 0 >> val reconstruction time [w. mask]:  0.20441412925720215
+episode 112/128, Elapsed[0.24m], Remain[0.03m]
+Rank 0 >> val construction time:  0.20079994201660156
+! solution size:  torch.Size([128, 1, 70])
+Rank 0 >> val improvement time:  1.4660470485687256
+Rank 0 >> val reconstruction time [w. mask]:  0.2037830352783203
+episode 128/128, Elapsed[0.27m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 19.3583, --> AUG_Score: 18.0199; Infeasible rate: 3.125% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 19.3236, --> AUG_Score: 17.9863; Infeasible rate: 3.125% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 18.6491, --> AUG_Score: 17.4893; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 16.01s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 19.3583, Gap: 0.0000 
+ AUGMENTATION SCORE: 18.0199, Gap: 0.0000 
+Solution level Infeasible rate: 3.125%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 19.3236, Gap: 0.0000 
+ AUGMENTATION SCORE: 17.9863, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 3.906%
+Solution level Infeasible rate: 3.125%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 18.6491, Gap: 0.0000 
+ AUGMENTATION SCORE: 17.4893, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv
+
+>>> VRPLTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag VRPLTW --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints route_limit time_window --val_opt_path /nonexistent --test_opt_path /nonexistent
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.6831917762756348
+! solution size:  torch.Size([128, 1, 63])
+Rank 0 >> val improvement time:  1.4150230884552002
+Rank 0 >> val reconstruction time [w. mask]:  0.18947434425354004
+episode  16/128, Elapsed[0.04m], Remain[0.28m]
+Rank 0 >> val construction time:  0.19122695922851562
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.3845906257629395
+Rank 0 >> val reconstruction time [w. mask]:  0.18947792053222656
+episode  32/128, Elapsed[0.07m], Remain[0.21m]
+Rank 0 >> val construction time:  0.18294501304626465
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.3925375938415527
+Rank 0 >> val reconstruction time [w. mask]:  0.19610881805419922
+episode  48/128, Elapsed[0.10m], Remain[0.17m]
+Rank 0 >> val construction time:  0.18214845657348633
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.3803040981292725
+Rank 0 >> val reconstruction time [w. mask]:  0.18453502655029297
+episode  64/128, Elapsed[0.13m], Remain[0.13m]
+Rank 0 >> val construction time:  0.18800926208496094
+! solution size:  torch.Size([128, 1, 67])
+Rank 0 >> val improvement time:  1.4427735805511475
+Rank 0 >> val reconstruction time [w. mask]:  0.18950486183166504
+episode  80/128, Elapsed[0.16m], Remain[0.10m]
+Rank 0 >> val construction time:  0.18632817268371582
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.364445447921753
+Rank 0 >> val reconstruction time [w. mask]:  0.19277477264404297
+episode  96/128, Elapsed[0.19m], Remain[0.06m]
+Rank 0 >> val construction time:  0.19401240348815918
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.415865421295166
+Rank 0 >> val reconstruction time [w. mask]:  0.20419573783874512
+episode 112/128, Elapsed[0.22m], Remain[0.03m]
+Rank 0 >> val construction time:  0.18360090255737305
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.3979053497314453
+Rank 0 >> val reconstruction time [w. mask]:  0.19527816772460938
+episode 128/128, Elapsed[0.25m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: /nonexistent
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 17.2076, --> AUG_Score: 16.1983; Infeasible rate: 1.66% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 17.1299, --> AUG_Score: 16.1414; Infeasible rate: 0.586% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 16.9787, --> AUG_Score: 16.092; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 14.95s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 17.2076, Gap: 0.0000 
+ AUGMENTATION SCORE: 16.1983, Gap: 0.0000 
+Solution level Infeasible rate: 1.660%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 17.1299, Gap: 0.0000 
+ AUGMENTATION SCORE: 16.1414, Gap: 0.0000 
+NO AUG Solution level Infeasible rate: 0.000%
+Solution level Infeasible rate: 0.586%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 16.9787, Gap: 0.0000 
+ AUGMENTATION SCORE: 16.092, Gap: 0.0000 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv
+
+>>> VRPBLTW :: /home/shora/Research/PRISM/.venv/bin/python test.py --problem VRPBLTW --problem_size 50 --checkpoint /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt --disable_preset_args --constraint_repr interface --slack_weight 0.1 --couple_rows True --test_episodes 128 --test_batch_size 16 --improve_steps 5 --validation_improve_steps 20 --results_csv results/matched_ep15/grid.csv --variant_tag VRPBLTW --backhaul_absent zero --arm_tag interface_slack0.1 --wandb_logger False --active_constraints backhaul route_limit time_window
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1648488
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           /home/shora/Research/PRISM/baselines/CaR-constraint/results/matched_ep15/train_interface_slack0.1/run/epoch-15.pt
+  Test Episodes:        128 | Batch Size: 16
+  Validation Improve Steps: 20
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 128 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.6622283458709717
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.4458613395690918
+Rank 0 >> val reconstruction time [w. mask]:  0.18793416023254395
+episode  16/128, Elapsed[0.04m], Remain[0.28m]
+Rank 0 >> val construction time:  0.19506001472473145
+! solution size:  torch.Size([128, 1, 66])
+Rank 0 >> val improvement time:  1.3891332149505615
+Rank 0 >> val reconstruction time [w. mask]:  0.1967012882232666
+episode  32/128, Elapsed[0.07m], Remain[0.21m]
+Rank 0 >> val construction time:  0.19231748580932617
+! solution size:  torch.Size([128, 1, 67])
+Rank 0 >> val improvement time:  1.4363493919372559
+Rank 0 >> val reconstruction time [w. mask]:  0.20666241645812988
+episode  48/128, Elapsed[0.10m], Remain[0.17m]
+Rank 0 >> val construction time:  0.18520760536193848
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.3865470886230469
+Rank 0 >> val reconstruction time [w. mask]:  0.1960279941558838
+episode  64/128, Elapsed[0.13m], Remain[0.13m]
+Rank 0 >> val construction time:  0.1873795986175537
+! solution size:  torch.Size([128, 1, 66])
+Rank 0 >> val improvement time:  1.4096345901489258
+Rank 0 >> val reconstruction time [w. mask]:  0.19283580780029297
+episode  80/128, Elapsed[0.16m], Remain[0.10m]
+Rank 0 >> val construction time:  0.19305086135864258
+! solution size:  torch.Size([128, 1, 66])
+Rank 0 >> val improvement time:  1.406374454498291
+Rank 0 >> val reconstruction time [w. mask]:  0.20055723190307617
+episode  96/128, Elapsed[0.19m], Remain[0.06m]
+Rank 0 >> val construction time:  0.1892549991607666
+! solution size:  torch.Size([128, 1, 66])
+Rank 0 >> val improvement time:  1.408437967300415
+Rank 0 >> val reconstruction time [w. mask]:  0.20080995559692383
+episode 112/128, Elapsed[0.22m], Remain[0.03m]
+Rank 0 >> val construction time:  0.18219518661499023
+! solution size:  torch.Size([128, 1, 65])
+Rank 0 >> val improvement time:  1.376530647277832
+Rank 0 >> val reconstruction time [w. mask]:  0.1949782371520996
+episode 128/128, Elapsed[0.25m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/CVRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 18.064, NO_AUG_Gap: 28.1544% --> AUG_Score: 17.0428, AUG_Gap: 20.467%; Infeasible rate: 2.734% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Improvement] NO_AUG_Score: 18.0148, NO_AUG_Gap: 28.0586% --> AUG_Score: 16.9948, AUG_Gap: 20.1792%; Infeasible rate: 2.344% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 17.9102, NO_AUG_Gap: 26.7131% --> AUG_Score: 16.8875, AUG_Gap: 19.3995%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 15.06s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 18.064, Gap: 28.1544 
+ AUGMENTATION SCORE: 17.0428, Gap: 20.4670 
+Solution level Infeasible rate: 2.734%
+Instance level Infeasible rate: 0.000%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 18.0148, Gap: 28.0586 
+ AUGMENTATION SCORE: 16.9948, Gap: 20.1792 
+NO AUG Solution level Infeasible rate: 3.125%
+Solution level Infeasible rate: 2.344%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 17.9102, Gap: 26.7131 
+ AUGMENTATION SCORE: 16.8875, Gap: 19.3995 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/matched_ep15/grid.csv

@@ -1,0 +1,9 @@
+checkpoint,constraint_repr,variant,active_constraints,dataset,episodes,construct_no_aug,construct_aug,construct_sol_infeasible,construct_ins_infeasible,masked_no_aug,masked_aug,masked_sol_infeasible,masked_ins_infeasible,improve_no_aug,improve_aug,improve_sol_infeasible,improve_ins_infeasible
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,CVRP,,vrpbltw50_uniform.pkl,1000,nan,nan,100.0,100.0,15.5108,13.7257,0.0,0.0,16.6237,16.4011,94.538,69.2
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,VRPB,backhaul,vrpbltw50_uniform.pkl,1000,13.7858,13.7365,99.788,98.5,14.5114,12.5623,0.0,0.0,14.6891,13.8678,65.025,6.9
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,VRPL,route_limit,vrpbltw50_uniform.pkl,1000,nan,nan,100.0,100.0,15.1267,13.5404,0.0,0.0,16.4615,16.3751,93.712,63.5
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,VRPTW,time_window,vrpbltw50_uniform.pkl,1000,14.5023,14.3437,30.125,5.6,15.1047,14.2873,0.0,0.0,14.3955,14.1902,17.387,1.7
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,VRPBL,backhaul+route_limit,vrpbltw50_uniform.pkl,1000,nan,nan,100.0,100.0,13.0459,11.3737,0.0,0.0,14.8824,13.9148,69.263,8.0
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,VRPBTW,backhaul+time_window,vrpbltw50_uniform.pkl,1000,15.0075,14.7994,20.863,3.4,15.727,14.8498,0.0,0.0,14.9657,14.7499,18.3,2.5
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,VRPBLTW,backhaul+route_limit+time_window,vrpbltw50_uniform.pkl,1000,15.0075,14.7994,20.863,3.4,15.727,14.8498,0.0,0.0,14.9657,14.7499,18.325,2.5
+pretrained/CVRPBLTW/CaR-kopt_50/checkpoint.pt,attr,VRPLTW,route_limit+time_window,vrpbltw50_uniform.pkl,1000,14.5023,14.3437,30.125,5.6,15.1045,14.2873,0.0,0.0,14.3976,14.1902,17.375,1.7

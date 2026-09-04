@@ -1,0 +1,67 @@
+{
+  "os":  "Linux-7.1.8-1-cachyos-x86_64-with-glibc2.44",
+  "python":  "CPython 3.13.13",
+  "startedAt":  "2026-09-03T15:33:05.262581Z",
+  "args":  [
+    "--problem",
+    "VRPBLTW",
+    "--problem_size",
+    "50",
+    "--epochs",
+    "1",
+    "--train_episodes",
+    "8",
+    "--train_batch_size",
+    "4",
+    "--validation_batch_size",
+    "4",
+    "--val_episodes",
+    "4",
+    "--improve_steps",
+    "0",
+    "--validation_improve_steps",
+    "0",
+    "--val_dataset",
+    "vrpbltw50_uniform.pkl",
+    "--constraint_repr",
+    "attr"
+  ],
+  "program":  "/home/shora/Research/PRISM/baselines/CaR-constraint/train.py",
+  "codePath":  "baselines/CaR-constraint/train.py",
+  "codePathLocal":  "train.py",
+  "git":  {
+    "remote":  "https://github.com/shoraaa/PRISM.git",
+    "commit":  "84f06019c4f2c7bd1ae5d108e056a1ae28933e48"
+  },
+  "email":  "shoraaa@protonmail.com",
+  "root":  "/home/shora/Research/PRISM/baselines/CaR-constraint",
+  "host":  "shora-pc",
+  "executable":  "/home/shora/Research/PRISM/.venv/bin/python",
+  "cpu_count":  10,
+  "cpu_count_logical":  16,
+  "gpu":  "AMD Radeon RX 6800",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "857947705344",
+      "used":  "776935129088"
+    }
+  },
+  "memory":  {
+    "total":  "33472647168"
+  },
+  "gpu_amd":  [
+    {
+      "id":  "0",
+      "uniqueId":  "0x29c544c06137b302",
+      "vbiosVersion":  "113-D4140XL-YT",
+      "performanceLevel":  "auto",
+      "maxPower":  "203.0",
+      "series":  "AMD Radeon RX 6800",
+      "model":  "0x73bf",
+      "vendor":  "Advanced Micro Devices, Inc. [AMD/ATI]",
+      "sku":  "D4140XL"
+    }
+  ],
+  "writerId":  "pyzgrnpviuk9khrjgmr0vbzd8z8hua81"
+}
