@@ -67,14 +67,10 @@ class ConsequenceValuation(nn.Module):
                  couple_rows=True, norm="layer", compact=False):
         super().__init__()
         self.norm = norm
-        # Restrict the per-candidate work to live candidates.  Numerically
-        # identical either way (tests/test_consequence.py), but the two GPUs
-        # here disagree about whether it pays, so it is a switch and not a
-        # default: measured 1.50x on the RX 6800 (bandwidth-bound, the win grows
-        # as the live set shrinks) and 0.93x on the A100 (latency-bound at this
-        # size, where the dense path does not care about the node count and the
-        # gather/scatter is pure addition).  Off by default because the A100 is
-        # where the long runs go.
+        # Restrict the per-candidate row MLP to live candidates.  The original
+        # padded implementation paid for a sort, a rectangular gather and a
+        # full hidden tensor up to the widest rollout.  The flat implementation
+        # below has no padding or sort and is faster as well as smaller.
         self.compact = compact
         self.use_margin = use_margin
         self.logit_clipping = logit_clipping
@@ -128,7 +124,11 @@ class ConsequenceValuation(nn.Module):
         for "no requirements at all".
         """
         count = active.sum(dim=-1, keepdim=True)
-        pooled = hidden.sum(dim=-2) / count.clamp_min(1.0).sqrt()
+        # AMP leaves the row MLP in fp16 but the interface coordinates and
+        # active flags in fp32.  Accumulate directly into the latter dtype;
+        # this is the same fp32 sum as the old ``hidden * active`` promotion,
+        # without first materialising a full fp32 row-hidden tensor.
+        pooled = hidden.sum(dim=-2, dtype=active.dtype) / count.clamp_min(1.0).sqrt()
         cardinality = count / (1.0 + count)
         summary = head(torch.cat((pooled, cardinality), dim=-1))
         return summary.masked_fill(count <= 0, 0.0)
@@ -158,25 +158,33 @@ class ConsequenceValuation(nn.Module):
 
         Returns (tokens [B,P,R,H], state [B,P,R], active [B,P,R]).
         """
-        read = self._read(consequence)
+        # Tokens use active/state/post only; bypassing `_read` avoids cloning
+        # the full dense tensor for the margin-blind interface ablation.
+        read = consequence
         rows = read[:, :, 0, :, :]
         active = rows[..., ACTIVE_INDEX]
         state = rows[..., STATE_INDEX]
         pressure = read[..., POST_INDEX] - read[..., STATE_INDEX]
         # shape: (batch, pomo, nodes, rows)
         if candidate_mask is None:
-            candidate_mask = torch.ones_like(pressure[..., 0])
-        weights = candidate_mask.to(pressure.dtype).unsqueeze(-1)
-        present = weights.sum(dim=2)
+            candidate_mask = torch.ones_like(pressure[..., 0], dtype=torch.bool)
+        else:
+            candidate_mask = candidate_mask.bool()
+        live = candidate_mask.unsqueeze(-1)
+        present = candidate_mask.sum(
+            dim=2, dtype=pressure.dtype).unsqueeze(-1)
         count = present.clamp_min(1.0)
-        mean_pressure = (pressure * weights).sum(dim=2) / count
+        mean_pressure = pressure.masked_fill(~live, 0.0).sum(dim=2) / count
         # A sentinel below any real pressure, zeroed where no candidate remains
         # so an empty set reports nothing rather than the sentinel itself.
-        max_pressure = pressure.masked_fill(weights <= 0, -1.0e4).amax(dim=2)
+        max_pressure = pressure.masked_fill(~live, -1.0e4).amax(dim=2)
         max_pressure = torch.where(present > 0, max_pressure.clamp(-1.0, 1.0),
                                    torch.zeros_like(max_pressure))
         token = torch.stack((active, state, mean_pressure, max_pressure), dim=-1)
-        tokens = self.state_row(_unit_scale(self.state_proj(token), self.norm)) * active.unsqueeze(-1)
+        # The flag is binary.  Masking before the reduction keeps the row MLP's
+        # AMP dtype instead of promoting every hidden unit to fp32.
+        tokens = self.state_row(_unit_scale(self.state_proj(token), self.norm))
+        tokens = tokens.masked_fill(active.unsqueeze(-1) <= 0, 0.0)
         return tokens, state, active
 
     def _multipliers_from(self, tokens, state, active):
@@ -190,56 +198,14 @@ class ConsequenceValuation(nn.Module):
         if not self.couple_rows:
             return torch.ones_like(active), active
         query = self.coupler_query(tokens)
-        key = self.coupler_key(tokens) * active.unsqueeze(-1)
+        key = self.coupler_key(tokens)
+        key = key.masked_fill(active.unsqueeze(-1) <= 0, 0.0)
         scale = query.shape[-1] ** 0.5
         weights = torch.matmul(query, key.transpose(-1, -2)) / scale
         # shape: (batch, pomo, rows, rows)
         coupling = torch.matmul(weights, (state * active).unsqueeze(-1)).squeeze(-1)
         bias = self.coupler_bias(tokens).squeeze(-1)
         return 2.0 * torch.sigmoid(coupling + bias), active
-
-    @staticmethod
-    def _compact(consequence, candidate_mask):
-        """Restrict the per-candidate work to the candidates still in play.
-
-        The decoder adds this valuation to the content logits and only then
-        applies its own mask -- `score_masked = score_clipped + ninf_mask` in
-        SINGLEModel -- so whatever is computed for a masked candidate is
-        discarded. Computing it anyway is the largest single cost in the arm:
-        the live set shrinks by one every decoding step, and the valuation's
-        forward+backward measures 1.64x faster at 75% of the width and 2.16x at
-        25%.
-
-        Padded slots point at candidates that are masked out downstream, so the
-        garbage computed for them is harmless; positions outside the gather
-        receive a zero bias, which is the same neutral value an inactive row
-        contributes anywhere else.
-
-        Returns (compact, compact_mask, index), or None when there is nothing
-        to gain.
-        """
-        if candidate_mask is None:
-            return None
-        counts = candidate_mask.sum(dim=-1)
-        width = int(counts.max())
-        if width >= candidate_mask.shape[-1] or width == 0:
-            return None
-        # stable so a rerun gathers the same order: the padded slots differ
-        # between orderings and they are what the scatter writes garbage into.
-        order = torch.argsort(candidate_mask.to(torch.uint8), dim=-1,
-                              descending=True, stable=True)
-        index = order[..., :width]
-        rows, coordinates = consequence.shape[-2], consequence.shape[-1]
-        gather = index[..., None, None].expand(-1, -1, -1, rows, coordinates)
-        compact = consequence.gather(2, gather)
-        positions = torch.arange(width, device=candidate_mask.device)
-        return compact, positions < counts.unsqueeze(-1), index
-
-    @staticmethod
-    def _scatter(value, index, nodes):
-        """Put the compacted per-candidate valuation back on the node axis."""
-        restored = value.new_zeros(value.shape[0], value.shape[1], nodes)
-        return restored.scatter(2, index, value)
 
     def evaluate(self, consequence, candidate_mask=None):
         """The decoder query context and the per-candidate valuation together.
@@ -251,15 +217,20 @@ class ConsequenceValuation(nn.Module):
         to calling the pair, which `test_evaluate_matches_the_separate_calls`
         pins.
         """
-        packed = self._compact(consequence, candidate_mask) if self.compact else None
-        read, mask, index = (packed if packed is not None
-                             else (consequence, candidate_mask, None))
-        tokens, state, active = self._row_tokens(read, mask)
+        return self._evaluate(consequence, candidate_mask)
+
+    def _evaluate(self, consequence, candidate_mask=None):
+        # Pool the query token in the original candidate order.  Only the
+        # candidate-side MLP is expensive enough to compact; keeping this
+        # reduction dense both avoids a padded gather/sort and preserves the
+        # exact reduction performed by the dense path.
+        tokens, state, active = self._row_tokens(consequence, candidate_mask)
         context = self._reduce(tokens, active, self.context)
         multipliers, _ = self._multipliers_from(tokens, state, active)
-        value = self._value(read, multipliers)
-        if index is not None:
-            value = self._scatter(value, index, consequence.shape[2])
+        if self.compact and candidate_mask is not None:
+            value = self._value_live(consequence, multipliers, candidate_mask)
+        else:
+            value = self._value(consequence, multipliers)
         return context, value
 
     def forward(self, consequence, candidate_mask=None):
@@ -269,21 +240,33 @@ class ConsequenceValuation(nn.Module):
         candidate_mask: (batch, pomo, nodes), the candidates under consideration
         returns:        (batch, pomo, nodes)
         """
-        packed = self._compact(consequence, candidate_mask) if self.compact else None
-        read, mask, index = (packed if packed is not None
-                             else (consequence, candidate_mask, None))
-        tokens, state, active = self._row_tokens(read, mask)
+        tokens, state, active = self._row_tokens(consequence, candidate_mask)
         multipliers, _ = self._multipliers_from(tokens, state, active)
-        value = self._value(read, multipliers)
-        if index is None:
-            return value
-        return self._scatter(value, index, consequence.shape[2])
+        if self.compact and candidate_mask is not None:
+            return self._value_live(consequence, multipliers, candidate_mask)
+        return self._value(consequence, multipliers)
 
     def _value(self, consequence, multipliers):
+        # multipliers has no candidate axis; insert a singleton so it
+        # broadcasts over the dense node dimension.
+        return self._value_rows(consequence, multipliers.unsqueeze(2))
+
+    def _value_rows(self, consequence, multipliers):
+        """Value any collection of candidate rows.
+
+        The leading dimensions may be the dense ``(batch, pomo, nodes)`` or a
+        single flat live-candidate dimension.  Factoring this out lets the live
+        path run the large row MLP without rectangular padding.
+        """
         read = self._read(consequence)
         active = read[..., ACTIVE_INDEX]
-        hidden = self.row(_unit_scale(self.row_proj(read), self.norm)) * active.unsqueeze(-1)
-        hidden = hidden * multipliers.unsqueeze(2).unsqueeze(-1)
+        hidden = self.row(_unit_scale(self.row_proj(read), self.norm))
+        hidden = hidden.masked_fill(active.unsqueeze(-1) <= 0, 0.0)
+        # The old pair of multiplies first promoted the entire hidden tensor to
+        # the interface dtype via the 0/1 flag, then multiplied by the AMP
+        # multiplier.  Casting the much smaller multiplier instead produces
+        # the same fp32 product while avoiding that retained intermediate.
+        hidden = hidden * multipliers.to(active.dtype).unsqueeze(-1)
         # Normalizing by the active count is what makes a three-row composition
         # and a one-row composition comparable: an unnormalized sum shrinks by
         # roughly sqrt(rows) when a requirement is dropped, which is a magnitude
@@ -292,6 +275,27 @@ class ConsequenceValuation(nn.Module):
         # Bounded on the same scale as the clipped content logits, so the
         # valuation reorders the legal candidates without saturating them.
         return self.logit_clipping * torch.tanh(value)
+
+    def _value_live(self, consequence, multipliers, candidate_mask):
+        """Evaluate only selectable candidates, without padding or sorting.
+
+        Flattening preserves row-major candidate order.  Each candidate is
+        independent inside ``_value_rows``; after the scalar valuation is
+        scattered back, masked positions are zero and are immediately removed
+        by the decoder's ``-inf`` mask.  Their old values were unobservable and
+        had exactly zero gradient.
+        """
+        batch, pomo, nodes, rows, coordinates = consequence.shape
+        flat_mask = candidate_mask.reshape(-1)
+        live_index = flat_mask.nonzero(as_tuple=False).squeeze(-1)
+        flat_consequence = consequence.reshape(-1, rows, coordinates)
+        live_consequence = flat_consequence.index_select(0, live_index)
+        decision_index = torch.div(live_index, nodes, rounding_mode='floor')
+        live_multipliers = multipliers.reshape(batch * pomo, rows).index_select(
+            0, decision_index)
+        live_value = self._value_rows(live_consequence, live_multipliers)
+        value = live_value.new_zeros(batch * pomo * nodes)
+        return value.scatter(0, live_index, live_value).view(batch, pomo, nodes)
 
     def query_context(self, consequence, candidate_mask=None):
         """Identity-free replacement for the named live-state vector.
@@ -387,5 +391,6 @@ class NodeRowPool(nn.Module):
     def forward(self, node_rows):
         """node_rows: (batch, nodes, rows, NODE_ROW_DIM) -> (batch, nodes, out)."""
         active = node_rows[..., ACTIVE_INDEX]
-        hidden = self.row(_unit_scale(self.proj(node_rows), self.norm)) * active.unsqueeze(-1)
+        hidden = self.row(_unit_scale(self.proj(node_rows), self.norm))
+        hidden = hidden.masked_fill(active.unsqueeze(-1) <= 0, 0.0)
         return ConsequenceValuation._reduce(hidden, active, self.head)

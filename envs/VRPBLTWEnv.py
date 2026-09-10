@@ -137,7 +137,23 @@ class VRPBLTWEnv:
         self.backhaul_absent = env_params.get("backhaul_absent", "zero")
         assert self.backhaul_absent in ("zero", "abs"), self.backhaul_absent
         self.has_route_limit = "route_limit" in self.active_constraints
+        # Declared-but-inert probe.  Dropping a row does two things at once:
+        # it widens the bound AND it stops publishing the row.  This override
+        # separates them -- the row stays declared (its presence bit is on and
+        # the interface still reports it) while its bound is set out of reach,
+        # so a cell run with it differs from the dropped cell in the presence
+        # bit alone.  `None` leaves every published number untouched.
+        self.route_limit_override = env_params.get("route_limit_override", None)
         self.has_time_window = "time_window" in self.active_constraints
+        # A filled-free row stays published but receives a value that cannot
+        # bind.  This separates generalization to relaxed values from
+        # generalization to a different number of published rows.
+        filled_free = env_params.get("filled_free_constraints", ())
+        self.filled_free_constraints = tuple(filled_free)
+        assert set(self.filled_free_constraints) <= set(self.active_constraints)
+        self.free_backhaul = "backhaul" in self.filled_free_constraints
+        self.free_route_limit = "route_limit" in self.filled_free_constraints
+        self.free_time_window = "time_window" in self.filled_free_constraints
         # An unseen-resource probe: an accumulator over served load against a
         # *per-node* upper bound (TSPDL's draft limit).  It is built from
         # coordinates the trained rows already exercise -- capacity's signed
@@ -230,12 +246,14 @@ class VRPBLTWEnv:
         # its own declaration admits (a window equal to the horizon, a duration
         # limit no route can reach), which is what "this requirement is absent"
         # means operationally, and its mask is skipped in step().
-        if not self.has_backhaul:
+        if not self.has_backhaul or self.free_backhaul:
             node_demand = (torch.clamp_min(node_demand, 0.0)
                            if self.backhaul_absent == "zero" else node_demand.abs())
-        if not self.has_route_limit:
+        if not self.has_route_limit or self.free_route_limit:
             route_limit = torch.full_like(route_limit, self.NO_ROUTE_LIMIT)
-        if not self.has_time_window:
+        if self.route_limit_override is not None:
+            route_limit = torch.full_like(route_limit, self.route_limit_override)
+        if not self.has_time_window or self.free_time_window:
             tw_start = torch.zeros_like(tw_start)
             tw_end = torch.full_like(tw_end, self.depot_end)
             service_time = torch.zeros_like(service_time)
@@ -465,7 +483,7 @@ class VRPBLTWEnv:
         route_post = self.length[:, :, None] + dist_to_next + dist_next_depot
         route_too_large = route_post > route_limit + round_error_epsilon
         # shape: (batch, pomo, problem+1)
-        if not self.has_route_limit:
+        if not self.has_route_limit or self.free_route_limit:
             route_too_large = torch.zeros_like(route_too_large)
         if not soft_constrained:
             self.ninf_mask[route_too_large] = float('-inf')
@@ -491,7 +509,7 @@ class VRPBLTWEnv:
                              + dist_next_depot / self.speed)
         fail_return_depot = depot_return_time > self.depot_end + round_error_epsilon
         # shape: (batch, pomo, problem+1)
-        if not self.has_time_window:
+        if not self.has_time_window or self.free_time_window:
             out_of_tw = torch.zeros_like(out_of_tw)
             fail_return_depot = torch.zeros_like(fail_return_depot)
         if not soft_constrained:
@@ -513,7 +531,7 @@ class VRPBLTWEnv:
         # out of time: timeout value of the selected node = (current time - service time) - tw_end
         total_timeout = self.current_time - self.depot_node_service_time[torch.arange(self.batch_size)[:, None], selected] - self.depot_node_tw_end[torch.arange(self.batch_size)[:, None], selected]
         total_timeout = torch.clamp(total_timeout - round_error_epsilon, min=0)# negative value means arrival time < tw_end, turn it into 0
-        if not self.has_time_window:
+        if not self.has_time_window or self.free_time_window:
             total_timeout = torch.zeros_like(total_timeout)
         self.timeout_list = torch.cat((self.timeout_list, total_timeout[:, :, None]), dim=2) # shape: (batch, pomo, solution)
         if not soft_constrained:
@@ -522,7 +540,7 @@ class VRPBLTWEnv:
 
         # out of duration limit: out_of_dl value = current_length - route_limit
         out_of_dl = torch.clamp(self.length - self.route_limit - round_error_epsilon, min=0)
-        if not self.has_route_limit:
+        if not self.has_route_limit or self.free_route_limit:
             out_of_dl = torch.zeros_like(out_of_dl)
         self.out_of_dl_list = torch.cat((self.out_of_dl_list, out_of_dl[:, :, None]), dim=2)
         if not soft_constrained:
@@ -701,24 +719,34 @@ class VRPBLTWEnv:
 
         # --- duration limit: scale = the declared limit, horizon = depot return
         limit = route_limit.clamp(min=eps)
-        rows.append(self._consequence_row(
-            self.has_route_limit,
-            self.length[:, :, None].expand_as(demand_list) / limit,
-            route_post / limit,
-            (route_limit - route_post) / limit,
-            depot_event))
+        if self.free_route_limit:
+            zero = torch.zeros_like(demand_list)
+            rows.append(self._consequence_row(True, zero, zero,
+                                              torch.ones_like(zero), zero))
+        else:
+            rows.append(self._consequence_row(
+                self.has_route_limit,
+                self.length[:, :, None].expand_as(demand_list) / limit,
+                route_post / limit,
+                (route_limit - route_post) / limit,
+                depot_event))
 
         # --- time window: scale = the depot horizon, horizon = depot return ---
         horizon = max(self.depot_end, eps)
         tw_margin = torch.minimum(tw_end_all - arrival_time,
                                   self.depot_end - depot_return_time) / horizon
         wait_event = (reach_time < tw_start_all).float()  # the tropical join fires
-        rows.append(self._consequence_row(
-            self.has_time_window,
-            self.current_time[:, :, None].expand_as(demand_list) / horizon,
-            arrival_time / horizon,
-            tw_margin,
-            wait_event))
+        if self.free_time_window:
+            zero = torch.zeros_like(demand_list)
+            rows.append(self._consequence_row(True, zero, zero,
+                                              torch.ones_like(zero), zero))
+        else:
+            rows.append(self._consequence_row(
+                self.has_time_window,
+                self.current_time[:, :, None].expand_as(demand_list) / horizon,
+                arrival_time / horizon,
+                tw_margin,
+                wait_event))
 
         # --- draft limit: capacity's increment against a per-node bound -----
         if self.has_draft_limit:
@@ -1021,7 +1049,7 @@ class VRPBLTWEnv:
         # constraint violation
         # 1. time window: arrival time - tw end
         exceed_time_window = torch.clamp_min(context[4] - self.dummy_tw_end, 0.0)
-        if not self.has_time_window:
+        if not self.has_time_window or self.free_time_window:
             exceed_time_window = torch.zeros_like(exceed_time_window)
         out_node_penalty = (exceed_time_window > 1e-5).sum(-1).unsqueeze(0)
         out_penalty = exceed_time_window.sum(-1).unsqueeze(0)

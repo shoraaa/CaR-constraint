@@ -1,0 +1,109 @@
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.7.0) or chardet (4.0.0) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2026-09-10 12:26:52.300157: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1789043212.319875  360107 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1789043212.326336  360107 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1789043212.345550  360107 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789043212.345571  360107 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789043212.345574  360107 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789043212.345576  360107 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+Number of Parameters: 1254528
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 100, Hardness: hard)
+  Checkpoint:           results/pomo_eval_ep1000/train_pomo_soft_attr/epoch-1000.pt
+  Test Episodes:        1000 | Batch Size: 64
+  Validation Improve Steps: 0
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           True | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw100_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.9547348022460938
+Rank 0 >> val reconstruction time [w. mask]:  0.5364587306976318
+episode  64/1000, Elapsed[0.03m], Remain[0.46m]
+Rank 0 >> val construction time:  0.5006897449493408
+Rank 0 >> val reconstruction time [w. mask]:  0.5298042297363281
+episode 128/1000, Elapsed[0.05m], Remain[0.34m]
+Rank 0 >> val construction time:  0.5018727779388428
+Rank 0 >> val reconstruction time [w. mask]:  0.5382049083709717
+episode 192/1000, Elapsed[0.07m], Remain[0.30m]
+Rank 0 >> val construction time:  0.5029244422912598
+Rank 0 >> val reconstruction time [w. mask]:  0.5340530872344971
+episode 256/1000, Elapsed[0.09m], Remain[0.26m]
+Rank 0 >> val construction time:  0.5035252571105957
+Rank 0 >> val reconstruction time [w. mask]:  0.5371303558349609
+episode 320/1000, Elapsed[0.11m], Remain[0.24m]
+Rank 0 >> val construction time:  0.5045080184936523
+Rank 0 >> val reconstruction time [w. mask]:  0.5374457836151123
+episode 384/1000, Elapsed[0.13m], Remain[0.21m]
+Rank 0 >> val construction time:  0.5012936592102051
+Rank 0 >> val reconstruction time [w. mask]:  0.5293881893157959
+episode 448/1000, Elapsed[0.15m], Remain[0.19m]
+Rank 0 >> val construction time:  0.5019087791442871
+Rank 0 >> val reconstruction time [w. mask]:  0.5378472805023193
+episode 512/1000, Elapsed[0.17m], Remain[0.16m]
+Rank 0 >> val construction time:  0.5039434432983398
+Rank 0 >> val reconstruction time [w. mask]:  0.5364081859588623
+episode 576/1000, Elapsed[0.19m], Remain[0.14m]
+Rank 0 >> val construction time:  0.5118570327758789
+Rank 0 >> val reconstruction time [w. mask]:  0.540550947189331
+episode 640/1000, Elapsed[0.21m], Remain[0.12m]
+Rank 0 >> val construction time:  0.5060544013977051
+Rank 0 >> val reconstruction time [w. mask]:  0.5410635471343994
+episode 704/1000, Elapsed[0.24m], Remain[0.10m]
+Rank 0 >> val construction time:  0.4985921382904053
+Rank 0 >> val reconstruction time [w. mask]:  0.533092737197876
+episode 768/1000, Elapsed[0.26m], Remain[0.08m]
+Rank 0 >> val construction time:  0.5037298202514648
+Rank 0 >> val reconstruction time [w. mask]:  0.5330064296722412
+episode 832/1000, Elapsed[0.28m], Remain[0.06m]
+Rank 0 >> val construction time:  0.5033924579620361
+Rank 0 >> val reconstruction time [w. mask]:  0.5359175205230713
+episode 896/1000, Elapsed[0.30m], Remain[0.03m]
+Rank 0 >> val construction time:  0.49837183952331543
+Rank 0 >> val reconstruction time [w. mask]:  0.5414314270019531
+episode 960/1000, Elapsed[0.32m], Remain[0.01m]
+Rank 0 >> val construction time:  0.3857002258300781
+Rank 0 >> val reconstruction time [w. mask]:  0.4070131778717041
+episode 1000/1000, Elapsed[0.34m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/CVRPBLTW/or_tools_400s_vrpbltw100_uniform.pkl
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Construction] NO_AUG_Score: 27.2961, NO_AUG_Gap: 9.2496% --> AUG_Score: 26.6099, AUG_Gap: 6.4475%; Infeasible rate: 37.968% (solution-level), 0.9% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [w. mask] NO_AUG_Score: 27.5213, NO_AUG_Gap: 10.0225% --> AUG_Score: 26.6343, AUG_Gap: 6.5579%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 20.14s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 27.2961, Gap: 9.2496 
+ AUGMENTATION SCORE: 26.6099, Gap: 6.4475 
+Solution level Infeasible rate: 37.968%
+Instance level Infeasible rate: 0.900%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 27.5213, Gap: 10.0225 
+ AUGMENTATION SCORE: 26.6343, Gap: 6.5579 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/pomo_attr_ep1000_n100.csv

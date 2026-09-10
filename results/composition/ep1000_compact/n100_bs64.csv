@@ -1,0 +1,2 @@
+checkpoint,constraint_repr,slack_weight,couple_rows,arm,variant,active_constraints,filled_free_constraints,dataset,episodes,construct_no_aug,construct_aug,construct_sol_infeasible,construct_ins_infeasible,masked_no_aug,masked_aug,masked_sol_infeasible,masked_ins_infeasible
+results/pomo_eval_ep1000/train_pomo_soft_interface/epoch-1000.pt,interface,0.0,True,pomo_soft_interface_ep1000_compact,VRPBLTW,backhaul+route_limit+time_window,,vrpbltw100_uniform.pkl,1000,26.1094,25.5609,2.605,0.0,26.108,25.5603,0.0,0.0

@@ -254,10 +254,9 @@ if __name__ == "__main__":
     # measured to never fire, at 63% of the env-side interface overhead.
     parser.add_argument('--consequence_bound', type=str, default='clamp',
                         choices=['clamp', 'bend'])
-    # Restrict the per-candidate valuation to live candidates. Numerically
-    # identical either way; 1.50x on the RX 6800, 0.93x on the A100, so it is a
-    # per-machine switch rather than a default.
-    parser.add_argument('--consequence_compact', type=str2bool, default=False)
+    # Restrict the expensive row MLP to live candidates.  This path is both
+    # faster and smaller; False remains available for equivalence/profiling.
+    parser.add_argument('--consequence_compact', type=str2bool, default=True)
     parser.add_argument('--couple_rows', type=str2bool, default=True,
                         help="modulate each row's field by a multiplier coupled to the "
                              "other active rows' live state; False leaves every "

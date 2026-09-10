@@ -45,11 +45,12 @@ def _problems(count=16):
             torch.tensor([r[7] for r in raw], dtype=torch.float))
 
 
-def _environment(active, absent="zero", count=16):
+def _environment(active, absent="zero", count=16, filled_free=()):
     environment = VRPBLTWEnv(problem_size=50, pomo_size=40,
                              device=torch.device("cpu"),
                              active_constraints=active,
-                             backhaul_absent=absent)
+                             backhaul_absent=absent,
+                             filled_free_constraints=filled_free)
     environment.load_problems(batch_size=count, rollout_size=40,
                               problems=_problems(count))
     return environment
@@ -127,6 +128,19 @@ def test_a_backhaul_customer_returns_delivery_capacity():
     assert after_delivery < 1.0
     assert after_pickup > after_delivery
     assert after_pickup == pytest.approx(after_delivery - demand[0, backhaul].item())
+
+
+def test_filled_free_rows_stay_published_with_nonbinding_values():
+    environment = _environment(ALL_ROWS, filled_free=ALL_ROWS)
+
+    assert environment.has_backhaul
+    assert environment.has_route_limit
+    assert environment.has_time_window
+    assert (environment.depot_node_demand[:, 1:] >= 0.0).all()
+    assert (environment.route_limit == environment.NO_ROUTE_LIMIT).all()
+    assert (environment.depot_node_tw_start == 0.0).all()
+    assert (environment.depot_node_tw_end == environment.depot_end).all()
+    assert (environment.depot_node_service_time == 0.0).all()
 
 
 def test_the_backhaul_cell_needs_fewer_routes_than_the_cell_without_it():

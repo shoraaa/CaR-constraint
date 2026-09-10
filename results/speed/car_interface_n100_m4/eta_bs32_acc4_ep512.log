@@ -1,0 +1,277 @@
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.7.0) or chardet (4.0.0) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2026-09-10 13:54:32.379729: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1789048472.398709  461228 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1789048472.404812  461228 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1789048472.423196  461228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789048472.423213  461228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789048472.423216  461228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789048472.423219  461228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+{'POMO_checkpoint': '../PIP-constraint/POMO+PIP/pretrained/TSPTW/tsptw50_hard/POMO_star/epoch-10000.pt',
+ 'accumulation_steps': 4,
+ 'active_constraints': ['backhaul', 'route_limit', 'time_window'],
+ 'amp_training': True,
+ 'aspect_num': 2,
+ 'aux_mask': True,
+ 'backhaul_absent': 'zero',
+ 'backhaul_mask': 'soft',
+ 'baseline': 'group',
+ 'best_solution_path': None,
+ 'bonus_for_construction': False,
+ 'boundary': 0.5,
+ 'checkpoint': None,
+ 'clean_cache': False,
+ 'coefficient': 100,
+ 'consequence_bound': 'clamp',
+ 'consequence_compact': True,
+ 'consequence_context_dim': 0,
+ 'consequence_hidden_dim': 16,
+ 'consequence_norm': 'layer',
+ 'constraint_number': 4,
+ 'constraint_repr': 'interface',
+ 'couple_rows': True,
+ 'decoder_layer_num': 1,
+ 'diversity': 'kendall_tau_distance',
+ 'diversity_loss': True,
+ 'diversity_reward': False,
+ 'diversity_weight': 0.01,
+ 'dual_decoder': False,
+ 'dummy_improve_selected': 'random',
+ 'dummy_improve_steps': 0,
+ 'dynamic_coefficient': False,
+ 'embedding_dim': 128,
+ 'empty_cache_per_batch': False,
+ 'enable_eas': False,
+ 'encoder_layer_num': 6,
+ 'epochs': 1,
+ 'epsilon': 3.67,
+ 'epsilon_base': 5.0,
+ 'epsilon_decay_beta': 0.001,
+ 'eval_only': False,
+ 'eval_type': 'argmax',
+ 'extra_bonus': False,
+ 'extra_weight': 0.1,
+ 'ff_hidden_dim': 512,
+ 'fsb_dist_only': True,
+ 'fsb_reward_only': True,
+ 'fsb_reward_plus': False,
+ 'fsb_start_delay': 10000,
+ 'gamma': 0.1,
+ 'generate_PI_mask': False,
+ 'gpu_id': '0',
+ 'gumbel': False,
+ 'hardness': 'hard',
+ 'head_num': 8,
+ 'imitation_learning': True,
+ 'imitation_loss_weight': 1.0,
+ 'impr_encoder_start_idx': 0,
+ 'improve_start_when_dummy_ok': False,
+ 'improve_steps': 5,
+ 'improvement_method': 'kopt',
+ 'improvement_only': False,
+ 'infsb_dist_penalty': False,
+ 'init_sol_strategy': 'POMO',
+ 'insert_before': True,
+ 'is_lib': False,
+ 'iterations': 200,
+ 'iterations_impr': 20,
+ 'k_max': 4,
+ 'k_unconfident': 10,
+ 'lazy_pip_model': False,
+ 'load_optimizer': True,
+ 'load_which_pip': 'train_fsb_bsf',
+ 'log_dir': 'results/speed/car_interface_n100/eta_bs32_acc4_ep512',
+ 'logit_clipping': 10,
+ 'lr': 0.0001,
+ 'max_dummy_size': 18,
+ 'milestones': [4501],
+ 'model_save_interval': 99,
+ 'model_type': 'SINGLE',
+ 'multi_processing': False,
+ 'multiple_gpu': False,
+ 'n2s_decoder': False,
+ 'neighborhood_search': False,
+ 'no_cuda': False,
+ 'node_repr': 'named',
+ 'node_repr_dim': 4,
+ 'non_linear': None,
+ 'non_linear_cons': False,
+ 'norm': 'instance',
+ 'norm_loc': 'norm_last',
+ 'occ_gpu': 0.0,
+ 'out_node_reward': True,
+ 'out_reward': True,
+ 'pairwise_merge': 'feature,attention',
+ 'penalty_factor': 1.0,
+ 'penalty_normalize': False,
+ 'pip_checkpoint': None,
+ 'pip_decoder': False,
+ 'pip_last_growup': 50,
+ 'pip_step': 1,
+ 'pip_update_epoch': 20,
+ 'pip_update_interval': 1000,
+ 'pomo_feasible_start': False,
+ 'pomo_size': 50,
+ 'pomo_start': False,
+ 'problem': 'VRPBLTW',
+ 'problem_size': 100,
+ 'probs_return': False,
+ 'qkv_dim': 16,
+ 'random_delta_t': 0,
+ 'reconstruct': False,
+ 'reconstruct_bonus_weight': 1.0,
+ 'reconstruct_improve_bonus': False,
+ 'refinement_history_path': None,
+ 'repeats': 1,
+ 'reward_gating': False,
+ 'rm_num': 1,
+ 'sample_size': 1,
+ 'seed': 1234,
+ 'select_strategy': 'quality',
+ 'select_top_k': 10,
+ 'select_top_k_val': 1,
+ 'seperate_obj_penalty': False,
+ 'simulation_stop_epoch': 100,
+ 'slack_normalize': True,
+ 'slack_stride': 5,
+ 'slack_weight': 0.0,
+ 'soft_constrained': True,
+ 'sop_variant': 1,
+ 'sqrt_embedding_dim': 11.313708498984761,
+ 'stochastic_probability': 0.5,
+ 'subgradient': False,
+ 'subgradient_lr': 0.1,
+ 'succ_attention_bias': 1.0,
+ 'supplement_feature_dim': 17,
+ 'tb_logger': False,
+ 'test_batch_size': 10000,
+ 'test_dataset': None,
+ 'test_episodes': 10000,
+ 'test_opt_path': None,
+ 'test_pomo_size': 1,
+ 'total_history': 3,
+ 'train_batch_size': 32,
+ 'train_episodes': 512,
+ 'tw_normalize': True,
+ 'uncertainty_weight': False,
+ 'unified_decoder': False,
+ 'unified_encoder': True,
+ 'use_fast_attention': True,
+ 'use_real_PI_mask': False,
+ 'v_range': 6.0,
+ 'val_dataset': ['vrpbltw100_uniform.pkl'],
+ 'val_episodes': 1,
+ 'val_init_sol_strategy': 'POMO',
+ 'val_opt_path': None,
+ 'val_pomo_size': 1,
+ 'val_reconstruct_times': 1,
+ 'validation_batch_size': 1,
+ 'validation_improve_steps': 20,
+ 'validation_interval': 99,
+ 'wandb_logger': False,
+ 'weight_decay': 1e-06,
+ 'which_feature': 'both',
+ 'with_RNN': True,
+ 'with_bonus': False,
+ 'with_explore_stat_feature': True,
+ 'with_infsb_feature': True,
+ 'with_regular': False,
+ 'wo_node_penalty': False,
+ 'wo_tour_penalty': False,
+ 'world_size': 1}
+>> Log Path: results/speed/car_interface_n100/eta_bs32_acc4_ep512/20260910_215435train_interface
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Start VRPBLTW Training using SINGLE Model ...
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+lambda_:  1.0
+Number of Parameters: 1644277
+[copy_all_src] Warning: /home/ubuntu/CaR-constraint/_ops.py not found. Skipping.
+[copy_all_src] Warning: /home/ubuntu/CaR-constraint/_classes.py not found. Skipping.
+================================================================================
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 50.8753,  Loss: 2048.5159,  Infeasible_rate: [100.0000%, 100.0000%], out: 286.9219, out_nodes: 64, Feasible_dist: 0.0000
+[Improvement] Score: 558.7913 [BSF: 543.9534],  Loss: 13.8948,  Infeasible_rate: [100.0000%, 100.0000%], out: 623.5576, out_nodes: 141, Feasible_dist: 0.0000, Entropy: 3.0520
+Diversity Loss: 14.5462, Constructive RL loss: 2048.6606
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 51.0543,  Loss: 2207.7129,  Infeasible_rate: [100.0000%, 100.0000%], out: 298.7770, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 580.0065 [BSF: 562.6712],  Loss: 10.9598,  Infeasible_rate: [100.0000%, 100.0000%], out: 647.2259, out_nodes: 143, Feasible_dist: 0.0000, Entropy: 3.0430
+Diversity Loss: 14.5586, Constructive RL loss: 2207.8573
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 51.6219,  Loss: 2218.0647,  Infeasible_rate: [100.0000%, 100.0000%], out: 299.8591, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 593.8476 [BSF: 574.7912],  Loss: 10.8568,  Infeasible_rate: [100.0000%, 100.0000%], out: 668.0020, out_nodes: 145, Feasible_dist: 0.0000, Entropy: 3.0504
+Diversity Loss: 14.5441, Constructive RL loss: 2218.2091
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 51.4926,  Loss: 2256.0798,  Infeasible_rate: [100.0000%, 100.0000%], out: 297.5232, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 588.5440 [BSF: 569.9995],  Loss: 11.8649,  Infeasible_rate: [100.0000%, 100.0000%], out: 663.1727, out_nodes: 145, Feasible_dist: 0.0000, Entropy: 3.0383
+Diversity Loss: 14.5508, Constructive RL loss: 2256.2245
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 51.4529,  Loss: 2330.9511,  Infeasible_rate: [100.0000%, 100.0000%], out: 298.1543, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 585.5268 [BSF: 567.0686],  Loss: 12.3433,  Infeasible_rate: [100.0000%, 100.0000%], out: 663.4985, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0418
+Diversity Loss: 14.5593, Constructive RL loss: 2331.0961
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 51.5603,  Loss: 2333.0244,  Infeasible_rate: [100.0000%, 100.0000%], out: 297.9091, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 582.6828 [BSF: 564.8756],  Loss: 11.6092,  Infeasible_rate: [100.0000%, 100.0000%], out: 660.9029, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0356
+Diversity Loss: 14.5580, Constructive RL loss: 2333.1691
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 51.4763,  Loss: 2352.7462,  Infeasible_rate: [100.0000%, 100.0000%], out: 298.3539, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 581.9021 [BSF: 565.1330],  Loss: 11.3670,  Infeasible_rate: [100.0000%, 100.0000%], out: 656.1348, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0311
+Diversity Loss: 14.5511, Constructive RL loss: 2352.8909
+Rank 0 >> Epoch 1: Train (25%) 
+[Construction] Score: 51.5192,  Loss: 2336.9602,  Infeasible_rate: [100.0000%, 100.0000%], out: 297.6625, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 581.1718 [BSF: 563.9278],  Loss: 11.0808,  Infeasible_rate: [100.0000%, 100.0000%], out: 656.3584, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0335
+Diversity Loss: 14.5508, Constructive RL loss: 2337.1051
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 51.6160,  Loss: 2337.1271,  Infeasible_rate: [100.0000%, 100.0000%], out: 302.7843, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 586.9769 [BSF: 569.8612],  Loss: 11.9047,  Infeasible_rate: [100.0000%, 100.0000%], out: 663.9032, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0346
+Diversity Loss: 14.5385, Constructive RL loss: 2337.2719
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 51.5439,  Loss: 2359.4328,  Infeasible_rate: [100.0000%, 100.0000%], out: 301.2577, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 583.3803 [BSF: 567.0237],  Loss: 12.1315,  Infeasible_rate: [100.0000%, 100.0000%], out: 658.3167, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0357
+Diversity Loss: 14.5419, Constructive RL loss: 2359.5776
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 51.4904,  Loss: 2357.0659,  Infeasible_rate: [100.0000%, 100.0000%], out: 300.3688, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 581.8415 [BSF: 565.4837],  Loss: 12.1867,  Infeasible_rate: [100.0000%, 100.0000%], out: 656.1042, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0335
+Diversity Loss: 14.5440, Constructive RL loss: 2357.2107
+Rank 0 >> Epoch 1: Train (50%) 
+[Construction] Score: 51.4805,  Loss: 2368.5246,  Infeasible_rate: [100.0000%, 100.0000%], out: 298.7200, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 579.2340 [BSF: 563.3968],  Loss: 12.5932,  Infeasible_rate: [100.0000%, 100.0000%], out: 653.0083, out_nodes: 143, Feasible_dist: 0.0000, Entropy: 3.0319
+Diversity Loss: 14.5491, Constructive RL loss: 2368.6695
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 51.5464,  Loss: 2338.1808,  Infeasible_rate: [100.0000%, 100.0000%], out: 300.1510, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 580.4296 [BSF: 565.1473],  Loss: 12.7004,  Infeasible_rate: [100.0000%, 100.0000%], out: 653.1297, out_nodes: 144, Feasible_dist: 0.0000, Entropy: 3.0289
+Diversity Loss: 14.5492, Constructive RL loss: 2338.3258
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 51.5042,  Loss: 2359.7709,  Infeasible_rate: [100.0000%, 100.0000%], out: 299.0322, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 578.3742 [BSF: 562.9391],  Loss: 12.5319,  Infeasible_rate: [100.0000%, 100.0000%], out: 650.3892, out_nodes: 143, Feasible_dist: 0.0000, Entropy: 3.0275
+Diversity Loss: 14.5503, Constructive RL loss: 2359.9159
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 51.4990,  Loss: 2365.6078,  Infeasible_rate: [100.0000%, 100.0000%], out: 298.2303, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 578.5591 [BSF: 563.0508],  Loss: 12.4480,  Infeasible_rate: [100.0000%, 100.0000%], out: 649.2823, out_nodes: 143, Feasible_dist: 0.0000, Entropy: 3.0251
+Diversity Loss: 14.5553, Constructive RL loss: 2365.7529
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 51.5030,  Loss: 2372.7604,  Infeasible_rate: [100.0000%, 100.0000%], out: 297.6168, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 578.2129 [BSF: 562.2525],  Loss: 12.5912,  Infeasible_rate: [100.0000%, 100.0000%], out: 650.7320, out_nodes: 143, Feasible_dist: 0.0000, Entropy: 3.0268
+Diversity Loss: 14.5569, Constructive RL loss: 2372.9054
+Rank 0 >> Epoch 1: Train (75%) 
+[Construction] Score: 51.5030,  Loss: 2372.7604,  Infeasible_rate: [100.0000%, 100.0000%], out: 297.6168, out_nodes: 63, Feasible_dist: 0.0000
+[Improvement] Score: 578.2129 [BSF: 562.2525],  Loss: 12.5912,  Infeasible_rate: [100.0000%, 100.0000%], out: 650.7320, out_nodes: 143, Feasible_dist: 0.0000, Entropy: 3.0268
+Diversity Loss: 14.5569, Constructive RL loss: 2372.9054
+dummy_size: 31.9375
+Rank 0 >> Epoch 1/1: Time Est.: Elapsed[0.99m], Remain[0.00m]
+Rank 0 >> Saving trained_model
+>> Val 1 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.5900411605834961
+! solution size:  torch.Size([8, 1, 129])
+Rank 0 >> val improvement time:  3.0870513916015625
+Rank 0 >> val reconstruction time [w. mask]:  0.7470550537109375
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/VRPBLTW/or_tools_400s_vrpbltw100_uniform.pkl
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Improvement] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [w. mask] NO_AUG_Score: 63.038, NO_AUG_Gap: 240.9104% --> AUG_Score: 59.6332, AUG_Gap: 222.4972%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Finish VRPBLTW Training using SINGLE Model ...

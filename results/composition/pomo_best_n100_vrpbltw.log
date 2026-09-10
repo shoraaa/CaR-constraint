@@ -1,0 +1,505 @@
+
+>>> VRPBLTW :: /usr/bin/python3 test.py --problem VRPBLTW --problem_size 100 --checkpoint results/pomo1000/train_pomo_soft_attr/20260906_024257train_attr/val_model_best_cons.pt --disable_preset_args --constraint_repr attr --slack_weight 0.0 --couple_rows True --test_episodes 1000 --test_batch_size 16 --improve_steps 0 --validation_improve_steps 0 --results_csv results/composition/pomo_best_n100_vrpbltw.csv --variant_tag VRPBLTW --backhaul_absent zero --arm_tag pomo_soft_attr_best_ep985 --wandb_logger False --pomo_start True --diversity_loss False --soft_constrained True --active_constraints backhaul route_limit time_window
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.7.0) or chardet (4.0.0) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2026-09-10 08:31:53.147461: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1789029113.167272  336799 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1789029113.173762  336799 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1789029113.193182  336799 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789029113.193200  336799 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789029113.193204  336799 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789029113.193207  336799 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+Number of Parameters: 1254528
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 100, Hardness: hard)
+  Checkpoint:           results/pomo1000/train_pomo_soft_attr/20260906_024257train_attr/val_model_best_cons.pt
+  Test Episodes:        1000 | Batch Size: 16
+  Validation Improve Steps: 0
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           True | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw100_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.7366526126861572
+Rank 0 >> val reconstruction time [w. mask]:  0.33332300186157227
+episode  16/1000, Elapsed[0.02m], Remain[1.25m]
+Rank 0 >> val construction time:  0.3204231262207031
+Rank 0 >> val reconstruction time [w. mask]:  0.3476400375366211
+episode  32/1000, Elapsed[0.04m], Remain[1.12m]
+Rank 0 >> val construction time:  0.3282146453857422
+Rank 0 >> val reconstruction time [w. mask]:  0.35086941719055176
+episode  48/1000, Elapsed[0.05m], Remain[0.98m]
+Rank 0 >> val construction time:  0.33124542236328125
+Rank 0 >> val reconstruction time [w. mask]:  0.3439629077911377
+episode  64/1000, Elapsed[0.07m], Remain[0.97m]
+Rank 0 >> val construction time:  0.3181922435760498
+Rank 0 >> val reconstruction time [w. mask]:  0.34298086166381836
+episode  80/1000, Elapsed[0.08m], Remain[0.91m]
+Rank 0 >> val construction time:  0.32367706298828125
+Rank 0 >> val reconstruction time [w. mask]:  0.34348416328430176
+episode  96/1000, Elapsed[0.09m], Remain[0.86m]
+Rank 0 >> val construction time:  0.3155503273010254
+Rank 0 >> val reconstruction time [w. mask]:  0.3410372734069824
+episode 112/1000, Elapsed[0.11m], Remain[0.85m]
+Rank 0 >> val construction time:  0.3181285858154297
+Rank 0 >> val reconstruction time [w. mask]:  0.334545373916626
+episode 128/1000, Elapsed[0.12m], Remain[0.81m]
+Rank 0 >> val construction time:  0.3198385238647461
+Rank 0 >> val reconstruction time [w. mask]:  0.3487257957458496
+episode 144/1000, Elapsed[0.14m], Remain[0.81m]
+Rank 0 >> val construction time:  0.32451558113098145
+Rank 0 >> val reconstruction time [w. mask]:  0.34429311752319336
+episode 160/1000, Elapsed[0.15m], Remain[0.78m]
+Rank 0 >> val construction time:  0.3184816837310791
+Rank 0 >> val reconstruction time [w. mask]:  0.34243345260620117
+episode 176/1000, Elapsed[0.17m], Remain[0.77m]
+Rank 0 >> val construction time:  0.32545018196105957
+Rank 0 >> val reconstruction time [w. mask]:  0.34990763664245605
+episode 192/1000, Elapsed[0.18m], Remain[0.75m]
+Rank 0 >> val construction time:  0.31749534606933594
+Rank 0 >> val reconstruction time [w. mask]:  0.3363795280456543
+episode 208/1000, Elapsed[0.19m], Remain[0.74m]
+Rank 0 >> val construction time:  0.3210310935974121
+Rank 0 >> val reconstruction time [w. mask]:  0.3440268039703369
+episode 224/1000, Elapsed[0.21m], Remain[0.71m]
+Rank 0 >> val construction time:  0.3206443786621094
+Rank 0 >> val reconstruction time [w. mask]:  0.34615159034729004
+episode 240/1000, Elapsed[0.22m], Remain[0.71m]
+Rank 0 >> val construction time:  0.3267350196838379
+Rank 0 >> val reconstruction time [w. mask]:  0.34224963188171387
+episode 256/1000, Elapsed[0.24m], Remain[0.68m]
+Rank 0 >> val construction time:  0.31765031814575195
+Rank 0 >> val reconstruction time [w. mask]:  0.3457474708557129
+episode 272/1000, Elapsed[0.25m], Remain[0.66m]
+Rank 0 >> val construction time:  0.3179354667663574
+Rank 0 >> val reconstruction time [w. mask]:  0.33232545852661133
+episode 288/1000, Elapsed[0.26m], Remain[0.65m]
+Rank 0 >> val construction time:  0.3179342746734619
+Rank 0 >> val reconstruction time [w. mask]:  0.3359344005584717
+episode 304/1000, Elapsed[0.28m], Remain[0.63m]
+Rank 0 >> val construction time:  0.31878232955932617
+Rank 0 >> val reconstruction time [w. mask]:  0.3442561626434326
+episode 320/1000, Elapsed[0.29m], Remain[0.62m]
+Rank 0 >> val construction time:  0.323711633682251
+Rank 0 >> val reconstruction time [w. mask]:  0.3398165702819824
+episode 336/1000, Elapsed[0.30m], Remain[0.60m]
+Rank 0 >> val construction time:  0.3231468200683594
+Rank 0 >> val reconstruction time [w. mask]:  0.3427450656890869
+episode 352/1000, Elapsed[0.32m], Remain[0.59m]
+Rank 0 >> val construction time:  0.32087254524230957
+Rank 0 >> val reconstruction time [w. mask]:  0.33815932273864746
+episode 368/1000, Elapsed[0.33m], Remain[0.57m]
+Rank 0 >> val construction time:  0.3185915946960449
+Rank 0 >> val reconstruction time [w. mask]:  0.3418252468109131
+episode 384/1000, Elapsed[0.35m], Remain[0.56m]
+Rank 0 >> val construction time:  0.31514835357666016
+Rank 0 >> val reconstruction time [w. mask]:  0.33630967140197754
+episode 400/1000, Elapsed[0.36m], Remain[0.54m]
+Rank 0 >> val construction time:  0.32706403732299805
+Rank 0 >> val reconstruction time [w. mask]:  0.3387601375579834
+episode 416/1000, Elapsed[0.38m], Remain[0.53m]
+Rank 0 >> val construction time:  0.3198130130767822
+Rank 0 >> val reconstruction time [w. mask]:  0.341813325881958
+episode 432/1000, Elapsed[0.39m], Remain[0.51m]
+Rank 0 >> val construction time:  0.3253471851348877
+Rank 0 >> val reconstruction time [w. mask]:  0.34503698348999023
+episode 448/1000, Elapsed[0.41m], Remain[0.50m]
+Rank 0 >> val construction time:  0.3256700038909912
+Rank 0 >> val reconstruction time [w. mask]:  0.34748291969299316
+episode 464/1000, Elapsed[0.42m], Remain[0.49m]
+Rank 0 >> val construction time:  0.32304930686950684
+Rank 0 >> val reconstruction time [w. mask]:  0.3417060375213623
+episode 480/1000, Elapsed[0.44m], Remain[0.47m]
+Rank 0 >> val construction time:  0.32082176208496094
+Rank 0 >> val reconstruction time [w. mask]:  0.3388102054595947
+episode 496/1000, Elapsed[0.45m], Remain[0.46m]
+Rank 0 >> val construction time:  0.321378231048584
+Rank 0 >> val reconstruction time [w. mask]:  0.341876745223999
+episode 512/1000, Elapsed[0.46m], Remain[0.44m]
+Rank 0 >> val construction time:  0.3201146125793457
+Rank 0 >> val reconstruction time [w. mask]:  0.3395571708679199
+episode 528/1000, Elapsed[0.48m], Remain[0.43m]
+Rank 0 >> val construction time:  0.3226132392883301
+Rank 0 >> val reconstruction time [w. mask]:  0.339367151260376
+episode 544/1000, Elapsed[0.49m], Remain[0.41m]
+Rank 0 >> val construction time:  0.32083582878112793
+Rank 0 >> val reconstruction time [w. mask]:  0.3445897102355957
+episode 560/1000, Elapsed[0.51m], Remain[0.40m]
+Rank 0 >> val construction time:  0.3225369453430176
+Rank 0 >> val reconstruction time [w. mask]:  0.34342312812805176
+episode 576/1000, Elapsed[0.52m], Remain[0.38m]
+Rank 0 >> val construction time:  0.3264796733856201
+Rank 0 >> val reconstruction time [w. mask]:  0.34073948860168457
+episode 592/1000, Elapsed[0.54m], Remain[0.37m]
+Rank 0 >> val construction time:  0.31998276710510254
+Rank 0 >> val reconstruction time [w. mask]:  0.3440077304840088
+episode 608/1000, Elapsed[0.55m], Remain[0.35m]
+Rank 0 >> val construction time:  0.3222475051879883
+Rank 0 >> val reconstruction time [w. mask]:  0.34500694274902344
+episode 624/1000, Elapsed[0.56m], Remain[0.34m]
+Rank 0 >> val construction time:  0.32417917251586914
+Rank 0 >> val reconstruction time [w. mask]:  0.3456089496612549
+episode 640/1000, Elapsed[0.58m], Remain[0.32m]
+Rank 0 >> val construction time:  0.3277006149291992
+Rank 0 >> val reconstruction time [w. mask]:  0.34749817848205566
+episode 656/1000, Elapsed[0.59m], Remain[0.31m]
+Rank 0 >> val construction time:  0.3226611614227295
+Rank 0 >> val reconstruction time [w. mask]:  0.337904691696167
+episode 672/1000, Elapsed[0.61m], Remain[0.30m]
+Rank 0 >> val construction time:  0.32120776176452637
+Rank 0 >> val reconstruction time [w. mask]:  0.33986616134643555
+episode 688/1000, Elapsed[0.62m], Remain[0.28m]
+Rank 0 >> val construction time:  0.33983302116394043
+Rank 0 >> val reconstruction time [w. mask]:  0.34728026390075684
+episode 704/1000, Elapsed[0.64m], Remain[0.27m]
+Rank 0 >> val construction time:  0.32071709632873535
+Rank 0 >> val reconstruction time [w. mask]:  0.3362770080566406
+episode 720/1000, Elapsed[0.65m], Remain[0.25m]
+Rank 0 >> val construction time:  0.3231954574584961
+Rank 0 >> val reconstruction time [w. mask]:  0.3393430709838867
+episode 736/1000, Elapsed[0.66m], Remain[0.24m]
+Rank 0 >> val construction time:  0.32311439514160156
+Rank 0 >> val reconstruction time [w. mask]:  0.33681273460388184
+episode 752/1000, Elapsed[0.68m], Remain[0.22m]
+Rank 0 >> val construction time:  0.3242678642272949
+Rank 0 >> val reconstruction time [w. mask]:  0.34385251998901367
+episode 768/1000, Elapsed[0.69m], Remain[0.21m]
+Rank 0 >> val construction time:  0.317702054977417
+Rank 0 >> val reconstruction time [w. mask]:  0.33852195739746094
+episode 784/1000, Elapsed[0.71m], Remain[0.19m]
+Rank 0 >> val construction time:  0.3230767250061035
+Rank 0 >> val reconstruction time [w. mask]:  0.33707594871520996
+episode 800/1000, Elapsed[0.72m], Remain[0.18m]
+Rank 0 >> val construction time:  0.323962926864624
+Rank 0 >> val reconstruction time [w. mask]:  0.3425006866455078
+episode 816/1000, Elapsed[0.73m], Remain[0.17m]
+Rank 0 >> val construction time:  0.3260488510131836
+Rank 0 >> val reconstruction time [w. mask]:  0.3447225093841553
+episode 832/1000, Elapsed[0.75m], Remain[0.15m]
+Rank 0 >> val construction time:  0.3255891799926758
+Rank 0 >> val reconstruction time [w. mask]:  0.3407602310180664
+episode 848/1000, Elapsed[0.76m], Remain[0.14m]
+Rank 0 >> val construction time:  0.32573413848876953
+Rank 0 >> val reconstruction time [w. mask]:  0.33318114280700684
+episode 864/1000, Elapsed[0.77m], Remain[0.12m]
+Rank 0 >> val construction time:  0.3178248405456543
+Rank 0 >> val reconstruction time [w. mask]:  0.3474857807159424
+episode 880/1000, Elapsed[0.79m], Remain[0.11m]
+Rank 0 >> val construction time:  0.3227722644805908
+Rank 0 >> val reconstruction time [w. mask]:  0.3414127826690674
+episode 896/1000, Elapsed[0.80m], Remain[0.09m]
+Rank 0 >> val construction time:  0.31694865226745605
+Rank 0 >> val reconstruction time [w. mask]:  0.330521821975708
+episode 912/1000, Elapsed[0.82m], Remain[0.08m]
+Rank 0 >> val construction time:  0.3179197311401367
+Rank 0 >> val reconstruction time [w. mask]:  0.3365333080291748
+episode 928/1000, Elapsed[0.83m], Remain[0.06m]
+Rank 0 >> val construction time:  0.3230936527252197
+Rank 0 >> val reconstruction time [w. mask]:  0.35280871391296387
+episode 944/1000, Elapsed[0.85m], Remain[0.05m]
+Rank 0 >> val construction time:  0.32397961616516113
+Rank 0 >> val reconstruction time [w. mask]:  0.33861255645751953
+episode 960/1000, Elapsed[0.86m], Remain[0.04m]
+Rank 0 >> val construction time:  0.31933164596557617
+Rank 0 >> val reconstruction time [w. mask]:  0.34572482109069824
+episode 976/1000, Elapsed[0.88m], Remain[0.02m]
+Rank 0 >> val construction time:  0.32051682472229004
+Rank 0 >> val reconstruction time [w. mask]:  0.3432917594909668
+episode 992/1000, Elapsed[0.89m], Remain[0.01m]
+Rank 0 >> val construction time:  0.3254969120025635
+Rank 0 >> val reconstruction time [w. mask]:  0.3337998390197754
+episode 1000/1000, Elapsed[0.91m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/CVRPBLTW/or_tools_400s_vrpbltw100_uniform.pkl
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Construction] NO_AUG_Score: 27.2655, NO_AUG_Gap: 9.1052% --> AUG_Score: 26.6429, AUG_Gap: 6.6448%; Infeasible rate: 46.055% (solution-level), 1.7% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [w. mask] NO_AUG_Score: 27.7125, NO_AUG_Gap: 10.669% --> AUG_Score: 26.7109, AUG_Gap: 6.8403%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 54.42s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 27.2655, Gap: 9.1052 
+ AUGMENTATION SCORE: 26.6429, Gap: 6.6448 
+Solution level Infeasible rate: 46.055%
+Instance level Infeasible rate: 1.700%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 27.7125, Gap: 10.6690 
+ AUGMENTATION SCORE: 26.7109, Gap: 6.8403 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/pomo_best_n100_vrpbltw.csv
+
+>>> VRPBLTW :: /usr/bin/python3 test.py --problem VRPBLTW --problem_size 100 --checkpoint results/pomo1000/train_pomo_soft_interface/20260908_065128train_interface/val_model_best_cons.pt --disable_preset_args --constraint_repr interface --slack_weight 0.0 --couple_rows True --test_episodes 1000 --test_batch_size 16 --improve_steps 0 --validation_improve_steps 0 --results_csv results/composition/pomo_best_n100_vrpbltw.csv --variant_tag VRPBLTW --backhaul_absent zero --arm_tag pomo_soft_interface_best_ep995 --wandb_logger False --pomo_start True --diversity_loss False --soft_constrained True --active_constraints backhaul route_limit time_window
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.7.0) or chardet (4.0.0) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2026-09-10 08:32:58.530310: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1789029178.550154  336897 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1789029178.557769  336897 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1789029178.577142  336897 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789029178.577160  336897 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789029178.577164  336897 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789029178.577166  336897 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+Number of Parameters: 1256469
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 100, Hardness: hard)
+  Checkpoint:           results/pomo1000/train_pomo_soft_interface/20260908_065128train_interface/val_model_best_cons.pt
+  Test Episodes:        1000 | Batch Size: 16
+  Validation Improve Steps: 0
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           True | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw100_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  2.1315433979034424
+Rank 0 >> val reconstruction time [w. mask]:  1.7322015762329102
+episode  16/1000, Elapsed[0.07m], Remain[4.11m]
+Rank 0 >> val construction time:  1.6839845180511475
+Rank 0 >> val reconstruction time [w. mask]:  1.7755355834960938
+episode  32/1000, Elapsed[0.13m], Remain[3.94m]
+Rank 0 >> val construction time:  1.6842379570007324
+Rank 0 >> val reconstruction time [w. mask]:  1.7812087535858154
+episode  48/1000, Elapsed[0.19m], Remain[3.75m]
+Rank 0 >> val construction time:  1.709503412246704
+Rank 0 >> val reconstruction time [w. mask]:  1.7783362865447998
+episode  64/1000, Elapsed[0.25m], Remain[3.63m]
+Rank 0 >> val construction time:  1.6809113025665283
+Rank 0 >> val reconstruction time [w. mask]:  1.7762999534606934
+episode  80/1000, Elapsed[0.31m], Remain[3.58m]
+Rank 0 >> val construction time:  1.667285680770874
+Rank 0 >> val reconstruction time [w. mask]:  1.7593693733215332
+episode  96/1000, Elapsed[0.37m], Remain[3.48m]
+Rank 0 >> val construction time:  1.6845242977142334
+Rank 0 >> val reconstruction time [w. mask]:  1.7635836601257324
+episode 112/1000, Elapsed[0.43m], Remain[3.43m]
+Rank 0 >> val construction time:  1.6641275882720947
+Rank 0 >> val reconstruction time [w. mask]:  1.7633492946624756
+episode 128/1000, Elapsed[0.49m], Remain[3.34m]
+Rank 0 >> val construction time:  1.7070543766021729
+Rank 0 >> val reconstruction time [w. mask]:  1.78757643699646
+episode 144/1000, Elapsed[0.55m], Remain[3.30m]
+Rank 0 >> val construction time:  1.696106195449829
+Rank 0 >> val reconstruction time [w. mask]:  1.8290460109710693
+episode 160/1000, Elapsed[0.61m], Remain[3.23m]
+Rank 0 >> val construction time:  1.6688663959503174
+Rank 0 >> val reconstruction time [w. mask]:  1.7803523540496826
+episode 176/1000, Elapsed[0.68m], Remain[3.17m]
+Rank 0 >> val construction time:  1.695629596710205
+Rank 0 >> val reconstruction time [w. mask]:  1.820676565170288
+episode 192/1000, Elapsed[0.74m], Remain[3.10m]
+Rank 0 >> val construction time:  1.6824157238006592
+Rank 0 >> val reconstruction time [w. mask]:  1.772596836090088
+episode 208/1000, Elapsed[0.80m], Remain[3.05m]
+Rank 0 >> val construction time:  1.7087714672088623
+Rank 0 >> val reconstruction time [w. mask]:  1.7894563674926758
+episode 224/1000, Elapsed[0.86m], Remain[2.98m]
+Rank 0 >> val construction time:  1.7033045291900635
+Rank 0 >> val reconstruction time [w. mask]:  1.7773079872131348
+episode 240/1000, Elapsed[0.92m], Remain[2.91m]
+Rank 0 >> val construction time:  1.6781859397888184
+Rank 0 >> val reconstruction time [w. mask]:  1.775719165802002
+episode 256/1000, Elapsed[0.98m], Remain[2.85m]
+Rank 0 >> val construction time:  1.6674339771270752
+Rank 0 >> val reconstruction time [w. mask]:  1.7734706401824951
+episode 272/1000, Elapsed[1.04m], Remain[2.78m]
+Rank 0 >> val construction time:  1.6819086074829102
+Rank 0 >> val reconstruction time [w. mask]:  1.7322304248809814
+episode 288/1000, Elapsed[1.10m], Remain[2.73m]
+Rank 0 >> val construction time:  1.6771321296691895
+Rank 0 >> val reconstruction time [w. mask]:  1.776651382446289
+episode 304/1000, Elapsed[1.16m], Remain[2.66m]
+Rank 0 >> val construction time:  1.684891939163208
+Rank 0 >> val reconstruction time [w. mask]:  1.7830419540405273
+episode 320/1000, Elapsed[1.22m], Remain[2.60m]
+Rank 0 >> val construction time:  1.6715588569641113
+Rank 0 >> val reconstruction time [w. mask]:  1.7578003406524658
+episode 336/1000, Elapsed[1.28m], Remain[2.54m]
+Rank 0 >> val construction time:  1.6799533367156982
+Rank 0 >> val reconstruction time [w. mask]:  1.771413803100586
+episode 352/1000, Elapsed[1.35m], Remain[2.48m]
+Rank 0 >> val construction time:  1.6890969276428223
+Rank 0 >> val reconstruction time [w. mask]:  1.7626547813415527
+episode 368/1000, Elapsed[1.40m], Remain[2.41m]
+Rank 0 >> val construction time:  1.6700072288513184
+Rank 0 >> val reconstruction time [w. mask]:  1.7750706672668457
+episode 384/1000, Elapsed[1.46m], Remain[2.35m]
+Rank 0 >> val construction time:  1.6956098079681396
+Rank 0 >> val reconstruction time [w. mask]:  1.7595274448394775
+episode 400/1000, Elapsed[1.53m], Remain[2.29m]
+Rank 0 >> val construction time:  1.6957550048828125
+Rank 0 >> val reconstruction time [w. mask]:  1.7626838684082031
+episode 416/1000, Elapsed[1.59m], Remain[2.23m]
+Rank 0 >> val construction time:  1.6928682327270508
+Rank 0 >> val reconstruction time [w. mask]:  1.7705330848693848
+episode 432/1000, Elapsed[1.65m], Remain[2.17m]
+Rank 0 >> val construction time:  1.6812686920166016
+Rank 0 >> val reconstruction time [w. mask]:  1.7854499816894531
+episode 448/1000, Elapsed[1.71m], Remain[2.10m]
+Rank 0 >> val construction time:  1.694859266281128
+Rank 0 >> val reconstruction time [w. mask]:  1.785031795501709
+episode 464/1000, Elapsed[1.77m], Remain[2.05m]
+Rank 0 >> val construction time:  1.674720048904419
+Rank 0 >> val reconstruction time [w. mask]:  1.7629594802856445
+episode 480/1000, Elapsed[1.83m], Remain[1.98m]
+Rank 0 >> val construction time:  1.6770274639129639
+Rank 0 >> val reconstruction time [w. mask]:  1.77142333984375
+episode 496/1000, Elapsed[1.89m], Remain[1.92m]
+Rank 0 >> val construction time:  1.6934504508972168
+Rank 0 >> val reconstruction time [w. mask]:  1.7721903324127197
+episode 512/1000, Elapsed[1.95m], Remain[1.86m]
+Rank 0 >> val construction time:  1.6759309768676758
+Rank 0 >> val reconstruction time [w. mask]:  1.7591919898986816
+episode 528/1000, Elapsed[2.01m], Remain[1.80m]
+Rank 0 >> val construction time:  1.662095069885254
+Rank 0 >> val reconstruction time [w. mask]:  1.757148027420044
+episode 544/1000, Elapsed[2.07m], Remain[1.74m]
+Rank 0 >> val construction time:  1.6656913757324219
+Rank 0 >> val reconstruction time [w. mask]:  1.753188133239746
+episode 560/1000, Elapsed[2.13m], Remain[1.67m]
+Rank 0 >> val construction time:  1.6941285133361816
+Rank 0 >> val reconstruction time [w. mask]:  1.7734928131103516
+episode 576/1000, Elapsed[2.19m], Remain[1.61m]
+Rank 0 >> val construction time:  1.6903297901153564
+Rank 0 >> val reconstruction time [w. mask]:  1.788914442062378
+episode 592/1000, Elapsed[2.25m], Remain[1.55m]
+Rank 0 >> val construction time:  1.7049140930175781
+Rank 0 >> val reconstruction time [w. mask]:  1.8133985996246338
+episode 608/1000, Elapsed[2.32m], Remain[1.49m]
+Rank 0 >> val construction time:  1.6940758228302002
+Rank 0 >> val reconstruction time [w. mask]:  1.7837679386138916
+episode 624/1000, Elapsed[2.38m], Remain[1.43m]
+Rank 0 >> val construction time:  1.6926157474517822
+Rank 0 >> val reconstruction time [w. mask]:  1.7617125511169434
+episode 640/1000, Elapsed[2.44m], Remain[1.37m]
+Rank 0 >> val construction time:  1.6747589111328125
+Rank 0 >> val reconstruction time [w. mask]:  1.77587890625
+episode 656/1000, Elapsed[2.50m], Remain[1.31m]
+Rank 0 >> val construction time:  1.682441234588623
+Rank 0 >> val reconstruction time [w. mask]:  1.746330738067627
+episode 672/1000, Elapsed[2.56m], Remain[1.25m]
+Rank 0 >> val construction time:  1.6819610595703125
+Rank 0 >> val reconstruction time [w. mask]:  1.7707369327545166
+episode 688/1000, Elapsed[2.62m], Remain[1.19m]
+Rank 0 >> val construction time:  1.6918437480926514
+Rank 0 >> val reconstruction time [w. mask]:  1.8163256645202637
+episode 704/1000, Elapsed[2.68m], Remain[1.13m]
+Rank 0 >> val construction time:  1.6756484508514404
+Rank 0 >> val reconstruction time [w. mask]:  1.7529809474945068
+episode 720/1000, Elapsed[2.74m], Remain[1.07m]
+Rank 0 >> val construction time:  1.6812021732330322
+Rank 0 >> val reconstruction time [w. mask]:  1.760995626449585
+episode 736/1000, Elapsed[2.80m], Remain[1.00m]
+Rank 0 >> val construction time:  1.6840457916259766
+Rank 0 >> val reconstruction time [w. mask]:  1.7326979637145996
+episode 752/1000, Elapsed[2.86m], Remain[0.94m]
+Rank 0 >> val construction time:  1.7083525657653809
+Rank 0 >> val reconstruction time [w. mask]:  1.808781385421753
+episode 768/1000, Elapsed[2.92m], Remain[0.88m]
+Rank 0 >> val construction time:  1.6773707866668701
+Rank 0 >> val reconstruction time [w. mask]:  1.770561695098877
+episode 784/1000, Elapsed[2.98m], Remain[0.82m]
+Rank 0 >> val construction time:  1.6808726787567139
+Rank 0 >> val reconstruction time [w. mask]:  1.736401081085205
+episode 800/1000, Elapsed[3.04m], Remain[0.76m]
+Rank 0 >> val construction time:  1.6868488788604736
+Rank 0 >> val reconstruction time [w. mask]:  1.772341251373291
+episode 816/1000, Elapsed[3.11m], Remain[0.70m]
+Rank 0 >> val construction time:  1.6889245510101318
+Rank 0 >> val reconstruction time [w. mask]:  1.7850909233093262
+episode 832/1000, Elapsed[3.17m], Remain[0.64m]
+Rank 0 >> val construction time:  1.6616036891937256
+Rank 0 >> val reconstruction time [w. mask]:  1.7553396224975586
+episode 848/1000, Elapsed[3.23m], Remain[0.58m]
+Rank 0 >> val construction time:  1.6757352352142334
+Rank 0 >> val reconstruction time [w. mask]:  1.7556521892547607
+episode 864/1000, Elapsed[3.29m], Remain[0.52m]
+Rank 0 >> val construction time:  1.6889662742614746
+Rank 0 >> val reconstruction time [w. mask]:  1.8148612976074219
+episode 880/1000, Elapsed[3.35m], Remain[0.46m]
+Rank 0 >> val construction time:  1.6742331981658936
+Rank 0 >> val reconstruction time [w. mask]:  1.7560019493103027
+episode 896/1000, Elapsed[3.41m], Remain[0.40m]
+Rank 0 >> val construction time:  1.6651554107666016
+Rank 0 >> val reconstruction time [w. mask]:  1.7152798175811768
+episode 912/1000, Elapsed[3.47m], Remain[0.33m]
+Rank 0 >> val construction time:  1.6777663230895996
+Rank 0 >> val reconstruction time [w. mask]:  1.757643699645996
+episode 928/1000, Elapsed[3.53m], Remain[0.27m]
+Rank 0 >> val construction time:  1.706037998199463
+Rank 0 >> val reconstruction time [w. mask]:  1.8142366409301758
+episode 944/1000, Elapsed[3.59m], Remain[0.21m]
+Rank 0 >> val construction time:  1.6762309074401855
+Rank 0 >> val reconstruction time [w. mask]:  1.783231258392334
+episode 960/1000, Elapsed[3.65m], Remain[0.15m]
+Rank 0 >> val construction time:  1.6796281337738037
+Rank 0 >> val reconstruction time [w. mask]:  1.7816357612609863
+episode 976/1000, Elapsed[3.71m], Remain[0.09m]
+Rank 0 >> val construction time:  1.662113904953003
+Rank 0 >> val reconstruction time [w. mask]:  1.7586605548858643
+episode 992/1000, Elapsed[3.77m], Remain[0.03m]
+Rank 0 >> val construction time:  1.0318176746368408
+Rank 0 >> val reconstruction time [w. mask]:  1.087031364440918
+episode 1000/1000, Elapsed[3.81m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/CVRPBLTW/or_tools_400s_vrpbltw100_uniform.pkl
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Construction] NO_AUG_Score: 26.0794, NO_AUG_Gap: 4.1439% --> AUG_Score: 25.498, AUG_Gap: 1.8119%; Infeasible rate: 2.413% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [w. mask] NO_AUG_Score: 26.0786, NO_AUG_Gap: 4.1397% --> AUG_Score: 25.4978, AUG_Gap: 1.8108%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 228.56s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 26.0794, Gap: 4.1439 
+ AUGMENTATION SCORE: 25.498, Gap: 1.8119 
+Solution level Infeasible rate: 2.413%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 26.0786, Gap: 4.1397 
+ AUGMENTATION SCORE: 25.4978, Gap: 1.8108 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/pomo_best_n100_vrpbltw.csv
+N100_BEST_DONE

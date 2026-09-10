@@ -1,0 +1,8 @@
+tag=compact
+consequence_compact=True
+episodes=640
+batch=32
+status=0
+wall_ms=39866
+peak_gpu_mib=9921
+mean_active_gpu_util_pct=39.3

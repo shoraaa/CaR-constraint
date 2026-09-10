@@ -1,0 +1,252 @@
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.7.0) or chardet (4.0.0) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2026-09-10 12:01:17.711768: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1789041677.731436  347543 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1789041677.737841  347543 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1789041677.756884  347543 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789041677.756904  347543 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789041677.756907  347543 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789041677.756910  347543 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+{'POMO_checkpoint': '../PIP-constraint/POMO+PIP/pretrained/TSPTW/tsptw50_hard/POMO_star/epoch-10000.pt',
+ 'accumulation_steps': 4,
+ 'active_constraints': ['backhaul', 'route_limit', 'time_window'],
+ 'amp_training': True,
+ 'aspect_num': 2,
+ 'aux_mask': True,
+ 'backhaul_absent': 'zero',
+ 'backhaul_mask': 'soft',
+ 'baseline': 'group',
+ 'best_solution_path': None,
+ 'bonus_for_construction': False,
+ 'boundary': 0.5,
+ 'checkpoint': None,
+ 'clean_cache': False,
+ 'coefficient': 100,
+ 'consequence_bound': 'clamp',
+ 'consequence_compact': True,
+ 'consequence_context_dim': 0,
+ 'consequence_hidden_dim': 16,
+ 'consequence_norm': 'layer',
+ 'constraint_number': 4,
+ 'constraint_repr': 'interface',
+ 'couple_rows': True,
+ 'decoder_layer_num': 1,
+ 'diversity': 'kendall_tau_distance',
+ 'diversity_loss': False,
+ 'diversity_reward': False,
+ 'diversity_weight': 0.01,
+ 'dual_decoder': False,
+ 'dummy_improve_selected': 'random',
+ 'dummy_improve_steps': 0,
+ 'dynamic_coefficient': False,
+ 'embedding_dim': 128,
+ 'empty_cache_per_batch': False,
+ 'enable_eas': False,
+ 'encoder_layer_num': 6,
+ 'epochs': 1,
+ 'epsilon': 3.67,
+ 'epsilon_base': 5.0,
+ 'epsilon_decay_beta': 0.001,
+ 'eval_only': False,
+ 'eval_type': 'argmax',
+ 'extra_bonus': False,
+ 'extra_weight': 0.1,
+ 'ff_hidden_dim': 512,
+ 'fsb_dist_only': True,
+ 'fsb_reward_only': True,
+ 'fsb_reward_plus': False,
+ 'fsb_start_delay': 10000,
+ 'gamma': 0.1,
+ 'generate_PI_mask': False,
+ 'gpu_id': '0',
+ 'gumbel': False,
+ 'hardness': 'hard',
+ 'head_num': 8,
+ 'imitation_learning': True,
+ 'imitation_loss_weight': 1.0,
+ 'impr_encoder_start_idx': 0,
+ 'improve_start_when_dummy_ok': False,
+ 'improve_steps': 0,
+ 'improvement_method': 'kopt',
+ 'improvement_only': False,
+ 'infsb_dist_penalty': False,
+ 'init_sol_strategy': 'POMO',
+ 'insert_before': True,
+ 'is_lib': False,
+ 'iterations': 200,
+ 'iterations_impr': 20,
+ 'k_max': 4,
+ 'k_unconfident': 10,
+ 'lazy_pip_model': False,
+ 'load_optimizer': True,
+ 'load_which_pip': 'train_fsb_bsf',
+ 'log_dir': 'results/speed/compact_n100/compact2',
+ 'logit_clipping': 10,
+ 'lr': 0.0001,
+ 'max_dummy_size': 18,
+ 'milestones': [4501],
+ 'model_save_interval': 99,
+ 'model_type': 'SINGLE',
+ 'multi_processing': False,
+ 'multiple_gpu': False,
+ 'n2s_decoder': False,
+ 'neighborhood_search': False,
+ 'no_cuda': False,
+ 'node_repr': 'named',
+ 'node_repr_dim': 4,
+ 'non_linear': None,
+ 'non_linear_cons': False,
+ 'norm': 'instance',
+ 'norm_loc': 'norm_last',
+ 'occ_gpu': 0.0,
+ 'out_node_reward': True,
+ 'out_reward': True,
+ 'pairwise_merge': 'feature,attention',
+ 'penalty_factor': 1.0,
+ 'penalty_normalize': False,
+ 'pip_checkpoint': None,
+ 'pip_decoder': False,
+ 'pip_last_growup': 50,
+ 'pip_step': 1,
+ 'pip_update_epoch': 20,
+ 'pip_update_interval': 1000,
+ 'pomo_feasible_start': False,
+ 'pomo_size': 50,
+ 'pomo_start': True,
+ 'problem': 'VRPBLTW',
+ 'problem_size': 100,
+ 'probs_return': False,
+ 'qkv_dim': 16,
+ 'random_delta_t': 0,
+ 'reconstruct': False,
+ 'reconstruct_bonus_weight': 1.0,
+ 'reconstruct_improve_bonus': False,
+ 'refinement_history_path': None,
+ 'repeats': 1,
+ 'reward_gating': False,
+ 'rm_num': 1,
+ 'sample_size': 1,
+ 'seed': 1234,
+ 'select_strategy': 'quality',
+ 'select_top_k': 10,
+ 'select_top_k_val': 1,
+ 'seperate_obj_penalty': False,
+ 'simulation_stop_epoch': 100,
+ 'slack_normalize': True,
+ 'slack_stride': 5,
+ 'slack_weight': 0.0,
+ 'soft_constrained': True,
+ 'sop_variant': 1,
+ 'sqrt_embedding_dim': 11.313708498984761,
+ 'stochastic_probability': 0.5,
+ 'subgradient': False,
+ 'subgradient_lr': 0.1,
+ 'succ_attention_bias': 1.0,
+ 'supplement_feature_dim': 17,
+ 'tb_logger': False,
+ 'test_batch_size': 10000,
+ 'test_dataset': None,
+ 'test_episodes': 10000,
+ 'test_opt_path': None,
+ 'test_pomo_size': 1,
+ 'total_history': 3,
+ 'train_batch_size': 32,
+ 'train_episodes': 640,
+ 'tw_normalize': True,
+ 'uncertainty_weight': False,
+ 'unified_decoder': False,
+ 'unified_encoder': True,
+ 'use_fast_attention': True,
+ 'use_real_PI_mask': False,
+ 'v_range': 6.0,
+ 'val_dataset': ['vrpbltw100_uniform.pkl'],
+ 'val_episodes': 1,
+ 'val_init_sol_strategy': 'POMO',
+ 'val_opt_path': None,
+ 'val_pomo_size': 1,
+ 'val_reconstruct_times': 1,
+ 'validation_batch_size': 1,
+ 'validation_improve_steps': 0,
+ 'validation_interval': 99,
+ 'wandb_logger': False,
+ 'weight_decay': 1e-06,
+ 'which_feature': 'both',
+ 'with_RNN': True,
+ 'with_bonus': False,
+ 'with_explore_stat_feature': True,
+ 'with_infsb_feature': True,
+ 'with_regular': False,
+ 'wo_node_penalty': False,
+ 'wo_tour_penalty': False,
+ 'world_size': 1}
+>> Log Path: results/speed/compact_n100/compact2/20260910_200120train_interface
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Start VRPBLTW Training using SINGLE Model ...
+>> Use unified encoder for Improvement and Construction!
+lambda_:  1.0
+Number of Parameters: 1256469
+[copy_all_src] Warning: /home/ubuntu/CaR-constraint/_ops.py not found. Skipping.
+[copy_all_src] Warning: /home/ubuntu/CaR-constraint/_classes.py not found. Skipping.
+================================================================================
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 54.7381,  Loss: 1668.1537,  Infeasible_rate: [100.0000%, 100.0000%], out: 329.2407, out_nodes: 63, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 54.9414,  Loss: 1709.7388,  Infeasible_rate: [100.0000%, 100.0000%], out: 330.3591, out_nodes: 63, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 54.1535,  Loss: 1819.8233,  Infeasible_rate: [100.0000%, 100.0000%], out: 347.5044, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (0%) 
+[Construction] Score: 54.3180,  Loss: 1798.1971,  Infeasible_rate: [100.0000%, 100.0000%], out: 344.1154, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 53.8640,  Loss: 1856.8806,  Infeasible_rate: [100.0000%, 100.0000%], out: 349.9365, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 53.9034,  Loss: 1822.3792,  Infeasible_rate: [100.0000%, 100.0000%], out: 347.4020, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 53.6515,  Loss: 1863.4413,  Infeasible_rate: [100.0000%, 100.0000%], out: 351.1293, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (20%) 
+[Construction] Score: 53.4677,  Loss: 1871.9322,  Infeasible_rate: [100.0000%, 100.0000%], out: 353.1705, out_nodes: 66, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 53.5012,  Loss: 1824.1744,  Infeasible_rate: [100.0000%, 100.0000%], out: 350.3474, out_nodes: 66, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 53.3690,  Loss: 1832.4793,  Infeasible_rate: [100.0000%, 100.0000%], out: 350.8395, out_nodes: 66, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 53.3258,  Loss: 1839.3727,  Infeasible_rate: [100.0000%, 100.0000%], out: 350.8859, out_nodes: 66, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (40%) 
+[Construction] Score: 53.3086,  Loss: 1854.1423,  Infeasible_rate: [100.0000%, 100.0000%], out: 351.9708, out_nodes: 66, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 53.3169,  Loss: 1875.5933,  Infeasible_rate: [100.0000%, 100.0000%], out: 352.0766, out_nodes: 66, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 53.2862,  Loss: 1867.3807,  Infeasible_rate: [100.0000%, 100.0000%], out: 350.9040, out_nodes: 66, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 53.3584,  Loss: 1852.8480,  Infeasible_rate: [100.0000%, 100.0000%], out: 349.7603, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (60%) 
+[Construction] Score: 53.4249,  Loss: 1825.4442,  Infeasible_rate: [100.0000%, 100.0000%], out: 345.5488, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 53.4367,  Loss: 1831.9259,  Infeasible_rate: [100.0000%, 100.0000%], out: 345.5598, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 53.3732,  Loss: 1827.9961,  Infeasible_rate: [100.0000%, 100.0000%], out: 346.5515, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 53.4934,  Loss: 1830.5925,  Infeasible_rate: [100.0000%, 100.0000%], out: 346.6555, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 53.6002,  Loss: 1815.8795,  Infeasible_rate: [100.0000%, 100.0000%], out: 344.0531, out_nodes: 65, Feasible_dist: 0.0000
+Rank 0 >> Epoch 1: Train (80%) 
+[Construction] Score: 53.6002,  Loss: 1815.8795,  Infeasible_rate: [100.0000%, 100.0000%], out: 344.0531, out_nodes: 65, Feasible_dist: 0.0000
+dummy_size: 40.95
+Rank 0 >> Epoch 1/1: Time Est.: Elapsed[0.46m], Remain[0.00m]
+Rank 0 >> Saving trained_model
+>> Val 1 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.697840690612793
+Rank 0 >> val reconstruction time [w. mask]:  0.8260157108306885
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/VRPBLTW/or_tools_400s_vrpbltw100_uniform.pkl
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Construction] NO_AUG_Score: nan, NO_AUG_Gap: nan% --> AUG_Score: nan, AUG_Gap: nan%; Infeasible rate: 100.0% (solution-level), 100.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [w. mask] NO_AUG_Score: 65.446, NO_AUG_Gap: 253.9331% --> AUG_Score: 52.1311, AUG_Gap: 181.9258%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Finish VRPBLTW Training using SINGLE Model ...

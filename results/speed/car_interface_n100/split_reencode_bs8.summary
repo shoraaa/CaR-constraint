@@ -1,0 +1,8 @@
+batch=8
+accumulation_steps=1
+effective_batch=8
+episodes=8
+status=0
+trainer_minutes=0.10
+wall_ms=32778
+peak_gpu_mib=0

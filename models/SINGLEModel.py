@@ -81,7 +81,7 @@ class SINGLEModel(nn.Module):
                 logit_clipping=self.model_params['logit_clipping'],
                 couple_rows=self.model_params.get("couple_rows", True),
                 norm=self.model_params.get("consequence_norm", "layer"),
-                compact=self.model_params.get("consequence_compact", False))
+                compact=self.model_params.get("consequence_compact", True))
 
         # PRISM's admissibility supervision: a read-out head fitted to the
         # executed signed margin.  It is independent of `constraint_repr`, so

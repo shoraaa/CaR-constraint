@@ -1,0 +1,150 @@
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.7.0) or chardet (4.0.0) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2026-09-10 12:23:34.274884: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1789043014.294494  357560 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1789043014.301073  357560 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1789043014.320020  357560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789043014.320040  357560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789043014.320043  357560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789043014.320046  357560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+>> Use kopt decoder for Improvement!
+Number of Parameters: 1642336
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 100, Hardness: hard)
+  Checkpoint:           pretrained/CVRPBLTW/CaR-kopt_100/checkpoint.pt
+  Test Episodes:        1000 | Batch Size: 64
+  Validation Improve Steps: 5
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           False | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw100_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  0.7402887344360352
+! solution size:  torch.Size([512, 1, 122])
+Rank 0 >> val improvement time:  1.1067783832550049
+Rank 0 >> val reconstruction time [w. mask]:  0.3390228748321533
+episode  64/1000, Elapsed[0.04m], Remain[0.57m]
+Rank 0 >> val construction time:  0.31203269958496094
+! solution size:  torch.Size([512, 1, 121])
+Rank 0 >> val improvement time:  0.9949908256530762
+Rank 0 >> val reconstruction time [w. mask]:  0.3292703628540039
+episode 128/1000, Elapsed[0.07m], Remain[0.49m]
+Rank 0 >> val construction time:  0.3124997615814209
+! solution size:  torch.Size([512, 1, 122])
+Rank 0 >> val improvement time:  1.010251760482788
+Rank 0 >> val reconstruction time [w. mask]:  0.3422989845275879
+episode 192/1000, Elapsed[0.10m], Remain[0.42m]
+Rank 0 >> val construction time:  0.3118717670440674
+! solution size:  torch.Size([512, 1, 122])
+Rank 0 >> val improvement time:  1.0224034786224365
+Rank 0 >> val reconstruction time [w. mask]:  0.33875274658203125
+episode 256/1000, Elapsed[0.13m], Remain[0.38m]
+Rank 0 >> val construction time:  0.31018590927124023
+! solution size:  torch.Size([512, 1, 121])
+Rank 0 >> val improvement time:  0.9854526519775391
+Rank 0 >> val reconstruction time [w. mask]:  0.33534860610961914
+episode 320/1000, Elapsed[0.16m], Remain[0.35m]
+Rank 0 >> val construction time:  0.3082573413848877
+! solution size:  torch.Size([512, 1, 121])
+Rank 0 >> val improvement time:  0.9818563461303711
+Rank 0 >> val reconstruction time [w. mask]:  0.33557605743408203
+episode 384/1000, Elapsed[0.19m], Remain[0.31m]
+Rank 0 >> val construction time:  0.3097703456878662
+! solution size:  torch.Size([512, 1, 121])
+Rank 0 >> val improvement time:  0.98885178565979
+Rank 0 >> val reconstruction time [w. mask]:  0.3366537094116211
+episode 448/1000, Elapsed[0.22m], Remain[0.28m]
+Rank 0 >> val construction time:  0.3145766258239746
+! solution size:  torch.Size([512, 1, 121])
+Rank 0 >> val improvement time:  1.0032975673675537
+Rank 0 >> val reconstruction time [w. mask]:  0.3378751277923584
+episode 512/1000, Elapsed[0.25m], Remain[0.24m]
+Rank 0 >> val construction time:  0.3104827404022217
+! solution size:  torch.Size([512, 1, 122])
+Rank 0 >> val improvement time:  1.0140273571014404
+Rank 0 >> val reconstruction time [w. mask]:  0.33822035789489746
+episode 576/1000, Elapsed[0.29m], Remain[0.21m]
+Rank 0 >> val construction time:  0.31253647804260254
+! solution size:  torch.Size([512, 1, 123])
+Rank 0 >> val improvement time:  1.0266690254211426
+Rank 0 >> val reconstruction time [w. mask]:  0.34114646911621094
+episode 640/1000, Elapsed[0.31m], Remain[0.18m]
+Rank 0 >> val construction time:  0.31022167205810547
+! solution size:  torch.Size([512, 1, 121])
+Rank 0 >> val improvement time:  1.004913568496704
+Rank 0 >> val reconstruction time [w. mask]:  0.3439664840698242
+episode 704/1000, Elapsed[0.35m], Remain[0.15m]
+Rank 0 >> val construction time:  0.31175827980041504
+! solution size:  torch.Size([512, 1, 122])
+Rank 0 >> val improvement time:  1.0171349048614502
+Rank 0 >> val reconstruction time [w. mask]:  0.3354370594024658
+episode 768/1000, Elapsed[0.38m], Remain[0.11m]
+Rank 0 >> val construction time:  0.31035685539245605
+! solution size:  torch.Size([512, 1, 121])
+Rank 0 >> val improvement time:  1.0060551166534424
+Rank 0 >> val reconstruction time [w. mask]:  0.3311121463775635
+episode 832/1000, Elapsed[0.41m], Remain[0.08m]
+Rank 0 >> val construction time:  0.31049537658691406
+! solution size:  torch.Size([512, 1, 122])
+Rank 0 >> val improvement time:  1.0197653770446777
+Rank 0 >> val reconstruction time [w. mask]:  0.3354644775390625
+episode 896/1000, Elapsed[0.44m], Remain[0.05m]
+Rank 0 >> val construction time:  0.3134751319885254
+! solution size:  torch.Size([512, 1, 123])
+Rank 0 >> val improvement time:  1.0301706790924072
+Rank 0 >> val reconstruction time [w. mask]:  0.340362548828125
+episode 960/1000, Elapsed[0.47m], Remain[0.02m]
+Rank 0 >> val construction time:  0.30457615852355957
+! solution size:  torch.Size([320, 1, 122])
+Rank 0 >> val improvement time:  0.9422941207885742
+Rank 0 >> val reconstruction time [w. mask]:  0.3296823501586914
+episode 1000/1000, Elapsed[0.50m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/CVRPBLTW/or_tools_400s_vrpbltw100_uniform.pkl
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Construction] NO_AUG_Score: 24.5314, NO_AUG_Gap: 0.4753% --> AUG_Score: 24.4034, AUG_Gap: -2.0507%; Infeasible rate: 22.225% (solution-level), 2.8% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [Improvement] NO_AUG_Score: 24.4983, NO_AUG_Gap: 0.2337% --> AUG_Score: 24.3669, AUG_Gap: -2.2497%; Infeasible rate: 20.913% (solution-level), 2.7% (instance-level)
+Rank 0 >> Val Score on vrpbltw100_uniform.pkl: [w. mask] NO_AUG_Score: 26.3643, NO_AUG_Gap: 4.6277% --> AUG_Score: 24.5981, AUG_Gap: -1.6689%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 30.02s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 24.5314, Gap: 0.4753 
+ AUGMENTATION SCORE: 24.4034, Gap: -2.0507 
+Solution level Infeasible rate: 22.225%
+Instance level Infeasible rate: 2.800%
+ 
+*** Improvement *** 
+ NO-AUG SCORE: 24.4983, Gap: 0.2337 
+ AUGMENTATION SCORE: 24.3669, Gap: -2.2497 
+NO AUG Solution level Infeasible rate: 19.900%
+Solution level Infeasible rate: 20.913%
+Instance level Infeasible rate: 2.700%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 26.3643, Gap: 4.6277 
+ AUGMENTATION SCORE: 24.5981, Gap: -1.6689 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/published_car_kopt_levels/n100_t5_bs64.csv

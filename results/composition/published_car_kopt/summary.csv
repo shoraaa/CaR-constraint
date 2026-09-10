@@ -1,0 +1,3 @@
+problem_size,episodes,batch,checkpoint,refinement_steps,construct_aug,construct_gap_pct,construct_solution_infeasible_pct,construct_instance_infeasible_pct,improve_aug,improve_gap_pct,improve_solution_infeasible_pct,improve_instance_infeasible_pct,masked_aug,masked_gap_pct,masked_solution_infeasible_pct,masked_instance_infeasible_pct,construction_seconds,improvement_seconds,masked_seconds,evaluation_seconds,process_wall_seconds,peak_gpu_mib
+50,1000,128,CaR-kopt_50,20,14.7968,2.1166,20.975,3.4,14.7422,1.6775,18.5,2.6,14.8473,2.1161,0.0,0.0,1.843091,20.935090,1.525987,25.21,36.289,1789
+100,1000,64,CaR-kopt_100,20,24.4034,-2.0507,22.225,2.8,24.3544,-2.3022,20.613,2.7,24.5860,-1.7200,0.0,0.0,5.384282,59.810022,5.370083,73.67,84.685,2691

@@ -1,0 +1,8 @@
+tag=dense2
+consequence_compact=False
+episodes=640
+batch=32
+status=0
+wall_ms=40919
+peak_gpu_mib=22765
+mean_active_gpu_util_pct=51.1

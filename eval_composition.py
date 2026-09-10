@@ -84,6 +84,9 @@ def main():
                         help="how the backhaul row is dropped; see the module "
                              "docstring. `abs` reproduces grids measured "
                              "before the setting existed.")
+    parser.add_argument("--fill_missing_free", action="store_true",
+                        help="publish all trained rows and fill each row outside "
+                             "the effective subset with a nonbinding value")
     parser.add_argument("--problem_size", type=int, default=50)
     parser.add_argument("--test_episodes", type=int, default=128)
     parser.add_argument("--test_batch_size", type=int, default=32)
@@ -106,6 +109,9 @@ def main():
     for active, name in compositions(tuple(args.probe)):
         if args.only and name not in args.only:
             continue
+        trained_active = tuple(row for row in active if row in ROWS)
+        missing = tuple(row for row in ROWS if row not in trained_active)
+        published = ROWS + tuple(args.probe) if args.fill_missing_free else active
         command = [
             args.python, "test.py",
             "--problem", "VRPBLTW",
@@ -129,7 +135,9 @@ def main():
             "--wandb_logger", "False",
         ]
         command += list(args.extra)
-        command += ["--active_constraints"] + list(active)
+        if args.fill_missing_free:
+            command += ["--filled_free_constraints"] + list(missing)
+        command += ["--active_constraints"] + list(published)
         # Only the full composition has a reference solution shipped with the
         # benchmark; the subsets are compared arm against arm on the objective.
         if name != "VRPBLTW":

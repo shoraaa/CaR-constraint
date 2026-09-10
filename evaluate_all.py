@@ -89,6 +89,8 @@ def main():
     parser.add_argument("--only_arms", nargs="*", default=None)
     parser.add_argument("--probe_draft", action="store_true",
                         help="append the unseen draft-limit row to every cell")
+    parser.add_argument("--fill_missing_free", action="store_true",
+                        help="publish omitted trained rows with nonbinding values")
     parser.add_argument("--dry_run", action="store_true",
                         help="print the commands without running them")
     args = parser.parse_args()
@@ -115,6 +117,8 @@ def main():
         if args.probe_draft:
             # eval_composition takes --probe before --extra, which is REMAINDER.
             command += ["--probe", "draft_limit"]
+        if args.fill_missing_free:
+            command += ["--fill_missing_free"]
         if extra:
             # --extra is argparse.REMAINDER, so it has to come last.
             command += ["--extra"] + extra

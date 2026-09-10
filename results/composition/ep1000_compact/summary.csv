@@ -1,0 +1,3 @@
+problem_size,episodes,batch,compact,node_repr,construct_aug,construct_gap_pct,construct_infeasible_pct,masked_aug,masked_gap_pct,masked_infeasible_pct,construction_seconds,masked_seconds,evaluation_seconds,process_wall_seconds,peak_gpu_mib
+50,1000,256,True,named,14.5430,0.0995,9.104,14.5428,0.0976,0.0,8.275820,5.737579,14.55,25.591,4717
+100,1000,64,True,named,25.5609,2.0867,2.605,25.5603,2.0834,0.0,57.969700,40.801927,101.88,112.891,4649

@@ -1,0 +1,9 @@
+# Run artefacts: checkpoints and logs are reproducible from the scripts.
+results/**/*.pt
+results/**/run_log
+results/**/src/
+results/composition/.evaluated/
+wandb/
+__pycache__/
+*.pyc
+gpucore.*

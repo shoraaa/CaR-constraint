@@ -243,8 +243,7 @@ def test_compaction_does_not_change_any_live_candidate():
     too, or the two paths are different models.
     """
     torch.manual_seed(11)
-    # compact=True explicitly: the flag defaults off, and a model built with the
-    # default would compare the dense path against itself and pass vacuously.
+    # compact=True explicitly so this unit test cannot depend on CLI defaults.
     model = _model(compact=True)
     model.eval()
     assert model.compact, "test must exercise the compacted path"
@@ -253,8 +252,6 @@ def test_compaction_does_not_change_any_live_candidate():
     mask[..., 0] = True  # never leave a decision with nothing to choose
 
     with torch.no_grad():
-        packed = ConsequenceValuation._compact(consequence, mask)
-        assert packed is not None, "test needs a mask that actually compacts"
         compact_context, compact_value = model.evaluate(consequence, mask)
 
         tokens, state, active = model._row_tokens(consequence, mask)
@@ -269,13 +266,47 @@ def test_compaction_does_not_change_any_live_candidate():
         (compact_value[live] - reference_value[live]).abs().max())
 
 
-def test_compaction_declines_when_every_candidate_is_live():
-    """No mask, or a full mask, must take the dense path rather than pay for a
-    gather that buys nothing."""
+def test_compaction_preserves_the_training_signal():
+    """Masked candidates had zero policy gradient and may be omitted safely."""
+    dense = _model(compact=False)
+    dense.train()
+    compact = _model(compact=True)
+    compact.load_state_dict(dense.state_dict())
+    compact.train()
+    consequence = _consequence(seed=17)
+    mask = torch.rand(consequence.shape[:3]) > 0.4
+    mask[..., 0] = True
+
+    dense_context, dense_value = dense.evaluate(consequence, mask)
+    compact_context, compact_value = compact.evaluate(consequence, mask)
+    dense_loss = dense_context.square().sum() + dense_value[mask].square().sum()
+    compact_loss = (compact_context.square().sum()
+                    + compact_value[mask].square().sum())
+    dense_loss.backward()
+    compact_loss.backward()
+
+    assert torch.equal(dense_context, compact_context)
+    assert torch.equal(dense_value[mask], compact_value[mask])
+    assert torch.equal(dense_loss, compact_loss)
+    for dense_parameter, compact_parameter in zip(dense.parameters(),
+                                                   compact.parameters()):
+        assert torch.allclose(dense_parameter.grad, compact_parameter.grad,
+                              atol=1e-5, rtol=1e-6)
+
+
+def test_compaction_handles_a_full_candidate_set():
+    """The flat path must also be equivalent before candidates are removed."""
+    model = _model(compact=True)
     consequence = _consequence()
     full = torch.ones(consequence.shape[:3], dtype=torch.bool)
-    assert ConsequenceValuation._compact(consequence, full) is None
-    assert ConsequenceValuation._compact(consequence, None) is None
+    with torch.no_grad():
+        compact_context, compact_value = model.evaluate(consequence, full)
+        tokens, state, active = model._row_tokens(consequence, full)
+        reference_context = model._reduce(tokens, active, model.context)
+        multipliers, _ = model._multipliers_from(tokens, state, active)
+        reference_value = model._value(consequence, multipliers)
+    assert torch.equal(compact_context, reference_context)
+    assert torch.allclose(compact_value, reference_value, atol=1e-5)
 
 
 if __name__ == "__main__":

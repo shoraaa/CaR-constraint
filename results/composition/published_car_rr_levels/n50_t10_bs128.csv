@@ -1,0 +1,2 @@
+checkpoint,constraint_repr,slack_weight,couple_rows,arm,variant,active_constraints,filled_free_constraints,dataset,episodes,construct_no_aug,construct_aug,construct_sol_infeasible,construct_ins_infeasible,masked_no_aug,masked_aug,masked_sol_infeasible,masked_ins_infeasible,improve_no_aug,improve_aug,improve_sol_infeasible,improve_ins_infeasible
+pretrained/CVRPBLTW/CaR-rr_50/checkpoint.pt,attr,0.0,True,published_car_rr_50_t10,VRPBLTW,backhaul+route_limit+time_window,,vrpbltw50_uniform.pkl,1000,15.1498,14.8422,17.725,2.6,15.3004,14.6625,0.0,0.0,14.9107,14.6233,9.612,1.3

@@ -1,0 +1,10 @@
+problem_size=100
+episodes=1000
+batch=64
+consequence_compact=True
+status=0
+construction_seconds=57.969700
+masked_seconds=40.801927
+evaluation_seconds=101.88
+process_wall_ms=112891
+peak_gpu_mib=4649

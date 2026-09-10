@@ -1,0 +1,12 @@
+problem_size=100
+episodes=1000
+batch=64
+checkpoint=pretrained/CVRPBLTW/CaR-kopt_100/checkpoint.pt
+refinement_steps=20
+status=0
+construction_seconds=5.384282
+improvement_seconds=59.810022
+masked_seconds=5.370083
+evaluation_seconds=73.67
+process_wall_ms=84685
+peak_gpu_mib=2691

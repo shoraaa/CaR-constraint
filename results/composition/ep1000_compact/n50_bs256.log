@@ -1,0 +1,73 @@
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.7.0) or chardet (4.0.0) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2026-09-10 12:05:40.892346: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1789041940.912193  348972 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1789041940.918664  348972 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1789041940.937921  348972 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789041940.937942  348972 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789041940.937945  348972 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1789041940.937948  348972 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+>> No occupation needed
+>> USE_CUDA: True, CUDA_DEVICE_NUM: 0
+>> Use unified encoder for Improvement and Construction!
+Number of Parameters: 1256469
+
+======================================================================
+                    TEST CONFIGURATION
+======================================================================
+  Problem:              VRPBLTW (Size: 50, Hardness: hard)
+  Checkpoint:           results/pomo_eval_ep1000/train_pomo_soft_interface/epoch-1000.pt
+  Test Episodes:        1000 | Batch Size: 256
+  Validation Improve Steps: 0
+  Soft Constrained:     True
+  Improvement Method:   kopt | N2S Decoder: False
+  POMO Start:           True | Test POMO Size: 1
+  Unified Encoder:       True | Unified Decoder: False
+  Eval Type:            argmax
+  Sample Size:          1
+  Aux Mask:             True
+======================================================================
+
+>> TEST dataset vrpbltw50_uniform.pkl
+>> TEST 1000 instances.
+>> validation eval type:  argmax
+Rank 0 >> val construction time:  2.461549758911133
+Rank 0 >> val reconstruction time [w. mask]:  1.4817049503326416
+episode 256/1000, Elapsed[0.07m], Remain[0.20m]
+Rank 0 >> val construction time:  2.005568265914917
+Rank 0 >> val reconstruction time [w. mask]:  1.4679620265960693
+episode 512/1000, Elapsed[0.13m], Remain[0.12m]
+Rank 0 >> val construction time:  1.993736982345581
+Rank 0 >> val reconstruction time [w. mask]:  1.4497630596160889
+episode 768/1000, Elapsed[0.18m], Remain[0.06m]
+Rank 0 >> val construction time:  1.8149645328521729
+Rank 0 >> val reconstruction time [w. mask]:  1.338149070739746
+episode 1000/1000, Elapsed[0.24m], Remain[0.00m]
+>> Only feasible solutions are under consideration!
+>> Only feasible solutions are under consideration!
+>> Load optimal solution from: ./data/CVRPBLTW/or_tools_200s_vrpbltw50_uniform.pkl
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [Construction] NO_AUG_Score: 14.8946, NO_AUG_Gap: 2.5009% --> AUG_Score: 14.543, AUG_Gap: 0.0995%; Infeasible rate: 9.104% (solution-level), 0.0% (instance-level)
+Rank 0 >> Val Score on vrpbltw50_uniform.pkl: [w. mask] NO_AUG_Score: 14.8982, NO_AUG_Gap: 2.51% --> AUG_Score: 14.5428, AUG_Gap: 0.0976%; Infeasible rate: 0.0% (solution-level), 0.0% (instance-level)
+>> Evaluation finished within 14.55s
+
+ 
+*** Test Done on VRPBLTW *** 
+ 
+*** Construction *** 
+ NO-AUG SCORE: 14.8946, Gap: 2.5009 
+ AUGMENTATION SCORE: 14.543, Gap: 0.0995 
+Solution level Infeasible rate: 9.104%
+Instance level Infeasible rate: 0.000%
+ 
+*** Re-Construction w. mask *** 
+ NO-AUG SCORE: 14.8982, Gap: 2.5100 
+ AUGMENTATION SCORE: 14.5428, Gap: 0.0976 
+Solution level Infeasible rate: 0.000%
+Instance level Infeasible rate: 0.000%
+>> Appended result row to results/composition/ep1000_compact/n50_bs256.csv
