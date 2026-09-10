@@ -72,6 +72,7 @@ def args2dict(args):
                     "node_repr_dim": args.node_repr_dim,
                     "consequence_context_dim": args.consequence_context_dim,
                     "consequence_compact": args.consequence_compact,
+                    "optimize_consequence": args.interface_physical_batch > 0,
                     "use_fast_attention": args.use_fast_attention,
                     "pairwise_merge": args.pairwise_merge.split(",") if isinstance(args.pairwise_merge, str) else args.pairwise_merge,
                     "which_feature": args.which_feature,
@@ -97,7 +98,9 @@ def args2dict(args):
                         "scheduler": {"milestones": args.milestones, "gamma": args.gamma}}
 
     trainer_params = {"epochs": args.epochs, "train_episodes": args.train_episodes, "accumulation_steps": args.accumulation_steps,
-                      "train_batch_size": args.train_batch_size, "validation_interval": args.validation_interval,
+                      "train_batch_size": args.train_batch_size,
+                      "interface_physical_batch": args.interface_physical_batch,
+                      "validation_interval": args.validation_interval,
                       "validation_batch_size": args.validation_batch_size, "val_pomo_size": args.val_pomo_size,
                       "empty_cache_per_batch": args.empty_cache_per_batch,
                       "model_save_interval": args.model_save_interval, "checkpoint": args.checkpoint, "baseline": args.baseline,
@@ -333,6 +336,10 @@ if __name__ == "__main__":
     parser.add_argument('--train_episodes', type=int, default=10000*2, help="the num. of training instances per epoch")
     parser.add_argument('--accumulation_steps', type=int, default=1)
     parser.add_argument('--train_batch_size', type=int, default=64*2)
+    parser.add_argument(
+        '--interface_physical_batch', type=int, default=0,
+        help=('opt-in physical microbatch cap for the optimized consequence '
+              'interface path; 0 preserves CaR\'s original training path'))
     parser.add_argument('--validation_interval', type=int, default=200)
     parser.add_argument('--validation_batch_size', type=int, default=3334)
     parser.add_argument('--select_top_k_val', type=int, default=1)

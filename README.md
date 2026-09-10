@@ -71,6 +71,84 @@ The code accommodates three distinct modes for training and testing:
 - Construction only, please add `--improve_steps=0 --validation_improve_steps=0` 
 - Improvement only, please use `--improvement_only`
 
+### Unified CaR-POMO (110 variants)
+
+`unified.py` is a construction-only CaR-POMO path over the same 110 problem
+names used by PRISM and URS.  It reuses URS's instance generators, eleven-task
+training split, POMO reward/baseline, validation/test readers, augmentation and
+mask registry.  The policy is shared across variants: its encoder consumes the
+row-indexed node representation and its decoder consumes the existing
+candidate-consequence representation.  It does not use URS's problem
+representation hypernetwork.
+
+Run from this directory.  URS's released defaults (500 epochs, 2,000 batches
+per epoch, batch size 128, AdamW at `1e-4`, and its default validation split)
+are inherited unless overridden:
+
+```shell
+python unified.py train --cuda 0 --data_dir ../URS/dataset
+```
+
+For a quick generated-data smoke run:
+
+```shell
+python unified.py train --cuda -1 --training_epochs 1 \
+  --batches_per_epoch 1 --batch_size 2 --problem_size 20 \
+  --validation_generated --validation_problem_set train_problem_list \
+  --validation_episodes 2 --validation_batch_size 2
+```
+
+Solve any subset or all 110 variants with a checkpoint produced by this path:
+
+```shell
+python unified.py solve \
+  --model_load result_train/YYYY-MM-DD/RUN/best_checkpoint.pt \
+  --data_dir ../URS/dataset --problem_set all_evaluated_list \
+  --test_scale_list 100 --test_episodes 1000
+```
+
+Architecture flags used for training (including `--embedding_dim`,
+`--encoder_layer_num`, `--head_num`, `--qkv_dim`, and consequence flags) must
+match at solve time.  `interface_nomargin` and `--no_couple_rows` remain
+available as nested ablations; the identity-bearing `attr`/`named` modes are
+intentionally rejected by this unified path.
+
+### Semantic POMO (unseen constraint families)
+
+`semantic_pomo.py` is a second path, independent of the URS environment and
+its per-constraint mask registry. It executes PRISM declarations directly:
+
+- every affine/arithmetic/tropical resource is handled by the accumulator
+  family;
+- precedence and exclusion declarations are handled by the relational family;
+- construction legality is the conjunction of structural legality and the
+  outcomes reported by the active rows;
+- the exact same outcomes provide the candidate-consequence representation.
+
+No branch selects capacity, battery, draft limit, time windows, or pickup and
+delivery by name. Therefore a checkpoint trained on the default eleven URS
+training variants can be evaluated on a newly declared row without adding a
+mask implementation.
+
+```shell
+# Reference training run. Defaults mirror URS's epoch/batch/optimizer settings.
+python semantic_pomo.py train --cuda 0 --output result_semantic_pomo
+
+# Zero-shot accumulator examples.
+python semantic_pomo.py solve \
+  --checkpoint result_semantic_pomo/checkpoint_500.pt \
+  --variant evrp --problem_size 100 --episodes 16
+
+python semantic_pomo.py solve \
+  --checkpoint result_semantic_pomo/checkpoint_500.pt \
+  --variant vrpdl --problem_size 100 --episodes 16
+```
+
+The semantic environment currently uses PRISM's readable Python interpreter
+per POMO rollout. This makes it a correctness/reference path suitable for
+zero-shot evaluation and small training experiments; it is not yet the
+throughput replacement for the native/GPU construction executor.
+
 <details>
     <summary><strong>Train</strong></summary>
 

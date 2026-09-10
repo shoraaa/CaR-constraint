@@ -11,6 +11,7 @@ import time
 import pdb
 from typing import Callable, Optional, Tuple
 from models.consequence import AdmissibilityHead, ConsequenceValuation, NodeRowPool
+from models.consequence_optimized import OptimizedConsequenceValuation
 __all__ = ['SINGLEModel']
 
 # Width of the named live-state vector each problem's decoder query carries.
@@ -74,7 +75,11 @@ class SINGLEModel(nn.Module):
         declared = int(self.model_params.get("consequence_context_dim", 0))
         self.context_dim = declared if declared > 0 else ATTR_WIDTH[self.problem]
         if self.constraint_repr != "attr":
-            self.consequence = ConsequenceValuation(
+            consequence_class = (
+                OptimizedConsequenceValuation
+                if self.model_params.get("optimize_consequence", False)
+                else ConsequenceValuation)
+            self.consequence = consequence_class(
                 context_dim=self.context_dim,
                 hidden_dim=self.model_params.get("consequence_hidden_dim", 16),
                 use_margin=(self.constraint_repr != "interface_nomargin"),

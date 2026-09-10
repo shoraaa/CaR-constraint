@@ -22,6 +22,7 @@ from tensorboard_logger import Logger as TbLogger
 from sklearn.metrics import confusion_matrix
 from utils import *
 from models.SINGLEModel import SINGLEModel
+from interface_training import ConsequenceInterfaceTraining
 
 
 class Trainer:
@@ -591,9 +592,23 @@ class Trainer:
             # if self.rank==0: print(episode)
             self.episode = episode
             self.epoch = epoch
-            for accumulation_step in range(self.trainer_params['accumulation_steps']):
+            remaining = train_num_episode - episode
+            interface_batches = ConsequenceInterfaceTraining.microbatch_plan(
+                self, remaining)
+            accumulation_batches = (
+                interface_batches if interface_batches is not None
+                else [None] * self.trainer_params['accumulation_steps'])
+            for accumulation_step, planned_batch in enumerate(
+                    accumulation_batches):
                 remaining = train_num_episode - episode
-                batch_size = min(self.trainer_params['train_batch_size'], remaining)
+                batch_size = (planned_batch if planned_batch is not None
+                              else min(self.trainer_params['train_batch_size'],
+                                       remaining))
+
+                if interface_batches is not None:
+                    ConsequenceInterfaceTraining.set_microbatch(
+                        self, batch_size, sum(interface_batches),
+                        accumulation_step, len(interface_batches))
 
                 env = random.sample(self.envs, 1)[0](**self.env_params)
                 data = env.get_random_problems(batch_size, self.env_params["problem_size"])
@@ -615,7 +630,12 @@ class Trainer:
                             batch_reward = []
                             weights = 0
 
-                sl_output = self._train_one_batch(data, env, batch_reward, weights, accumulation_step=accumulation_step)
+                try:
+                    sl_output = self._train_one_batch(
+                        data, env, batch_reward, weights,
+                        accumulation_step=accumulation_step)
+                finally:
+                    ConsequenceInterfaceTraining.clear_microbatch(self)
 
                 if sl_output is not None and self.model_params["pip_decoder"]:
                     sl_loss, accuracy, infsb_accuracy, infsb_samples, fsb_accuracy, fsb_samples = sl_output
@@ -683,20 +703,7 @@ class Trainer:
 
         self.model.train()
         self._get_model().set_eval_type(self.model_params["eval_type"])
-
-        can_split_interface_backward = (
-            not self.model_params["improvement_only"]
-            and self.model_params.get("constraint_repr", "attr") != "attr"
-            and self.has_improve_steps
-            and self.trainer_params["baseline"] == "group"
-            and not self.trainer_params["bonus_for_construction"]
-            and not self.trainer_params["extra_bonus"]
-            and not self.trainer_params["uncertainty_weight"]
-            and not self.trainer_params["neighborhood_search"]
-            and not self.trainer_params["reward_gating"]
-            and not self.trainer_params["subgradient"]
-            and not self.has_pip_decoder
-            and not self.args.multiple_gpu)
+        interface_training = ConsequenceInterfaceTraining(self)
 
         if not (self.trainer_params["improvement_only"] and self.trainer_params["init_sol_strategy"]=="POMO"):
             env.load_problems(batch_size, rollout_size=rollout_size, problems=data, aug_factor=1)
@@ -813,22 +820,15 @@ class Trainer:
         # than making both graphs coexist at the peak.  Imitation re-encodes
         # only the instances that actually improved below.  Attribute and
         # other upstream configurations retain CaR's original backward path.
-        split_interface_backward = can_split_interface_backward and start_sign
+        split_interface_backward = interface_training.activate(start_sign)
         if split_interface_backward:
             construct_loss = self._get_construction_output(
                 infeasible, reward, prob_list, None, None, probs_return_list,
                 self.trainer_params["epsilon"])
             construct_loss = self._add_admissibility_loss(
                 construct_loss, batch_size)
-            if accumulation_step == 0:
-                self.model.zero_grad()
-                self.optimizer.zero_grad()
-            scaled_construct_loss = (
-                construct_loss / self.trainer_params["accumulation_steps"])
-            if amp_training:
-                scaled_construct_loss = self.scaler.scale(
-                    scaled_construct_loss)
-            scaled_construct_loss.backward()
+            interface_training.backward_construction(
+                construct_loss, accumulation_step)
 
         if self.has_improve_steps and start_sign:
             if self.model_params["improvement_only"]: # generate random solution
@@ -882,73 +882,34 @@ class Trainer:
             construct_loss = 0.0
 
         if not self.model_params["improvement_only"] and self.trainer_params["imitation_learning"] and best_solution is not None:
-            imitation_data = data
-            imitation_solution = best_solution
-            imitation_indices = None
             if split_interface_backward:
-                imitation_indices = is_improved.nonzero(
-                    as_tuple=False).squeeze(-1).to(self.device)
-                if 0 < imitation_indices.numel() < batch_size:
-                    if isinstance(data, torch.Tensor):
-                        imitation_data = data.index_select(
-                            0, imitation_indices.to(data.device))
-                    else:
-                        imitation_data = tuple(
-                            item.index_select(
-                                0, imitation_indices.to(item.device))
-                            for item in data)
-                    imitation_solution = best_solution.index_select(
-                        0, imitation_indices.to(best_solution.device))
-
-            if imitation_indices is not None and imitation_indices.numel() == 0:
-                imitation_loss = construct_loss.new_zeros(())
+                imitation_loss = interface_training.imitation_loss(
+                    data, env, best_solution, is_improved, batch_size)
             else:
-                imitation_batch = imitation_solution.size(0)
-                env.load_problems(
-                    imitation_batch, rollout_size=1,
-                    problems=imitation_data, aug_factor=1)
+                # Original CaR imitation path.
+                env.load_problems(batch_size, rollout_size=1, problems=data, aug_factor=1)
                 reset_state, _, _ = env.reset()
-                if split_interface_backward:
-                    # The construction encoder graph was consumed above.
-                    # Rebuild it for only the rows with a non-zero imitation
-                    # coefficient; the omitted rows had exactly zero gradient
-                    # in CaR's original masked objective.
-                    self._get_model().pre_forward(reset_state, z)
                 state, reward, done = env.pre_step()
-                imit_prob_list = torch.zeros(
-                    size=(imitation_batch, 1, 0), device=self.device)
-                for step in range(imitation_solution.size(-1)):
-                    with torch.amp.autocast(
-                            device_type="cuda", enabled=amp_training):
-                        _, prob, _ = self.model(
-                            state, pomo=self.env_params["pomo_start"],
-                            selected=imitation_solution[:, :, step],
-                            candidate_feature=(env.node_tw_end
-                                               if self.args.problem == "TSPTW"
-                                               else None))
-                    if self.has_pip_decoder:
-                        prob, _ = prob
-                    imit_prob_list = torch.cat(
-                        (imit_prob_list, prob[:, :, None]), dim=2)
+                imit_prob_list = torch.zeros(size=(batch_size, 1, 0)).to(self.device)
+                for step in range(best_solution.size(-1)): # while not done:
+                    with torch.amp.autocast(device_type="cuda", enabled=amp_training):
+                        _, prob, _ = self.model(state, pomo=self.env_params["pomo_start"], selected=best_solution[:,:,step],
+                                                       candidate_feature=env.node_tw_end if self.args.problem == "TSPTW" else None)
+                    if self.has_pip_decoder: prob, _ = prob
+                    imit_prob_list = torch.cat((imit_prob_list, prob[:, :, None]), dim=2)  # shape: (batch, pomo, solution)
+                    # shape: (batch, pomo)
+                    use_predicted_PI_mask=False
                     state, reward, done, infeasible = env.step(
-                        imitation_solution[:, :, step].to(self.device),
+                        best_solution[:,:,step].to(self.device),
                         out_reward=self.trainer_params["out_reward"],
                         soft_constrained=self.trainer_params["soft_constrained"],
                         backhaul_mask=self.trainer_params["backhaul_mask"],
                         penalty_normalize=self.trainer_params["penalty_normalize"],
                         generate_PI_mask=self.trainer_params["generate_PI_mask"],
                         use_predicted_PI_mask=False,
-                        pip_step=self.trainer_params["pip_step"])
-                if split_interface_backward:
-                    imitation_values = imit_prob_list.mean(-1).mean(-1)
-                    if imitation_values.numel() < batch_size:
-                        full_values = imitation_values.new_zeros(batch_size)
-                        imitation_values = full_values.scatter(
-                            0, imitation_indices, imitation_values)
-                    imitation_loss = -imitation_values.mean()
-                else:
-                    imitation_loss = -(
-                        is_improved * imit_prob_list.mean(-1).mean(-1)).mean()
+                        pip_step=self.trainer_params["pip_step"]
+                        )
+                imitation_loss = -(is_improved * imit_prob_list.mean(-1).mean(-1)).mean()
 
             self.metric_logger.construct_metrics["imitation_loss"].update(imitation_loss.item(), batch_size)
             self.metric_logger.construct_metrics["is_improved"].update(is_improved.sum()/batch_size, batch_size)
@@ -1013,9 +974,8 @@ class Trainer:
             self.metric_logger.sigma1.update(self.loss_fn.sigma1)
             self.metric_logger.sigma2.update(self.loss_fn.sigma2)
         else:
-            loss = improve_loss * coefficient
-            if not split_interface_backward:
-                loss = construct_loss + loss
+            loss = interface_training.add_construction_loss(
+                improve_loss * coefficient, construct_loss)
             self.metric_logger.coefficient.update(coefficient)
             if self.trainer_params["reward_gating"] or self.trainer_params["subgradient"]:
                 self.metric_logger.lambda_tw.update(self.lambda_[0].mean().item())
@@ -1039,20 +999,22 @@ class Trainer:
             loss += imitation_term
         if self.args.problem == "VRPBLTW" and self.trainer_params["improve_steps"] > 0. and start_sign and self.trainer_params["reconstruct"]: # reconstruct after improvement
             loss += reconstruct_loss
-        loss = loss / self.trainer_params["accumulation_steps"]
-        if not amp_training:
-            loss.backward()
+        if split_interface_backward:
+            interface_training.backward_remaining(loss, accumulation_step)
         else:
-            # Preserve the original CaR graph lifetime outside the added path.
-            self.scaler.scale(loss).backward(
-                retain_graph=not split_interface_backward)
-
-        if accumulation_step == self.trainer_params["accumulation_steps"] - 1:
-            if amp_training:
-                self.scaler.step(self.optimizer)
-                self.scaler.update()
+            # Original CaR backward path.
+            loss = loss / self.trainer_params["accumulation_steps"]
+            if not amp_training:
+                loss.backward()
+                # update the parameters until accumulating enough accumulation_steps
+                if accumulation_step == self.trainer_params["accumulation_steps"] - 1: self.optimizer.step()
             else:
-                self.optimizer.step()
+                # with torch.autograd.set_detect_anomaly(True):
+                self.scaler.scale(loss).backward(retain_graph=True)
+                if accumulation_step == self.trainer_params["accumulation_steps"] - 1:
+                    # update the parameters until accumulating enough accumulation_steps
+                    self.scaler.step(self.optimizer)
+                    self.scaler.update()
 
         if self.model_params['pip_decoder'] and self.is_train_pip_decoder:
             sl_loss_out = sl_loss_list.mean().item()

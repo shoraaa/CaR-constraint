@@ -20,6 +20,7 @@ from models.consequence import (  # noqa: E402
     POST_INDEX,
     ConsequenceValuation,
 )
+from models.consequence_optimized import OptimizedConsequenceValuation  # noqa: E402
 
 
 def _consequence(batch=2, pomo=3, nodes=5, rows=3, active=None, seed=0):
@@ -307,6 +308,29 @@ def test_compaction_handles_a_full_candidate_set():
         reference_value = model._value(consequence, multipliers)
     assert torch.equal(compact_context, reference_context)
     assert torch.allclose(compact_value, reference_value, atol=1e-5)
+
+
+def test_optimized_valuation_preserves_output_and_training_signal():
+    reference = _model(compact=True)
+    optimized = OptimizedConsequenceValuation(
+        context_dim=3, hidden_dim=8, compact=True).train()
+    optimized.load_state_dict(reference.state_dict())
+    reference.train()
+    consequence = _consequence(seed=31)
+    mask = torch.rand(consequence.shape[:3]) > 0.4
+    mask[..., 0] = True
+
+    expected_context, expected_value = reference.evaluate(consequence, mask)
+    actual_context, actual_value = optimized.evaluate(consequence, mask)
+    expected_loss = expected_context.square().sum() + expected_value[mask].sum()
+    actual_loss = actual_context.square().sum() + actual_value[mask].sum()
+    expected_loss.backward()
+    actual_loss.backward()
+
+    assert torch.equal(expected_context, actual_context)
+    assert torch.equal(expected_value, actual_value)
+    for expected, actual in zip(reference.parameters(), optimized.parameters()):
+        assert torch.allclose(expected.grad, actual.grad, atol=1e-5, rtol=1e-6)
 
 
 if __name__ == "__main__":

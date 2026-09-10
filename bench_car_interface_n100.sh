@@ -6,6 +6,7 @@ cd "$(dirname "$0")"
 BATCH=${BATCH:-8}
 ACCUM=${ACCUM:-16}
 EPISODES=${EPISODES:-512}
+INTERFACE_BATCH=${INTERFACE_BATCH:-0}
 TAG=${TAG:-bs${BATCH}_acc${ACCUM}_ep${EPISODES}}
 OUT=results/speed/car_interface_n100
 LOG="$OUT/$TAG.log"
@@ -21,6 +22,7 @@ python3 -u train.py \
   --problem VRPBLTW --problem_size 100 \
   --epochs 1 --train_episodes "$EPISODES" \
   --train_batch_size "$BATCH" --accumulation_steps "$ACCUM" \
+  --interface_physical_batch "$INTERFACE_BATCH" \
   --improve_steps 5 --validation_improve_steps 20 \
   --pomo_start False --soft_constrained True \
   --validation_batch_size 1 --val_episodes 1 \
@@ -50,6 +52,7 @@ trainer_minutes=$(sed -n 's/.*Elapsed\[\([0-9.]*\)m\].*/\1/p' "$LOG" | tail -1)
   echo "accumulation_steps=$ACCUM"
   echo "effective_batch=$((BATCH * ACCUM))"
   echo "episodes=$EPISODES"
+  echo "interface_physical_batch=$INTERFACE_BATCH"
   echo "status=$status"
   echo "trainer_minutes=$trainer_minutes"
   echo "wall_ms=$wall_ms"
